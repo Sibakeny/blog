@@ -5,7 +5,8 @@ default: &default
 
 development:
   <<: *default
-  host: db
-  username: admin
-  password: password
+  host: localhost
+  port: 3306
+  username: root
+  password: 
   database: sbkn_blog_development

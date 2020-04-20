@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="text-right mb-5">
+        <%= link_to '作成', new_article_path, class: 'btn btn-success' %>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">タイトル</th>
+                <th scope="col">本文</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @articles.each do |article| %>
+            <tr>
+                <th scope="row"><%= article.id %></th>
+                <td><%= article.title %></td>
+                <td><%= article.body %></td>
+                <td class="text-nowrap"><%= link_to '編集', edit_article_path(article), class: 'btn btn-outline-primary' %></td>
+                <td class="text-nowrap"><%= link_to '削除', article_path(article), method: :delete, class: 'btn btn-outline-primary' %>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
