@@ -6,5 +6,13 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :articles
+
+    resources :category do 
+      collection do
+        scope module: :category do 
+          resources :filters, only: [:index]
+        end
+      end 
+    end
   end
 end
