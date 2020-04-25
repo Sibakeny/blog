@@ -1,6 +1,6 @@
 class Api::ArticlesController < ApplicationController
     def index
-        @articles = Article.all
+        @articles = Article.all.page(params[:page]).per(8)
         render json: @articles
     end
 

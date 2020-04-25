@@ -16,7 +16,7 @@
             <tr>
                 <th scope="row"><%= article.id %></th>
                 <td><%= article.title %></td>
-                <td><%= article.body %></td>
+                <td style='max-width: 500px'><%= article.body %></td>
                 <td class="text-nowrap"><%= link_to '編集', edit_article_path(article), class: 'btn btn-outline-primary' %></td>
                 <td class="text-nowrap"><%= link_to '削除', article_path(article), method: :delete, class: 'btn btn-outline-primary' %>
             </tr>
