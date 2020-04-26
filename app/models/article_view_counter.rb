@@ -1,0 +1,2 @@
+class ArticleViewCounter < ApplicationRecord
+end
