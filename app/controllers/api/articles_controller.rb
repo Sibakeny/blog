@@ -1,6 +1,18 @@
 class Api::ArticlesController < ApplicationController
     def index
-        @articles = Article.all.page(params[:page]).per(8)
+        params[:order_type] == 'created_at'
+        @articles = Article.includes(:categories, :article_view_counter).all
+        if params[:order_type] == 'created_at'
+            @articles = @articles.order(created_at: :desc)
+        elsif params[:order_type] == 'view_count'
+            @articles = @articles.joins(:article_view_counter).order('article_view_counters.count desc')
+        end
+
+        if params[:keyword]
+            @articles = @articles.where('body LIKE ?', '%' + params[:keyword] + '%')
+        end
+
+        @articles = @articles.page(params[:page]).per(8)
         render json: @articles
     end
 
