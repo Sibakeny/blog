@@ -2,7 +2,6 @@
 
 class Api::ArticlesController < ApplicationController
   def index
-    params[:order_type] == 'created_at'
     @articles = Article.includes(:categories, :article_view_counter).all
     if params[:order_type] == 'created_at'
       @articles = @articles.order(created_at: :desc)
@@ -10,11 +9,11 @@ class Api::ArticlesController < ApplicationController
       @articles = @articles.joins(:article_view_counter).order('article_view_counters.count desc')
     end
 
-    if params[:keyword]
+    if params[:keyword].present?
       @articles = @articles.where('body LIKE ?', '%' + params[:keyword] + '%')
     end
 
-    if params[:category]
+    if params[:category].present?
       @articles = @articles.joins(:categories).where('categories.name LIKE ?', params[:category])
     end
 
