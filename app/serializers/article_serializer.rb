@@ -16,4 +16,5 @@ class ArticleSerializer < ActiveModel::Serializer
   def view_count
     object.article_view_counter&.count || 0
   end
+
 end

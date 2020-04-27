@@ -12,8 +12,15 @@ class Api::ArticlesController < ApplicationController
             @articles = @articles.where('body LIKE ?', '%' + params[:keyword] + '%')
         end
 
+        if params[:category]
+            @articles = @articles.joins(:categories).where("categories.name LIKE ?", params[:category])
+        end
+
         @articles = @articles.page(params[:page]).per(8)
-        render json: @articles
+        count = @articles.total_pages 
+        p count
+        p 
+        render json: { articles: ActiveModelSerializers::SerializableResource.new(@articles).as_json, count: count}
     end
 
     def show
