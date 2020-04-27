@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ArticleCategoriesMiddleTable < ActiveRecord::Migration[6.0]
   def change
     remove_column :article_categories, :category_type, :integer

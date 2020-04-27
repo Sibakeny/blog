@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateArticleViewCounters < ActiveRecord::Migration[6.0]
   def change
     create_table :article_view_counters do |t|
