@@ -3,11 +3,7 @@
 class Api::ArticlesController < ApplicationController
   def index
     @articles = Article.includes(:categories, :article_view_counter).all
-    if params[:order_type] == 'created_at'
-      @articles = @articles.order(created_at: :desc)
-    elsif params[:order_type] == 'view_count'
-      @articles = @articles.joins(:article_view_counter).order('article_view_counters.count desc')
-    end
+    
 
     if params[:keyword].present?
       @articles = @articles.where('body LIKE ?', '%' + params[:keyword] + '%')
@@ -18,7 +14,15 @@ class Api::ArticlesController < ApplicationController
     end
 
     article_ids = @articles.pluck(:id)
-    @articles = Article.includes(:categories, :article_view_counter).where(id: article_ids).page(params[:page]).per(8)
+    @articles = Article.includes(:categories, :article_view_counter).where(id: article_ids)
+    if params[:order_type] == 'view_count'
+      @articles = @articles.joins(:article_view_counter).order('article_view_counters.count desc')
+    
+    else
+      @articles = @articles.order(created_at: :desc)
+    end
+
+    @articles = @articles.page(params[:page]).per(8)
     count = @articles.total_pages
     render json: { articles: ActiveModelSerializers::SerializableResource.new(@articles).as_json, count: count }
   end
