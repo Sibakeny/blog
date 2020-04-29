@@ -2,12 +2,8 @@ image: ruby:2.6.5
 
 variables:
   CAP_USER: "deployer"
-  BUNDLE_CACHE: "vendor/bundle/"
   RAILS_ENV: "test"
   CI: "true"
-
-services:
-  - memcached:1.4
 
 before_script:
   - bundle install
