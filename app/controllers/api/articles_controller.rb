@@ -2,7 +2,7 @@
 
 class Api::ArticlesController < ApplicationController
   def index
-    @articles = Article.includes(:categories, :article_view_counter).all
+    @articles = Article.includes(:categories, :article_view_counters).all
     
 
     if params[:keyword].present?
@@ -14,9 +14,9 @@ class Api::ArticlesController < ApplicationController
     end
 
     article_ids = @articles.pluck(:id)
-    @articles = Article.includes(:categories, :article_view_counter).where(id: article_ids)
+    @articles = Article.includes(:categories, :article_view_counters).where(id: article_ids)
     if params[:order_type] == 'view_count'
-      @articles = @articles.joins(:article_view_counter).order('article_view_counters.count desc')
+      @articles = @articles.joins(:article_view_counters).order('article_view_counters.count desc')
     
     else
       @articles = @articles.order(created_at: :desc)
@@ -29,8 +29,7 @@ class Api::ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @article_view_counter = ArticleViewCounter.find_or_create_by(article_id: @article.id)
-    @article_view_counter.increment!(:count, 1)
+    @article_view_counter = ArticleViewCounter.create(article_id: @article.id)
     render json: @article
   end
 end

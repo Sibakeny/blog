@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :categories
 
   namespace :api do
+    resources :charts
+
     resources :articles do
       collection do
         scope module: :articles do
