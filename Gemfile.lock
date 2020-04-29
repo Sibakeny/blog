@@ -68,6 +68,7 @@ GEM
     byebug (11.1.2)
     case_transform (0.2)
       activesupport
+    coderay (1.1.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     erubi (1.9.0)
@@ -154,6 +155,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redcarpet (3.5.0)
     ruby_dep (1.5.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -205,6 +207,7 @@ DEPENDENCIES
   active_model_serializers
   bootsnap (>= 1.4.2)
   byebug
+  coderay
   jbuilder (~> 2.7)
   kaminari
   kaminari-bootstrap
@@ -213,6 +216,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.2, >= 6.0.2.2)
+  redcarpet
   sass-rails (>= 6)
   spring
   spring-watcher-listen (~> 2.0.0)

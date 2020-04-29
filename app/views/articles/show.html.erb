@@ -1,0 +1,10 @@
+<div class="container">
+    <p>
+        <strong>Title:</strong>
+        <%= @article.title %>
+    </p>
+
+    <p>
+        <%= markdown(@article.body).html_safe %>
+    </p>
+</div>

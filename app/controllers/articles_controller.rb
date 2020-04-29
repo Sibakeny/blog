@@ -5,6 +5,10 @@ class ArticlesController < ApplicationController
     @articles = Article.all.page(params[:page]).per(16)
   end
 
+  def show
+    @article = Article.find(params[:id])
+  end
+
   def new
     @article = Article.new
     @article.categories.build
