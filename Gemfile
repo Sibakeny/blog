@@ -28,8 +28,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 gem 'active_model_serializers'
 
-gem 'redcarpet'
 gem 'coderay'
+gem 'redcarpet'
 
 gem 'rack-cors'
 

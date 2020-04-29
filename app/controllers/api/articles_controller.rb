@@ -3,11 +3,8 @@
 class Api::ArticlesController < ApplicationController
   def index
     @articles = Article.includes(:categories, :article_view_counters).all
-    
 
-    if params[:keyword].present?
-      @articles = @articles.where('body LIKE ?', '%' + params[:keyword] + '%')
-    end
+    @articles = @articles.where('body LIKE ?', '%' + params[:keyword] + '%') if params[:keyword].present?
 
     if params[:category].present?
       @articles = @articles.joins(:categories).where('categories.name LIKE ?', params[:category])
@@ -15,12 +12,12 @@ class Api::ArticlesController < ApplicationController
 
     article_ids = @articles.pluck(:id)
     @articles = Article.includes(:categories, :article_view_counters).where(id: article_ids)
-    if params[:order_type] == 'view_count'
-      @articles = @articles.joins(:article_view_counters).order('article_view_counters.count desc')
-    
-    else
-      @articles = @articles.order(created_at: :desc)
-    end
+    @articles = if params[:order_type] == 'view_count'
+                  @articles.joins(:article_view_counters).order('article_view_counters.count desc')
+
+                else
+                  @articles.order(created_at: :desc)
+                end
 
     @articles = @articles.page(params[:page]).per(8)
     count = @articles.total_pages

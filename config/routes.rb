@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resources :charts
 
     resources :articles do
+      scope module: :articles do
+      end
+
       collection do
         scope module: :articles do
         end
@@ -17,11 +20,10 @@ Rails.application.routes.draw do
     end
 
     resources :article_methods, only: [] do
-      collection do
-        scope module: :article_methods do
-          resources :with_counters, only: [:index]
-          resources :searches, only: [:index]
-        end
+      scope module: :article_methods do
+        resources :with_counters, only: [:index]
+        resources :searches, only: [:index]
+        resources :charts, only: [:index]
       end
     end
 
