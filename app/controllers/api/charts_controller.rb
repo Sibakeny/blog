@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::ChartsController < ApplicationController
+class Api::ChartsController < Api::ApplicationController
   def index
     article_values = Article
                      .select("DATE_FORMAT(article_view_counters.created_at, '%Y-%m-%d') as time, count(*) as sum")

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::Category::FiltersController < ApplicationController
+class Api::Category::FiltersController < Api::ApplicationController
   def index
     category = Category.find_by(name: params[:name])
     articles = category.articles.page(params[:page]).per(8)

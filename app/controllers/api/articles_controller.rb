@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::ArticlesController < ApplicationController
+class Api::ArticlesController < Api::ApplicationController
   def index
     @articles = Article.includes(:categories, :article_view_counters).all
 
