@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :articles
   resources :categories
+  resource :session
 
   namespace :api do
     resources :charts
