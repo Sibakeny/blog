@@ -8,5 +8,13 @@ development:
   host: localhost
   port: 3306
   username: root
-  password: 
+  password:
   database: sbkn_blog_development
+
+test:
+  <<: *default
+  host: localhost
+  port: 3306
+  username: root
+  password:
+  database: sbkn_blog_test
