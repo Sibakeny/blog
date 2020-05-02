@@ -4,6 +4,10 @@ variables:
   CAP_USER: "deployer"
   RAILS_ENV: "test"
   CI: "true"
+  MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+
+services:
+  - mysql:5.6
 
 before_script:
   - gem install bundler:2.1.4
