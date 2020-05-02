@@ -5,4 +5,7 @@ class Article < ApplicationRecord
   has_many :categories, through: :article_categories
   has_many :article_view_counters
   accepts_nested_attributes_for :article_categories
+
+  validates :title, presence: true
+  validates :body, presence: true
 end
