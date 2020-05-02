@@ -39,3 +39,5 @@ yarn-debug.log*
 /db/mysql_init
 
 /vendor
+
+.env

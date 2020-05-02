@@ -13,14 +13,7 @@ development:
 
 test:
   <<: *default
-  host: localhost
-  username: root
-  password:
-  database: sbkn_blog_test
-
-docker:
-  <<: *default
-  host: mysql
+  host: <%= ENV['DATABASE_HOST_TEST'] %>
   username: root
   password:
   database: sbkn_blog_test

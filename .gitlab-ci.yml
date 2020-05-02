@@ -5,6 +5,7 @@ variables:
   RAILS_ENV: "docker"
   CI: "true"
   MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+  DATABASE_HOST_TEST: "mysql"
 
 services:
   - mysql:5.6
