@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ArticleViewCounter, type: :model do
@@ -6,7 +8,7 @@ RSpec.describe ArticleViewCounter, type: :model do
       @article = create(:article)
     end
     it '作成できること' do
-      counter = @article.article_view_counters.new()
+      counter = @article.article_view_counters.new
       expect(counter).to be_valid
     end
   end

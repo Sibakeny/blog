@@ -21,7 +21,7 @@ class Api::ArticlesController < Api::ApplicationController
 
     @articles = @articles.page(params[:page]).per(8)
     count = @articles.total_pages
-    render json: { articles: ActiveModelSerializers::SerializableResource.new(@articles).as_json, count: count }
+    render status: 200, json: { articles: ActiveModelSerializers::SerializableResource.new(@articles).as_json, count: count }
   end
 
   def show

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
@@ -8,7 +10,7 @@ RSpec.describe Category, type: :model do
         expect(category).to be_valid
       end
     end
-    
+
     context 'nameがない場合' do
       it 'categoryが作成できないこと' do
         category = Category.new(category_type: 'language')

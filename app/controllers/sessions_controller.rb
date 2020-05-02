@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
 
-    return if !user.authenticate(params[:password])
+    return unless user.authenticate(params[:password])
 
     session[:user_id] = user.id
     user.remember
