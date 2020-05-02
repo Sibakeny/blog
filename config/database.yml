@@ -13,7 +13,7 @@ development:
 
 test:
   <<: *default
-  host: mysql
+  host: localhost
   username: root
   password:
   database: sbkn_blog_test
