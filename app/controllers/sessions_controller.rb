@@ -7,14 +7,15 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:email])
-    if user.authenticate(params[:password])
-      session[:user_id] = user.id
-      user.remember
-      cookies.permanent.signed[:user_id] = user.id
-      cookies.permanent[:remember_token] = user.remember_token
 
-      redirect_to root_path
-    end
+    return if !user.authenticate(params[:password])
+
+    session[:user_id] = user.id
+    user.remember
+    cookies.permanent.signed[:user_id] = user.id
+    cookies.permanent[:remember_token] = user.remember_token
+
+    redirect_to root_path
   end
 
   def destroy

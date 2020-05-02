@@ -2,7 +2,7 @@ image: ruby:2.6.5
 
 variables:
   CAP_USER: "deployer"
-  RAILS_ENV: "test"
+  RAILS_ENV: "docker"
   CI: "true"
   MYSQL_ALLOW_EMPTY_PASSWORD: "true"
 

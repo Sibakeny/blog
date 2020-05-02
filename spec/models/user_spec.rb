@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   # ==================ユーザー作成===============================
 
   describe 'ユーザーの作成' do

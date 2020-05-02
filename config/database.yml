@@ -17,3 +17,10 @@ test:
   username: root
   password:
   database: sbkn_blog_test
+
+docker:
+  <<: *default
+  host: mysql
+  username: root
+  password:
+  database: sbkn_blog_test
