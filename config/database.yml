@@ -13,17 +13,7 @@ development:
 
 test:
   <<: *default
-  host: localhost
-  port: 3306
+  host: mysql
   username: root
   password:
   database: sbkn_blog_test
-
-docker:
-  adapter: mysql2
-  pool: 5
-  encoding: utf8
-  host: mysql
-  database: ci_test
-  username: root
-  password:
