@@ -2,26 +2,16 @@
 
 class Api::ArticlesController < Api::ApplicationController
   def index
-    @articles = Article.includes(:categories, :article_view_counters).all
+    articles = Article.filter(params)
 
-    @articles = @articles.where('body LIKE ?', '%' + params[:keyword] + '%') if params[:keyword].present?
-
-    if params[:category].present?
-      @articles = @articles.joins(:categories).where('categories.name LIKE ?', params[:category])
-    end
-
-    article_ids = @articles.pluck(:id)
-    @articles = Article.includes(:categories, :article_view_counters).where(id: article_ids)
-    @articles = if params[:order_type] == 'view_count'
-                  @articles.joins(:article_view_counters).order('article_view_counters.count desc')
-
-                else
-                  @articles.order(created_at: :desc)
-                end
-
-    @articles = @articles.page(params[:page]).per(8)
-    count = @articles.total_pages
-    render status: 200, json: { articles: ActiveModelSerializers::SerializableResource.new(@articles).as_json, count: count }
+    article_ids = articles.pluck(:id)
+    articles = Article.includes(:categories, :article_view_counters).where(id: article_ids).flex_sort(params)
+    articles = articles.page(params[:page]).per(8)
+    count = articles.total_pages
+    render status: 200, json: {
+      articles: ActiveModelSerializers::SerializableResource.new(articles).as_json,
+      count: count
+    }
   end
 
   def show
