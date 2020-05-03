@@ -10,13 +10,14 @@ class Article < ApplicationRecord
   validates :body, presence: true
 
   def self.filter(filter_params)
-    joins(:categories).where(keyword_filter(filter_params)).where(category_filter(filter_params))
+    all.left_joins(:categories).where(keyword_filter(filter_params)).where(category_filter(filter_params))
   end
 
   def self.keyword_filter(filter_params)
     return nil if filter_params[:keyword].blank?
 
-    ['body LIKE ?', '%' + filter_params[:keyword] + '%']
+    keyword = '%' + filter_params[:keyword] + '%'
+    ['body LIKE ? OR title LIKE ?', keyword, keyword]
   end
 
   def self.category_filter(filter_params)

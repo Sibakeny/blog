@@ -3,8 +3,8 @@
 class Api::ArticlesController < Api::ApplicationController
   def index
     articles = Article.filter(params)
-
     article_ids = articles.pluck(:id)
+
     articles = Article.includes(:categories, :article_view_counters).where(id: article_ids).flex_sort(params)
     articles = articles.page(params[:page]).per(8)
     count = articles.total_pages
