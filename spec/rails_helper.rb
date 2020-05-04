@@ -13,6 +13,8 @@ Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  config.include AuthenticationHelper
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
