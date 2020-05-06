@@ -5,6 +5,8 @@ RSpec.describe 'Articles', type: :system do
     @user = create(:user)
     create(:article, title: 'first_article')
     create(:article, title: 'second_article')
+    create(:category, name: 'ruby', category_type: 'language')
+    create(:category, name: 'ruby on rails', category_type: 'framework')
   end
 
   describe '記事一覧画面' do
@@ -80,10 +82,12 @@ RSpec.describe 'Articles', type: :system do
 
       fill_in 'Title', with: 'new title'
       fill_in 'Body', with: 'new body'
+      check 'ruby'
       click_button '作成'
 
       expect(page).to have_content 'new title'
       expect(page).to have_content 'new body'
+      expect(Article.all.last.categories.first.name).to eq 'ruby'
     end
   end
 end

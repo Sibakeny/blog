@@ -16,10 +16,10 @@ RSpec.describe 'Categories', type: :system do
 
     it 'カテゴリ一一覧が表示されること' do
         visit categories_path
-        expect(find('.table').all('tr')[1]).to have_content 'react'
-        expect(find('.table').all('tr')[1]).to have_content 'framework'
-        expect(find('.table').all('tr')[2]).to have_content 'ruby'
-        expect(find('.table').all('tr')[2]).to have_content 'language'
+        expect(find('.table').all('tr')[1]).to have_content 'ruby'
+        expect(find('.table').all('tr')[1]).to have_content 'language'
+        expect(find('.table').all('tr')[2]).to have_content 'react'
+        expect(find('.table').all('tr')[2]).to have_content 'framework'
     end
   end
 

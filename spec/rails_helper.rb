@@ -36,16 +36,9 @@ RSpec.configure do |config|
   config.before(:each) do |example|
     if example.metadata[:type] == :system
       driven_by :selenium,
-        using: :chrome,
+        using: :headless_chrome,
         screen_size: [1400, 1400]
     end
   end
 
-  config.before(:all) do
-    require "fileutils"
-     
-    Dir.glob('tmp/screenshots/*.png').each do |filename|
-      FileUtils.rm(filename)
-    end
-  end
 end
