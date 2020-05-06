@@ -7,11 +7,11 @@
 
     <div class="form-group">
         <%= f.label :category_type %>
-        <%= f.number_field :category_type, class: 'form-control' %>
+        <%= f.select :category_type, Category.category_types.keys.to_a, {} %>
     </div>
 
     <div class="form-group">
-        <%= f.submit class: 'btn btn-primary' %>
+        <%= f.submit '作成', class: 'btn btn-primary' %>
     </div>
     <% end %>
 </div>
