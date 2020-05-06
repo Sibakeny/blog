@@ -11,8 +11,6 @@ require 'rspec/rails'
 ActiveRecord::Migration.maintain_test_schema!
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
-options = ENV.has_key?('HUB_HOST') ? { url: "http://#{ENV['HUB_HOST']}:#{ENV['HUB_PORT']}/wd/hub" } : {}
-
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
@@ -39,8 +37,7 @@ RSpec.configure do |config|
     if example.metadata[:type] == :system
       driven_by :selenium,
         using: :headless_chrome,
-        screen_size: [1400, 1400],
-        options: options
+        screen_size: [1400, 1400]
     end
   end
 end
