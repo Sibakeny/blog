@@ -15,7 +15,7 @@ RUN apk add --no-cache git build-base libxml2-dev libxslt-dev postgresql-dev pos
     cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 # chromeの追加
-RUN  apk add --update chromium
+RUN  apk add --update chromium chromium-chromedriver
 
 RUN apk add --no-cache alpine-sdk \
     mysql-client \
