@@ -1,4 +1,4 @@
-image: ruby:2.6.5
+image: sibakoro/rspec-ci
 
 variables:
   CAP_USER: "deployer"

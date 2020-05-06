@@ -1,53 +1,22 @@
-version: '3'
-
-#volumes:
-#  bridge-sync-volume:
-#    external: true
+version: "3"
 
 services:
-#  db:
-#    image: mysql:5.7
-#    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-#    environment:
-#      MYSQL_ROOT_PASSWORD: password
-#      MYSQL_PASSWORD: password
-#      MYSQL_USER: admin
-#      MYSQL_DATABASE: sbkn_blog_development
-#    ports:
-#      - "3306:3306"
-#    volumes:
-#      - ./db/mysql_init:/tmp
-#      - ./db/mysql_data:/var/lib/mysql
-#    deploy:
-#      resources:
-#        limits:
-#          memory: 1g
-
-#  web:
-#    build: .
-#    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-#    environment:
-#      - "TZ=Japan"
-#    volumes:
-#      - .:/sbkn_blog
-#    ports:
-#      - "3000:3000"
-#    links:
-#      - db
-#      # - test-db
-#    deploy:
-#      resources:
-#        limits:
-#          memory: 3g
-
-  # front:
-  #   build:
-  #     context: ./front/
-  #     dockerfile: Dockerfile
-  #   volumes:
-  #     - ./front:/usr/src/app
-  #   command: sh -c "npm i && yarn start"
-  #   stdin_open: true
-  #   tty: true
-  #   ports:
-  #     - "8000:3000"
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+    tty: true
+    environment:
+      # この環境変数を追加
+      - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
+  # 以下の4行を追加
+  selenium_chrome:
+    image: selenium/standalone-chrome-debug
+    logging:
+      driver: none
+volumes:
+  pgsqldb:
+  bundle:
