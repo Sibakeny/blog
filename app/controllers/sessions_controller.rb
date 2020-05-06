@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
 
     return unless user.authenticate(params[:password])
+
     session[:user_id] = user.id
     user.remember
     cookies.permanent.signed[:user_id] = user.id
