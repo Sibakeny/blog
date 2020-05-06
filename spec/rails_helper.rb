@@ -40,4 +40,12 @@ RSpec.configure do |config|
         screen_size: [1400, 1400]
     end
   end
+
+  config.before(:all) do
+    require "fileutils"
+     
+    Dir.glob('tmp/screenshots/*.png').each do |filename|
+      FileUtils.rm(filename)
+    end
+  end
 end
