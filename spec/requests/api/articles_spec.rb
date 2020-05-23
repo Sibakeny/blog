@@ -64,7 +64,11 @@ RSpec.describe 'Articles', type: :request do
             
             2.times do 
                 ArticleViewCounter.create(article_id: @article1.id)
-            end            
+            end
+            
+            p "=====================view counter length"
+            p @article1.article_view_counters.length
+            p @article2.article_view_counters.length
 
             get '/api/articles', params: { order_type: 'view_count' }
             json = JSON.parse(response.body)

@@ -5,10 +5,9 @@ default: &default
 
 development:
   <<: *default
-  host: localhost
-  port: 3306
-  username: root
-  password:
+  host: <%= ENV['MYSQL_HOST'] %>
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
   database: sbkn_blog_development
 
 test:
