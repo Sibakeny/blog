@@ -8,7 +8,6 @@ class Api::ArticlesController < Api::ApplicationController
     articles = Article.includes(:categories, :article_view_counters).where(id: article_ids).flex_sort(params)
     articles = articles.page(params[:page]).per(8)
 
-    p articles
     count = articles.total_pages
     render status: 200, json: {
       articles: ActiveModelSerializers::SerializableResource.new(articles).as_json,
