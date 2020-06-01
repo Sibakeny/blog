@@ -25,12 +25,16 @@ for (let i = 0; i < dragItem.length; i++) {
 trash.addEventListener("drop", function (e) {
   var itemId = e.dataTransfer.getData("text/plain");
   console.log(itemId);
+  var itemIdTxt = "#" + itemId;
+  $(itemIdTxt).remove();
+  $.ajax({
+    url: "/articles/",
+  });
 });
 
 trash.addEventListener(
   "dragover",
   function (evt) {
-    console.log("over");
     evt.preventDefault();
   },
   false
@@ -39,7 +43,6 @@ trash.addEventListener(
 trash.addEventListener(
   "dragenter",
   function (evt) {
-    console.log("over");
     evt.preventDefault();
   },
   false
