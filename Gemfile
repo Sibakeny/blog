@@ -28,6 +28,8 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'image_processing', '~> 1.2'
 gem 'active_model_serializers'
 
+gem 'jquery-ui-rails'
+
 gem 'coderay'
 gem 'redcarpet'
 

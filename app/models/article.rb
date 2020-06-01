@@ -4,6 +4,8 @@ class Article < ApplicationRecord
   has_many :article_categories
   has_many :categories, through: :article_categories
   has_many :article_view_counters
+  has_many_attached :images
+
   accepts_nested_attributes_for :article_categories
 
   validates :title, presence: true

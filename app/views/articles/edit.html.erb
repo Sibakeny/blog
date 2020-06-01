@@ -1,17 +1,23 @@
 <div class='container'>
-    <%= form_with model: @article do |f| %>
-    <div class='form-group'>
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-control' %>
-    </div>
+  <p>画像保存</p>
+  <%= render 'articles/images/form', article: @article  %>
 
-    <div class="form-group">
-        <%= f.label :body %>
-        <%= f.text_area :body, rows: '30', class: 'form-control' %>
-    </div>
+  <p>登録画像</p>
+  <%= render 'articles/images/form_image_container', article: @article %>
 
-    <div class="form-group">
-        <%= f.submit '更新', class: 'btn btn-primary' %>
-    </div>
-    <% end %>
+  <%= form_with model: @article do |f| %>
+  <div class='form-group'>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, rows: '30', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit '更新', class: 'btn btn-primary' %>
+  </div>
+  <% end %>
 </div>

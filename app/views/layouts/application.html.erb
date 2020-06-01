@@ -2,18 +2,19 @@
 <html>
 
 <head>
-    <title>SbknBlog</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <title>SbknBlog</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application" %>
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
-    <%= render 'layouts/header' %>
-    <%= yield %>
+  <%= render 'layouts/header' %>
+  <%= yield %>
 </body>
 
 </html>

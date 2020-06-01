@@ -3,7 +3,12 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  resources :articles
+  resources :articles do
+    scope module: :articles do
+      resources :images
+    end
+  end
+
   resources :categories
   resource :session
 
