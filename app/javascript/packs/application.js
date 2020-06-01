@@ -8,8 +8,6 @@ require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 require("jquery");
-require("jquery-ui-bundle");
-require("jquery-ui-dist/jquery-ui");
 require("toastr");
 
 import toastr from "toastr";

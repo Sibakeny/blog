@@ -8,13 +8,39 @@ $(".image-card-wrapper").on("click", function () {
   toastr.success("URLをコピーしました");
 });
 
-$(".image-card-wrapper").draggable({
-  containment: ".draggable-area",
+var dragItem = document.getElementsByClassName("image-card-wrapper");
+var trash = document.getElementById("trash");
+
+for (let i = 0; i < dragItem.length; i++) {
+  dragItem[i].addEventListener(
+    "dragstart",
+    function (e) {
+      console.log("start");
+      e.dataTransfer.setData("text/plain", $(this).attr("id"));
+    },
+    false
+  );
+}
+
+trash.addEventListener("drop", function (e) {
+  var itemId = e.dataTransfer.getData("text/plain");
+  console.log(itemId);
 });
 
-$("#trash").droppable({
-  accept: ".image-card-wrapper",
-  drop: function (e, ui) {
-    console.log(this);
+trash.addEventListener(
+  "dragover",
+  function (evt) {
+    console.log("over");
+    evt.preventDefault();
   },
-});
+  false
+);
+
+trash.addEventListener(
+  "dragenter",
+  function (evt) {
+    console.log("over");
+    evt.preventDefault();
+  },
+  false
+);
