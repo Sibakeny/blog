@@ -1,1 +1,3 @@
 $('#blog-edit-image-container').replaceWith("<%= escape_javascript(render('articles/images/form_image_container', article: @article)) %>")
+$('#image-file-field').val("")
+toastr.success("ファイルをアップロードしました。");

@@ -24,11 +24,21 @@ for (let i = 0; i < dragItem.length; i++) {
 
 trash.addEventListener("drop", function (e) {
   var itemId = e.dataTransfer.getData("text/plain");
-  console.log(itemId);
   var itemIdTxt = "#" + itemId;
-  $(itemIdTxt).remove();
+  var articleId = $(itemIdTxt).data("article-id");
+  var imageId = $(itemIdTxt).data("id");
   $.ajax({
-    url: "/articles/",
+    url: `/articles/${articleId}/images/${imageId}`,
+    type: "delete",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader(
+        "X-CSRF-Token",
+        $('meta[name="csrf-token"]').attr("content")
+      );
+    },
+  }).then(() => {
+    $(itemIdTxt).remove();
+    toastr.error("画像を削除しました。");
   });
 });
 

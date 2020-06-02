@@ -1,7 +1,7 @@
 <%= form_with url: article_images_path(@article), method: :post do |f| %>
 <div class="d-flex flex-row border-bottom mb-5">
   <div class="border-right mr-4">
-    <%= f.file_field :images, multiple: true %>
+    <%= f.file_field :images, multiple: true, id: 'image-file-field' %>
   </div>
   <div class="form-group">
     <%= f.submit "アップロード", class: 'btn btn-secondary' %>

@@ -5,6 +5,11 @@ class Articles::ImagesController < ApplicationController
     @article.images.attach(params[:images])
   end
 
+  def destroy
+    image = @article.images.find(params[:id])
+    image.purge
+  end
+
   private
 
   def set_article
