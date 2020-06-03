@@ -69,9 +69,8 @@ RSpec.describe 'Articles', type: :request do
             json = JSON.parse(response.body)
             expect(json['articles'].length).to eq 2
 
-            # CI上だと失敗する。原因よくわかんない
-            # expect(json['articles'].first['title']).to eq 'title1'
-            # expect(json['articles'].last['title']).to eq 'title2'
+            expect(json['articles'].first['title']).to eq 'title1'
+            expect(json['articles'].last['title']).to eq 'title2'
         end
     end
   end

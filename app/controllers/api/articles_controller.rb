@@ -5,7 +5,11 @@ class Api::ArticlesController < Api::ApplicationController
     articles = Article.filter(params)
     article_ids = articles.pluck(:id)
 
-    articles = Article.includes(:categories, :article_view_counters).where(id: article_ids).flex_sort(params)
+    if params[:order_type] == 'view_count'
+      articles = Article.select("articles.*, count(article_view_counters.id) pv").left_joins(:article_view_counters).group('articles.id').where(id: article_ids).order("pv desc")
+    else
+      articles = Article.includes(:categories, :article_view_counters).where(id: article_ids).order("created_at desc")
+    end
     articles = articles.page(params[:page]).per(8)
 
     count = articles.total_pages

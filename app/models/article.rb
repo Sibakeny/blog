@@ -28,11 +28,11 @@ class Article < ApplicationRecord
     ['categories.name LIKE ?', filter_params[:category]]
   end
 
-  def self.flex_sort(params)
-    if params[:order_type] == 'view_count'
-      joins(:article_view_counters).order('article_view_counters.count desc')
-    else
-      order(created_at: :desc)
-    end
-  end
+  # def self.flex_sort(params)
+  #   if params[:order_type] == 'view_count'
+  #     select('count(article_view_counters.id) AS pv').joins(:article_view_counters).group('articles.id').order('pv desc')
+  #   else
+  #     order(created_at: :desc)
+  #   end
+  # end
 end
