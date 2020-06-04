@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :categories
   resource :session
+  resources :article_view_counters
 
   namespace :api do
     resources :charts
