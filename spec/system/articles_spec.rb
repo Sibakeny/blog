@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Articles', type: :system do
+  def wait_condition(interval: 0.5, limit: 10, &condition)
+    start_at = Time.now
+    raise "must give block!" unless block_given?
+    while !condition.call do
+      sleep interval
+      break puts("time out") if (Time.now - start_at) > limit
+    end
+  end
+
   before do
     @user = create(:user)
     create(:article, title: 'first_article')
@@ -68,6 +77,22 @@ RSpec.describe 'Articles', type: :system do
 
       expect(page).to have_content 'update title'
       expect(page).to have_content 'update body'
+    end
+
+    it '画像のアップロードができること' do
+      article = Article.last
+      
+      expect(article.images.attached?).to be_falsy
+
+      visit edit_article_path(article)
+      attach_file 'image-file-field', "#{Rails.root}/spec/files/test-image.jpg", make_visible: true
+      click_button 'アップロード'
+
+      expect(page).to have_content '登録画像'
+
+      wait_condition { article.images.attached? }
+      expect(article.images.attached?).to be_truthy  
+      expect(page).to have_css('.image-card-wrapper')    
     end
   end
 
