@@ -42,3 +42,4 @@ AllCops:
     - node_modules/**/*
     - bin/**/*
     - spec/**/*
+    - db/**/*

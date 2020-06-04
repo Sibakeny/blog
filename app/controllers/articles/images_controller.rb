@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Articles::ImagesController < ApplicationController
   before_action :set_article
 
@@ -15,7 +17,7 @@ class Articles::ImagesController < ApplicationController
   def set_article
     @article = Article.find(params[:article_id])
   end
-  
+
   def article_image_params
     params.permit(images: [])
   end

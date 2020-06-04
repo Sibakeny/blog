@@ -6,9 +6,10 @@ class Api::ArticlesController < Api::ApplicationController
     article_ids = articles.pluck(:id)
 
     if params[:order_type] == 'view_count'
-      articles = Article.select("articles.*, count(article_view_counters.id) pv").left_joins(:article_view_counters).group('articles.id').where(id: article_ids).order("pv desc")
+      articles = Article.select('articles.*, count(article_view_counters.id) pv')
+                        .left_joins(:article_view_counters).group('articles.id').where(id: article_ids).order('pv desc')
     else
-      articles = Article.includes(:categories, :article_view_counters).where(id: article_ids).order("created_at desc")
+      articles = Article.includes(:categories, :article_view_counters).where(id: article_ids).order('created_at desc')
     end
     articles = articles.page(params[:page]).per(8)
 
