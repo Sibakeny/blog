@@ -2,14 +2,22 @@
 
 class ArticlesController < ApplicationController
   def index
+    add_breadcrumb 'HOME', root_path
+    add_breadcrumb '記事一覧'
     @articles = Article.all.order(created_at: :desc).page(params[:page]).per(16)
   end
 
   def show
+    add_breadcrumb 'HOME', root_path
+    add_breadcrumb '記事一覧', articles_path
+    add_breadcrumb '記事詳細'
     @article = Article.find(params[:id])
   end
 
   def new
+    add_breadcrumb 'HOME', root_path
+    add_breadcrumb '記事一覧', articles_path
+    add_breadcrumb '記事作成'
     @article = Article.new
     @article.categories.build
   end
@@ -27,6 +35,9 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    add_breadcrumb 'HOME', root_path
+    add_breadcrumb '記事一覧', articles_path
+    add_breadcrumb '記事更新'
     @article = Article.find(params[:id])
   end
 

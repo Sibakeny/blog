@@ -15,7 +15,7 @@ class Article < ApplicationRecord
   def article_chart_values_by_date
     Article.select("DATE_FORMAT(article_view_counters.created_at, '%Y-%m-%d') as time, count(*) as sum")
            .joins(:article_view_counters).group("DATE_FORMAT(article_view_counters.created_at, '%Y-%m-%d')")
-           .where("articles.id = ?", self.id)
+           .where('articles.id = ?', id)
            .order('time asc').limit(30)
   end
 
