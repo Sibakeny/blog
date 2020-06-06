@@ -23,6 +23,8 @@ Capybara.register_driver :selenium_chrome_headless do |app|
   driver = Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 
+Capybara.default_max_wait_time = 30
+
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
