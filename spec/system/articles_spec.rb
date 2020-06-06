@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Articles', type: :system do
   def wait_condition(interval: 0.5, limit: 10, &condition)
-    Capybara.default_wait_time = limit
     start_at = Time.now
     raise "must give block!" unless block_given?
     while !condition.call do
