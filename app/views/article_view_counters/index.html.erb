@@ -8,9 +8,11 @@
     <h3 class="mb-5 border-bottom">人気記事</h3>
     <div class="d-flex flex-wrap justify-content-around">
       <% @popular_articles.each do |article| %>
-        <div class="card p-3 mb-5" style="width: 300px">
-          <p><%= article.title %></p>
-          <p class="text-muted text-right"><%= article.pv %>pv</p>
+        <div class="card p-3 mb-5 d-flex flex-column justify-content-between" style="width: 300px">
+          <div>
+            <p><%= article.title %></p>
+            <p class="text-muted text-right"><%= article.pv %>pv</p>
+          </div>
           <%= link_to "チャート詳細", article_view_counters_article_path(article), class: 'btn btn-primary btn-sm' %>
         </div>
       <% end %>
