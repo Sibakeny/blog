@@ -91,6 +91,9 @@ RSpec.describe 'Articles', type: :system do
       expect(page).to have_content '登録画像'
 
       wait_condition { article.images.attached? }
+
+      sleep 3
+      
       expect(article.images.attached?).to be_truthy  
       expect(page).to have_css('.image-card-wrapper')    
     end
