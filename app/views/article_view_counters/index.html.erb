@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="card p-3">
+    <p>全体のPV数</p>
+    <%= line_chart @chart_values.map { |value| [value.time, value.sum] } %>
+  </div>
+  <blockquote></blockquote>
+  <div class="mt-5">
+    <h3 class="mb-5 border-bottom">人気記事</h3>
+    <div class="d-flex flex-wrap justify-content-around">
+      <% @popular_articles.each do |article| %>
+        <div class="card p-3 mb-5" style="width: 300px">
+          <p><%= article.title %></p>
+          <p class="text-muted text-right"><%= article.pv %>pv</p>
+          <%= link_to "チャート詳細", article_view_counters_article_path(article), class: 'btn btn-primary btn-sm' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

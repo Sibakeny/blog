@@ -1,0 +1,2 @@
+module ArticleViewCounters::ArticlesHelper
+end

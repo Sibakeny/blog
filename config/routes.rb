@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   resources :categories
   resource :session
+
+  namespace :article_view_counters do
+    resources :articles
+  end
   resources :article_view_counters
 
   namespace :api do

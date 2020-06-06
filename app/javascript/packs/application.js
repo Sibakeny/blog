@@ -9,6 +9,8 @@ require("@rails/activestorage").start();
 require("channels");
 require("jquery");
 require("toastr");
+require("chartkick");
+require("chart.js");
 
 import toastr from "toastr";
 window.toastr = toastr;

@@ -80,6 +80,7 @@ GEM
       xpath (~> 3.2)
     case_transform (0.2)
       activesupport
+    chartkick (3.3.1)
     childprocess (3.0.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.6)
@@ -278,6 +279,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara
+  chartkick
   coderay
   database_cleaner
   dotenv-rails
