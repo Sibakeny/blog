@@ -16,3 +16,9 @@ test:
   username: root
   password:
   database: sbkn_blog_test
+
+production:
+  <<: *default
+  database: sbkn_blog_production
+  username: root
+  password:
