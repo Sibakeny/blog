@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Authentication
+
   before_action :set_current_user
 
   def set_current_user
@@ -19,17 +21,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def login
-    session[:user_id] = @user.id
-    @user.remember
-    cookies.permanent.signed[:user_id] = @user.id
-    cookies.permanent[:remember_token] = @user.remember_token
-  end
-
-  def logout
-    current_user.update_attribute(:remember_digest, nil)
-    session[:user_id] = nil
-    cookies.delete(:user_id)
-    cookies.delete(:remember_token)
-  end
 end
