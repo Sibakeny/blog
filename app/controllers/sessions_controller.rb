@@ -18,17 +18,14 @@ class SessionsController < ApplicationController
       flash.notice = 'ログインしました。'
       redirect_to root_path
     else
-      @form.email = ''
-      @form.password = ''
-      p "========================================"
       flash.now.alert = "メールアドレスまたはパスワードが正しくありません。"
-      p flash[:alert]
       render :new
     end
   end
 
   def destroy
     logout
+    flash.notice = 'ログアウトしました。'
     redirect_to login_path
   end
 

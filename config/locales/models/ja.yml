@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      article: 記事
+      category: カテゴリー
+    attributes:
+      article:
+        title: タイトル
+        body: 本文
+        category: カテゴリー
+      category:
+        name: カテゴリー

@@ -1,4 +1,6 @@
 <div class="container">
+    <%= link_to '編集', edit_article_path(@article), class: 'btn btn-success btn-sm' %>
+
     <p>
         <strong>Title:</strong>
         <%= @article.title %>
