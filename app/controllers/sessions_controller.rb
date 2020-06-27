@@ -3,18 +3,38 @@
 class SessionsController < ApplicationController
   skip_before_action :set_current_user
 
-  def show; end
+  def show
+  end
+
+  def new
+    @form = LoginForm.new
+  end
 
   def create
-    @user = User.find_by(email: params[:email])
-    return unless @user.authenticate(params[:password])
-
-    login
-    redirect_to root_path
+    @form = LoginForm.new(login_params)
+    @user = User.find_by(email: @form.email)
+    if @user.authenticate(@form.password)
+      login
+      flash.notice = 'ログインしました。'
+      redirect_to root_path
+    else
+      @form.email = ''
+      @form.password = ''
+      p "========================================"
+      flash.now.alert = "メールアドレスまたはパスワードが正しくありません。"
+      p flash[:alert]
+      render :new
+    end
   end
 
   def destroy
     logout
-    redirect_to session_path
+    redirect_to login_path
+  end
+
+  private
+
+  def login_params
+    params.require(:login_form).permit(:email, :password)
   end
 end

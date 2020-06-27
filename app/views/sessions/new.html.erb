@@ -1,5 +1,7 @@
+<%= flash[:notice] %>
+
 <div class="container">
-    <%= form_with url: session_path do |f| %>
+    <%= form_with model: @form, url: session_path, local: true do |f| %>
     <div class="form-group">
         <%= f.label :email %>
         <%= f.text_field :email, class: 'form-control' %>

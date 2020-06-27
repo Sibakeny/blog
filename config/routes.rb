@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   end
 
   resources :categories
+
+  get 'login', to: 'sessions#new'
+
   resource :session
 
   namespace :article_view_counters do

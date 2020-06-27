@@ -5,3 +5,7 @@
     </button>
     <%= link_to 'ログアウト', session_path, class: 'navbar-item ml-auto text-light', method: :delete %>
 </nav>
+<%= flash %>
+<%= flash.alert %>
+<%= flash_message(flash.alert, :warning) if flash.alert %>
+<%= flash_message(flash.notice, :info) if flash.notice %>
