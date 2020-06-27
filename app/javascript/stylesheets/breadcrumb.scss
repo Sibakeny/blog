@@ -1,0 +1,53 @@
+.breadcrumbs {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  div {
+    padding: 0.5em 0.8em 0.5em 1.8em;
+    float: left;
+    text-decoration: none;
+    background: #343a40;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    border-radius: 0.4em 0 0 0.4em;
+    margin-right: 30px;
+    color: white;
+  }
+
+  div a {
+    color: white;
+  }
+
+  div:hover {
+  }
+
+  div::after {
+    background: #343a40;
+    content: "";
+    height: 2.5em;
+    margin-top: -1.25em;
+    position: absolute;
+    right: -1em;
+    top: 50%;
+    width: 2.5em;
+    z-index: -1;
+    transform: rotate(45deg);
+    border-radius: 0.4em;
+  }
+
+  div:hover::after {
+  }
+
+  div .current,
+  div .current:hover {
+    font-weight: bold;
+    background: none;
+  }
+
+  div .current::after {
+    content: normal;
+  }
+}

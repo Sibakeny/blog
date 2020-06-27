@@ -15,9 +15,7 @@
 <body>
   <%= render 'layouts/header' %>
   <%= render 'layouts/flash' %>
-  <div class="container d-flex justify-content-start mb-5 mt-3">
-    <%= render_breadcrumbs separator: ' >> ' %>
-  </div>
+  <%= render 'layouts/breadcrumb' %>
   <%= yield %>
 </body>
 
