@@ -1,18 +1,15 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
-  def index
-    add_breadcrumb 'HOME', root_path
-    add_breadcrumb 'カテゴリ一覧'
+  add_breadcrumb 'HOME', :root_path
+  add_breadcrumb 'カテゴリ一覧', :categories_path
 
+  def index
     @categories = Category.all.order(category_type: :asc).order(created_at: :desc)
   end
 
   def new
-    add_breadcrumb 'HOME', root_path
-    add_breadcrumb 'カテゴリ一覧', categories_path
     add_breadcrumb 'カテゴリ作成'
-
     @category = Category.new
   end
 

@@ -3,8 +3,7 @@
 class SessionsController < ApplicationController
   skip_before_action :set_current_user
 
-  def show
-  end
+  def show; end
 
   def new
     @form = LoginForm.new
@@ -18,7 +17,7 @@ class SessionsController < ApplicationController
       flash.notice = 'ログインしました。'
       redirect_to root_path
     else
-      flash.now.alert = "メールアドレスまたはパスワードが正しくありません。"
+      flash.now.alert = 'メールアドレスまたはパスワードが正しくありません。'
       render :new
     end
   end
