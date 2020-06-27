@@ -34,7 +34,7 @@ RSpec.describe 'Categories', type: :system do
 
         expect(page).to have_select('category_category_type', options: ['language', 'framework'])
 
-        fill_in 'Name', with: 'JavaScript'
+        fill_in 'カテゴリー', with: 'JavaScript'
         select 'language', from: 'category_category_type'
 
         click_button '作成'

@@ -1,6 +1,6 @@
 module AuthenticationHelper
     def login(user)
-        visit session_path
+        visit login_path
         expect(page).to have_content 'Email'
         fill_in 'Email', with: user.email
         fill_in 'Password', with: 'password'

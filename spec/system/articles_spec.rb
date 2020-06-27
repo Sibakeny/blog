@@ -27,7 +27,7 @@ RSpec.describe 'Articles', type: :system do
       expect(page).to have_content 'first_article'
       expect(page).to have_content 'second_article'
     end
-  
+
     it '記事が作成日時の降順で表示されていること' do
       visit articles_path
       expect(find('.table').all('tr')[1]).to have_content 'second_article'
@@ -71,8 +71,8 @@ RSpec.describe 'Articles', type: :system do
       expect(page).to have_content 'second_article'
       expect(page).to have_content 'body'
 
-      fill_in 'Title', with: 'update title'
-      fill_in 'Body', with: 'update body'
+      fill_in 'タイトル', with: 'update title'
+      fill_in '本文', with: 'update body'
       click_button '更新'
 
       expect(page).to have_content 'update title'
@@ -81,7 +81,6 @@ RSpec.describe 'Articles', type: :system do
 
     it '画像のアップロードができること' do
       article = Article.last
-      
       expect(article.images.attached?).to be_falsy
 
       visit edit_article_path(article)
@@ -92,8 +91,8 @@ RSpec.describe 'Articles', type: :system do
 
       wait_condition { article.images.attached? }
 
-      expect(article.images.attached?).to be_truthy  
-      expect(page).to have_css('.image-card-wrapper')    
+      expect(article.images.attached?).to be_truthy
+      expect(page).to have_css('.image-card-wrapper')
     end
   end
 
@@ -106,8 +105,8 @@ RSpec.describe 'Articles', type: :system do
       visit articles_path
       click_link '作成'
 
-      fill_in 'Title', with: 'new title'
-      fill_in 'Body', with: 'new body'
+      fill_in 'タイトル', with: 'new title'
+      fill_in '本文', with: 'new body'
       check 'ruby'
       click_button '作成'
 
