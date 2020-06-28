@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
 
   def create
     Category.create!(category_params)
-    redirect_to categories_path
+    redirect_to categories_path, notice: 'カテゴリを作成しました'
   end
 
   private

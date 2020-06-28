@@ -1,0 +1,6 @@
+ja:
+  enums:
+    category:
+      category_type:
+        language: 言語
+        framework: フレームワーク

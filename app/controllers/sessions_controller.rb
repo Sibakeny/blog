@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   def create
     @form = LoginForm.new(login_params)
     @user = User.find_by(email: @form.email)
-    if @user && @user.authenticate(@form.password)
+    if @user&.authenticate(@form.password)
       login
       flash.notice = 'ログインしました。'
       redirect_to root_path

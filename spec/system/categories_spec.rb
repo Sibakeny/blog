@@ -17,9 +17,9 @@ RSpec.describe 'Categories', type: :system do
     it 'カテゴリ一一覧が表示されること' do
         visit categories_path
         expect(find('.table').all('tr')[1]).to have_content 'ruby'
-        expect(find('.table').all('tr')[1]).to have_content 'language'
+        expect(find('.table').all('tr')[1]).to have_content '言語'
         expect(find('.table').all('tr')[2]).to have_content 'react'
-        expect(find('.table').all('tr')[2]).to have_content 'framework'
+        expect(find('.table').all('tr')[2]).to have_content 'フレームワーク'
     end
   end
 
@@ -28,19 +28,34 @@ RSpec.describe 'Categories', type: :system do
         login(@user)
     end
 
-    it 'カテゴリの作成ができること' do
+    it 'カテゴリ(言語)の作成ができること' do
         visit categories_path
         click_link '追加'
 
-        expect(page).to have_select('category_category_type', options: ['language', 'framework'])
+        expect(page).to have_select('category_category_type', options: ['言語', 'フレームワーク'])
 
-        fill_in 'カテゴリー', with: 'JavaScript'
-        select 'language', from: 'category_category_type'
+        fill_in 'カテゴリー名', with: 'JavaScript'
+        select '言語', from: 'category_category_type'
 
         click_button '作成'
 
-        expect(find('.table').all('tr')[1]).to have_content 'JavaScript'
-        expect(find('.table').all('tr')[1]).to have_content 'language'
+        expect(page).to have_content 'JavaScript'
+        expect(page).to have_content '言語'
+        expect(page).to have_content 'カテゴリを作成しました'
+    end
+
+    it 'カテゴリ(フレームワーク)の作成ができること' do
+      visit categories_path
+      click_link '追加'
+
+      fill_in 'カテゴリー名', with: 'RubyOnRails'
+      select 'フレームワーク', from: 'category_category_type'
+
+      click_button '作成'
+
+      expect(page).to have_content 'RubyOnRails'
+      expect(page).to have_content 'フレームワーク'
+      expect(page).to have_content 'カテゴリを作成しました'
     end
   end
 end

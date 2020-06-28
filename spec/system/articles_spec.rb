@@ -100,9 +100,10 @@ RSpec.describe 'Articles', type: :system do
         visit edit_article_path(@article)
 
         expect {
+          fill_in 'タイトル', with: ''
           fill_in '本文', with: 'new body'
           check 'ruby'
-          click_button '作成'
+          click_button '更新'
         }.to change { Article.count }.by(0)
 
         expect(page).to have_content 'タイトルを入力してください'
@@ -115,8 +116,9 @@ RSpec.describe 'Articles', type: :system do
 
         expect {
           fill_in 'タイトル', with: 'new title'
+          fill_in '本文', with: ''
           check 'ruby'
-          click_button '作成'
+          click_button '更新'
         }.to change { Article.count }.by(0)
 
         expect(page).to have_content '本文を入力してください'

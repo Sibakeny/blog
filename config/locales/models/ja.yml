@@ -8,5 +8,10 @@ ja:
         title: タイトル
         body: 本文
         category: カテゴリー
+        category_language: 言語
+        category_framework: フレームワーク
       category:
-        name: カテゴリー
+        name: カテゴリー名
+        category_type: カテゴリー分類
+        language: 言語
+        framework: フレームワーク

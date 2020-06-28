@@ -7,7 +7,7 @@
 
     <div class="form-group">
         <%= f.label :category_type %>
-        <%= f.select :category_type, Category.category_types.keys.to_a, {} %>
+        <%= f.select :category_type, Category.category_types.keys.map {|k| [t("activerecord.attributes.category.#{k}"), k]}, {}, { class: 'form-control' } %>
     </div>
 
     <div class="form-group">

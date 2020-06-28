@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
       @article = Article.new(article_params)
 
       if @article.save
-        categories_params[:ids].each do |id|
+        categories_params[:category_ids].each do |id|
           next if id.blank?
 
           @article.categories << Category.find(id)
@@ -42,11 +42,19 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article.assign_attributes(article_params)
-    if @article.save
-      redirect_to article_path, notice: '記事を更新しました。'
-    else
-      render :edit
+    Article.transaction do
+      @article.assign_attributes(article_params)
+      if @article.save
+        categories_params[:category_ids].each do |id|
+          next if id.blank?
+
+          @article.article_categories.each(&:destroy)
+          @article.categories << Category.find(id)
+        end
+        redirect_to article_path, notice: '記事を更新しました。'
+      else
+        render :edit
+      end
     end
   end
 
@@ -67,6 +75,6 @@ class ArticlesController < ApplicationController
   end
 
   def categories_params
-    params.require(:category).permit(ids: [])
+    params.require(:article).permit(category_ids: [])
   end
 end

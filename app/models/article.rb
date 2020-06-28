@@ -24,6 +24,12 @@ class Article < ApplicationRecord
     article_view_counters.length
   end
 
+  # pv数の多い記事を10件取得
+  def self.populate_articles
+    Article.select('articles.*, count(article_view_counters.id) pv')
+           .left_joins(:article_view_counters).group('articles.id').order('pv desc').limit(10)
+  end
+
   def self.filter(filter_params)
     all.left_joins(:categories).where(keyword_filter(filter_params)).where(category_filter(filter_params))
   end
