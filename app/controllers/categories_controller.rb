@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
+  before_action :set_category, only: [:destroy]
+
   add_breadcrumb 'HOME', :root_path
   add_breadcrumb 'カテゴリ一覧', :categories_path
 
@@ -18,7 +20,16 @@ class CategoriesController < ApplicationController
     redirect_to categories_path, notice: 'カテゴリを作成しました'
   end
 
+  def destroy
+    @category.destroy!
+    redirect_to categories_path, notice: 'カテゴリを削除しました'
+  end
+
   private
+
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name, :category_type)

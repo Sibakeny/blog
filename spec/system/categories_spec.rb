@@ -23,6 +23,15 @@ RSpec.describe 'Categories', type: :system do
       expect(find('.table').all('tr')[2]).to have_content 'react'
       expect(find('.table').all('tr')[2]).to have_content 'フレームワーク'
     end
+
+    it '削除ボタンでカテゴリの削除ができること' do
+      visit categories_path
+      expect {
+        all(:link_or_button, '削除')[0].click
+      }.to change { Category.count }.by(-1)
+
+      expect(page).to have_content 'カテゴリを削除しました'
+    end
   end
 
   describe 'カテゴリ作成画面' do

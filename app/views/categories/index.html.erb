@@ -4,14 +4,16 @@
     </div>
     <table class="table">
         <tr>
-            <th>Name</th>
-            <th>Age</th>
+            <th>カテゴリー名</th>
+            <th>カテゴリー分類</th>
+            <th></th>
         </tr>
 
         <% @categories.each do |category| %>
         <tr>
             <td><%= category.name %></td>
             <td><%= category.category_type_i18n %></td>
+            <td><%= link_to '削除', category_path(category), method: :delete, class: 'btn btn-sm btn-danger' %></td>
         </tr>
         <% end %>
     </table>
