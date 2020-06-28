@@ -1,12 +1,13 @@
 <div class="container">
-    <%= link_to '編集', edit_article_path(@article), class: 'btn btn-success btn-sm' %>
+  <div class='d-flex justify-content-end mb-4'>
+    <%= link_to '編集', edit_article_path(@article), class: 'btn btn-success' %>
+  </div>
 
-    <p>
-        <strong>Title:</strong>
-        <%= @article.title %>
-    </p>
+  <h1 class='border-bottom'>
+      <%= @article.title %>
+  </h1>
 
-    <div>
-        <%= markdown(@article.body).html_safe %>
-    </div>
+  <div>
+      <%= markdown(@article.body).html_safe %>
+  </div>
 </div>
