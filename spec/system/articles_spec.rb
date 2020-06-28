@@ -63,6 +63,7 @@ RSpec.describe 'Articles', type: :system do
   describe '記事編集画面' do
     before do
       login(@user)
+      @article = Article.last
     end
 
     it '記事の編集ができること' do
@@ -80,19 +81,46 @@ RSpec.describe 'Articles', type: :system do
     end
 
     it '画像のアップロードができること' do
-      article = Article.last
-      expect(article.images.attached?).to be_falsy
+      expect(@article.images.attached?).to be_falsy
 
-      visit edit_article_path(article)
+      visit edit_article_path(@article)
       attach_file 'image-file-field', "#{Rails.root}/spec/files/test-image.jpg", make_visible: true
       click_button 'アップロード'
 
       expect(page).to have_content '登録画像'
 
-      wait_condition { article.images.attached? }
+      wait_condition { @article.images.attached? }
 
-      expect(article.images.attached?).to be_truthy
+      expect(@article.images.attached?).to be_truthy
       expect(page).to have_css('.image-card-wrapper')
+    end
+
+    context 'タイトルが空の場合' do
+      it '記事の作成が失敗すること' do
+        visit edit_article_path(@article)
+
+        expect {
+          fill_in '本文', with: 'new body'
+          check 'ruby'
+          click_button '作成'
+        }.to change { Article.count }.by(0)
+
+        expect(page).to have_content 'タイトルを入力してください'
+      end
+    end
+
+    context '本文がからの場合' do
+      it '記事の作成が失敗すること' do
+        visit edit_article_path(@article)
+
+        expect {
+          fill_in 'タイトル', with: 'new title'
+          check 'ruby'
+          click_button '作成'
+        }.to change { Article.count }.by(0)
+
+        expect(page).to have_content '本文を入力してください'
+      end
     end
   end
 
@@ -113,6 +141,36 @@ RSpec.describe 'Articles', type: :system do
       expect(page).to have_content 'new title'
       expect(page).to have_content 'new body'
       expect(Article.all.last.categories.first.name).to eq 'ruby'
+    end
+
+    context 'タイトルが空の場合' do
+      it '記事の作成が失敗すること' do
+        visit articles_path
+        click_link '作成'
+
+        expect {
+          fill_in '本文', with: 'new body'
+          check 'ruby'
+          click_button '作成'
+        }.to change { Article.count }.by(0)
+
+        expect(page).to have_content 'タイトルを入力してください'
+      end
+    end
+
+    context '本文がからの場合' do
+      it '記事の作成が失敗すること' do
+        visit articles_path
+        click_link '作成'
+
+        expect {
+          fill_in 'タイトル', with: 'new title'
+          check 'ruby'
+          click_button '作成'
+        }.to change { Article.count }.by(0)
+
+        expect(page).to have_content '本文を入力してください'
+      end
     end
   end
 end

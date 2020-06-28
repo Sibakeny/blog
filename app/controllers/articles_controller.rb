@@ -42,8 +42,12 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article.update!(article_params)
-    redirect_to article_path, notice: '記事を更新しました。'
+    @article.assign_attributes(article_params)
+    if @article.save
+      redirect_to article_path, notice: '記事を更新しました。'
+    else
+      render :edit
+    end
   end
 
   def destroy

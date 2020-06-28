@@ -5,15 +5,29 @@
   <p>登録画像</p>
   <%= render 'articles/images/form_image_container', article: @article %>
 
-  <%= form_with model: @article do |f| %>
+  <%= form_with model: @article, local: true do |f| %>
   <div class='form-group'>
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
+    <%= form_validation_message(@article, :title) %>
   </div>
 
   <div class="form-group">
     <%= f.label :body %>
     <%= f.text_area :body, rows: '30', class: 'form-control' %>
+    <%= form_validation_message(@article, :body) %>
+  </div>
+
+  <div>
+    <%= f.label :category %>
+      <% Category.all.each do |category| %>
+          <div class="form-group flex-d flex-wrap">
+            <div class="custom-control custom-checkbox mr-2">
+              <%= check_box_tag "category_ids[]", category.id, @article.categories.include?(category) , class: 'custom-control-input', id: "category_#{category.id}" %>
+              <label class="custom-control-label" for=<%= "category_#{category.id}" %>><%= category.name %></label>
+            </div>
+          </div>
+        <% end %>
   </div>
 
   <div class="form-group">

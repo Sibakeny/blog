@@ -1,13 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~toastr/toastr";
-@import './breadcrumb.scss';
+@import "./breadcrumb.scss";
 
 img {
-  width: 100%
+  width: 100%;
 }
 
 .field_with_errors {
-  input {
+  input,
+  textarea {
     @extend .is-invalid;
   }
 }
