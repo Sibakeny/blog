@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Articles', type: :system do
   def wait_condition(interval: 0.5, limit: 10, &condition)
     start_at = Time.now
-    raise "must give block!" unless block_given?
-    while !condition.call do
+    raise 'must give block!' unless block_given?
+
+    until condition.call
       sleep interval
-      break puts("time out") if (Time.now - start_at) > limit
+      break puts('time out') if (Time.now - start_at) > limit
     end
   end
 
@@ -36,7 +39,7 @@ RSpec.describe 'Articles', type: :system do
 
     it '記事の削除が行えること' do
       visit articles_path
-      find('.table').all('tr')[1].click_link("削除")
+      find('.table').all('tr')[1].click_link('削除')
       expect(page).to_not have_content 'second_article'
       expect(page).to have_content 'first_article'
     end
@@ -49,12 +52,12 @@ RSpec.describe 'Articles', type: :system do
 
     it '記事の詳細画面が表示されること' do
       visit articles_path
-      find('.table').all('tr')[1].click_link("表示")
+      find('.table').all('tr')[1].click_link('表示')
       expect(page).to have_content 'second_article'
       expect(page).to have_content 'body'
 
       visit articles_path
-      find('.table').all('tr')[2].click_link("表示")
+      find('.table').all('tr')[2].click_link('表示')
       expect(page).to have_content 'first_article'
       expect(page).to have_content 'body'
     end
@@ -99,12 +102,12 @@ RSpec.describe 'Articles', type: :system do
       it '記事の作成が失敗すること' do
         visit edit_article_path(@article)
 
-        expect {
+        expect do
           fill_in 'タイトル', with: ''
           fill_in '本文', with: 'new body'
           check 'ruby'
           click_button '更新'
-        }.to change { Article.count }.by(0)
+        end.to change { Article.count }.by(0)
 
         expect(page).to have_content 'タイトルを入力してください'
       end
@@ -114,12 +117,12 @@ RSpec.describe 'Articles', type: :system do
       it '記事の作成が失敗すること' do
         visit edit_article_path(@article)
 
-        expect {
+        expect do
           fill_in 'タイトル', with: 'new title'
           fill_in '本文', with: ''
           check 'ruby'
           click_button '更新'
-        }.to change { Article.count }.by(0)
+        end.to change { Article.count }.by(0)
 
         expect(page).to have_content '本文を入力してください'
       end
@@ -150,11 +153,11 @@ RSpec.describe 'Articles', type: :system do
         visit articles_path
         click_link '作成'
 
-        expect {
+        expect do
           fill_in '本文', with: 'new body'
           check 'ruby'
           click_button '作成'
-        }.to change { Article.count }.by(0)
+        end.to change { Article.count }.by(0)
 
         expect(page).to have_content 'タイトルを入力してください'
       end
@@ -165,11 +168,11 @@ RSpec.describe 'Articles', type: :system do
         visit articles_path
         click_link '作成'
 
-        expect {
+        expect do
           fill_in 'タイトル', with: 'new title'
           check 'ruby'
           click_button '作成'
-        }.to change { Article.count }.by(0)
+        end.to change { Article.count }.by(0)
 
         expect(page).to have_content '本文を入力してください'
       end

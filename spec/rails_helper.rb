@@ -25,7 +25,7 @@ end
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
-  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
   config.include AuthenticationHelper
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -46,9 +46,6 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do |example|
-    if example.metadata[:type] == :system
-      driven_by :selenium_chrome_headless
-    end
+    driven_by :selenium_chrome_headless if example.metadata[:type] == :system
   end
-
 end
