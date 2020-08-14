@@ -21,7 +21,6 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push $NGINX_REGISTORY_URI
       - docker push $WEB_REGISTORY_URI
       - echo Writing image definitions file...
       - printf '[{"name":"web","imageUri":"%s"}]' $WEB_REGISTORY_URI:latest > imagedefinitions.json
