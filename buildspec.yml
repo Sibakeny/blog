@@ -1,0 +1,29 @@
+version: 0.2
+
+# env:
+#   secrets-manager:
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build . -t $WEB_REGISTORY_URI
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $NGINX_REGISTORY_URI
+      - docker push $WEB_REGISTORY_URI
+      - echo Writing image definitions file...
+      - printf '[{"name":"web","imageUri":"%s"}]' $WEB_REGISTORY_URI:latest > imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json

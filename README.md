@@ -1,24 +1,5 @@
-# README
+# ECS DEPLOY
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ecs-cli configure --cluster sbkn-blog --default-launch-type EC2 --config-name sbkn-blog --region ap-northeast-1
+ecs-cli configure profile --access-key access_key --secret-key secret_key --profile-name sbkn-blog-profile
+ecs-cli compose --project-name sbkn-blog -f docker-compose-production.yml create --region ap-northeast-1 --cluster-config sbkn-blog --ecs-profile sbkn-blog-profile --cluster sbkn-blog
