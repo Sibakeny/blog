@@ -11,6 +11,7 @@ services:
       TZ: "Japan"
     ports:
       - "80:3000"
+    tty: true
     deploy:
       resources:
         limits:
