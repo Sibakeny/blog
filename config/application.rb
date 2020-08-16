@@ -33,5 +33,6 @@ module SbknBlog
 
     config.hosts << "ec2-54-92-117-212.ap-northeast-1.compute.amazonaws.com"
     config.hosts << "ec2-54-95-29-224.ap-northeast-1.compute.amazonaws.com"
+    config.hosts << "http://blog.sibakeny-dev.com/"
   end
 end
