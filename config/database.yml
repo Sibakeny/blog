@@ -19,6 +19,7 @@ test:
 
 production:
   <<: *default
-  database: sbkn_blog_production
-  username: root
-  password:
+  host: <%= ENV['MYSQL_HOST'] %>
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  database: sbkn_blog_development
