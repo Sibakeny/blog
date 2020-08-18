@@ -8,6 +8,7 @@ services:
       MYSQL_USER: sibakeny
       MYSQL_PASSWORD: d156d156
       MYSQL_HOST: sb-develop.chg7n0luxaan.ap-northeast-1.rds.amazonaws.com
+      RAILS_LOG_TO_STDOUT: "ON"
       TZ: "Japan"
     ports:
       - "0:3000"
