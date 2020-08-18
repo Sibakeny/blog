@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: 'home#index'
 
   resources :articles do
     scope module: :articles do
@@ -49,4 +48,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  root to: 'home#index'
+
 end

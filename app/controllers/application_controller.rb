@@ -3,10 +3,12 @@
 class ApplicationController < ActionController::Base
   include Authentication
 
-  before_action :set_current_user
+  before_action :authorize
 
-  def set_current_user
-    redirect_to login_path unless current_user
+  def authorize
+    if current_user.blank?
+      redirect_to :login
+    end
   end
 
   def current_user
@@ -19,5 +21,8 @@ class ApplicationController < ActionController::Base
         @current_user = user
       end
     end
+    @current_user
   end
 end
+
+https://sbkn-blog-283488325.ap-northeast-1.elb.amazonaws.com/login

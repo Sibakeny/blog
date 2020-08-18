@@ -10,8 +10,6 @@ services:
       MYSQL_HOST: sb-develop.chg7n0luxaan.ap-northeast-1.rds.amazonaws.com
       RAILS_LOG_TO_STDOUT: "ON"
       TZ: "Japan"
-    ports:
-      - "0:3000"
     tty: true
     deploy:
       resources:
@@ -23,3 +21,21 @@ services:
         awslogs-group: sbkn-blog-production
         awslogs-region: ap-northeast-1
         awslogs-stream-prefix: web
+
+  nginx:
+    image: 052173906758.dkr.ecr.ap-northeast-1.amazonaws.com/sbkn-blog-nginx
+    volumes:
+      - public-data:/sbkn_blog/public
+      - tmp-data:/sbkn_blog/tmp
+    ports:
+      - 0:80
+    links:
+      - web
+    depends_on:
+      - web
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: sbkn-blog-production
+        awslogs-region: ap-northeast-1
+        awslogs-stream-prefix: nginx

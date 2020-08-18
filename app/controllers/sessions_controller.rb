@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  skip_before_action :set_current_user
+  skip_before_action :authorize, only: [:show, :new, :create, :destroy]
 
   def show; end
 
