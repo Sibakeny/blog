@@ -1,0 +1,14 @@
+version: 1
+task_definition:
+  services:
+    web:
+      mem_limit: 400mb
+    nginx:
+      mem_limit: 300mb
+  docker_volumes:
+    - name: public-data
+      scope: task
+      driver: local
+    - name: tmp-data
+      scope: task
+      driver: local

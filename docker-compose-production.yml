@@ -39,3 +39,7 @@ services:
         awslogs-group: sbkn-blog-production
         awslogs-region: ap-northeast-1
         awslogs-stream-prefix: nginx
+
+volumes:
+  public-data:
+  tmp-data:
