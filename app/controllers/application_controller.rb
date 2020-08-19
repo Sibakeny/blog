@@ -24,5 +24,3 @@ class ApplicationController < ActionController::Base
     @current_user
   end
 end
-
-https://sbkn-blog-283488325.ap-northeast-1.elb.amazonaws.com/login
