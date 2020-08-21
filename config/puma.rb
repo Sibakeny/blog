@@ -21,9 +21,6 @@ ssl_bind "0.0.0.0", 3000, cert: cert, key: key
 #
 environment ENV.fetch('RAILS_ENV') { 'production' }
 
-app_root = File.expand_path('..', __dir__)
-bind "unix://#{app_root}/tmp/sockets/puma.sock"
-
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch('PIDFILE') { 'tmp/pids/server.pid' }
 
