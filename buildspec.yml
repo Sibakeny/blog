@@ -17,15 +17,12 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build . -t $WEB_REGISTORY_URI
-      - docker build ./nginx -t 052173906758.dkr.ecr.ap-northeast-1.amazonaws.com/sbkn-blog-nginx
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
       - docker push $WEB_REGISTORY_URI
-      - docker push 052173906758.dkr.ecr.ap-northeast-1.amazonaws.com/sbkn-blog-nginx
       - echo Writing image definitions file...
       - printf '[{"name":"web","imageUri":"%s"}]' $WEB_REGISTORY_URI:latest > imagedefinitions.json
-      - printf '[{"name":"nginx","imageUri":"%s"}]' 052173906758.dkr.ecr.ap-northeast-1.amazonaws.com/sbkn-blog-nginx:latest > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
