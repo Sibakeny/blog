@@ -3,11 +3,11 @@
 module Authentication
   extend ActiveSupport::Concern
 
-  def login
-    session[:user_id] = @user.id
+  def login(user)
+    session[:user_id] = user.id
     @user.remember
-    cookies.permanent.signed[:user_id] = @user.id
-    cookies.permanent[:remember_token] = @user.remember_token
+    cookies.permanent.signed[:user_id] = user.id
+    cookies.permanent[:remember_token] = user.remember_token
   end
 
   def logout
