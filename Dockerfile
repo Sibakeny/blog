@@ -49,3 +49,4 @@ RUN bundle install
 ADD . $APP_ROOT
 
 RUN rails assets:precompile RAILS_ENV=production
+RUN rails webpacker:compile RAILS_ENV=production
