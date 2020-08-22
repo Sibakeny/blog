@@ -9,4 +9,9 @@ module ApplicationHelper
       concat raw(message)
     end
   end
+
+  def sidebar_active(navbar_menu)
+    p controller.controller_name
+    'active' if controller.controller_name == navbar_menu
+  end
 end

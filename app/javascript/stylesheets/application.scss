@@ -2,8 +2,22 @@
 @import "~toastr/toastr";
 @import "./breadcrumb.scss";
 @import "./sidemenu.scss";
+@import "./shared.scss";
 
-img {
+body .page-content {
+  font-family: "YuGothic", "Meiryo UI";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin-bottom: 0;
+}
+
+h6 img {
   width: 100%;
 }
 

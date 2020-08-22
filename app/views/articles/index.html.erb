@@ -1,32 +1,39 @@
-<div class="container">
-    <div class="text-right mb-5">
-        <%= link_to '作成', new_article_path, class: 'btn btn-success' %>
-    </div>
-    <div>
-        <%= paginate @articles %>
-    </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col">タイトル</th>
-                <th scope="col">本文</th>
-                <th scope="col"></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @articles.each do |article| %>
-            <tr>
-                <th scope="row"><%= article.id %></th>
-                <td><%= article.title %></td>
-                <td style='max-width: 500px'><%= strip_tags(article.body)[0..100] + '.......' %></td>
-                <td class="text-nowrap"><%= link_to '表示', article_path(article), class: 'btn btn-outline-primary' %></td>
-                <td class="text-nowrap"><%= link_to '編集', edit_article_path(article), class: 'btn btn-outline-primary' %></td>
-                <td class="text-nowrap"><%= link_to '削除', article_path(article), method: :delete, class: 'btn btn-outline-primary' %>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
-</div>
+  <h3 class='card p-3 border text-muted'>記事一覧</h3>
+  <div class="text-right mb-5">
+    <%= link_to '作成', new_article_path, class: 'btn btn-success' %>
+  </div>
+  <div>
+    <%= paginate @articles %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">
+          <p>タイトル</p>
+        </th>
+        <th scope="col">
+          <p>本文</p>
+        </th>
+        <th scope="col"></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+      <tr>
+        <th scope="row"><%= article.id %></th>
+        <td>
+          <p><%= article.title %></p>
+        </td>
+        <td style='max-width: 500px'>
+          <p><%= strip_tags(article.body)[0..100] + '.......' %></p>
+        </td>
+        <td class="text-nowrap"><%= link_to '表示', article_path(article), class: 'btn btn-outline-primary' %></td>
+        <td class="text-nowrap"><%= link_to '編集', edit_article_path(article), class: 'btn btn-outline-primary' %></td>
+        <td class="text-nowrap"><%= link_to '削除', article_path(article), method: :delete, class: 'btn btn-outline-primary' %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
