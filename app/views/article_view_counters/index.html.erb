@@ -1,21 +1,20 @@
-<div class="container">
-  <div class="card p-3">
-    <p>全体のPV数</p>
-    <%= line_chart @chart_values.map { |value| [value.time, value.sum] } %>
-  </div>
-  <blockquote></blockquote>
-  <div class="mt-5">
-    <h3 class="mb-5 border-bottom">人気記事</h3>
-    <div class="d-flex flex-wrap justify-content-around popular-articles-container">
-      <% @popular_articles.each do |article| %>
-        <div class="card p-3 mb-5 d-flex flex-column justify-content-between" style="width: 300px">
-          <div>
-            <p><%= article.title %></p>
-            <p class="text-muted text-right"><%= article.pv %>pv</p>
-          </div>
-          <%= link_to "チャート詳細", article_view_counters_article_path(article), class: 'btn btn-primary btn-sm' %>
-        </div>
-      <% end %>
+<h3 class='card p-3 border text-muted mb-4'>アクセスログ</h3>
+<div class="card p-3">
+  <p>全体のPV数</p>
+  <%= line_chart @chart_values.map { |value| [value.time, value.sum] } %>
+</div>
+<blockquote></blockquote>
+<div class="mt-5">
+  <h3 class="mb-5 border-bottom">人気記事</h3>
+  <div class="d-flex flex-wrap justify-content-around popular-articles-container">
+    <% @popular_articles.each do |article| %>
+    <div class="card p-3 mb-5 d-flex flex-column justify-content-between" style="width: 300px">
+      <div>
+        <p><%= article.title %></p>
+        <p class="text-muted text-right"><%= article.pv %>pv</p>
+      </div>
+      <%= link_to "チャート詳細", article_view_counters_article_path(article), class: 'btn btn-primary btn-sm' %>
     </div>
+    <% end %>
   </div>
 </div>
