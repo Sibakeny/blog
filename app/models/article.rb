@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Article < ApplicationRecord
-  has_many :article_categories
+  has_many :article_categories, autosave: true
   has_many :categories, through: :article_categories
   has_many :article_view_counters
   has_many_attached :images

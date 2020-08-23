@@ -5,46 +5,9 @@
   <p>登録画像</p>
   <%= render 'articles/images/form_image_container', article: @article %>
 
-  <%= form_with model: @article, local: true do |f| %>
-  <div class='form-group'>
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control' %>
-    <%= form_validation_message(@article, :title) %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_area :body, rows: '30', class: 'form-control' %>
-    <%= form_validation_message(@article, :body) %>
-  </div>
-
-  <div>
-    <div class='form-group'>
-      <%= f.label :category_language %>
-    </div>
-    <div class='form-group'>
-      <%= f.collection_check_boxes :category_ids, Category.language, :id, :name do |category| %>
-        <%= category.label do %>
-          <%= category.check_box %>
-          <%= category.text %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
-  <div>
-    <div class='form-group'>
-      <%= f.label :category_framework %>
-    </div>
-    <div class='form-group'>
-      <%= f.collection_check_boxes :category_ids, Category.framework, :id, :name do |category| %>
-        <%= category.label do %>
-          <%= category.check_box %>
-          <%= category.text %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+  <%= form_with model: @article_form, url: article_path(@article), method: :patch, local: true do |f| %>
+  <%= render 'articles/form/article_form', f: f %>
+  <%= render 'articles/form/categories_form', f: f %>
 
   <div class="form-group">
     <%= f.submit '更新', class: 'btn btn-primary' %>

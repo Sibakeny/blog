@@ -16,20 +16,14 @@ class ArticlesController < ApplicationController
 
   def new
     add_breadcrumb '記事作成'
-    @article = Article.new
-    @article.categories.build
+    @article_form= ArticleForm.new
   end
 
   def create
     Article.transaction do
-      @article = Article.new(article_params)
+      @article_form = ArticleForm.new(params: params[:article_form])
 
-      if @article.save
-        categories_params[:category_ids].each do |id|
-          next if id.blank?
-
-          @article.categories << Category.find(id)
-        end
+      if @article_form.save
         redirect_to articles_path, notice: '記事を作成しました。'
       else
         render :new
@@ -38,19 +32,15 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @article_form = ArticleForm.new(article: @article)
     add_breadcrumb '記事更新'
   end
 
   def update
     Article.transaction do
-      @article.assign_attributes(article_params)
-      if @article.save
-        categories_params[:category_ids].each do |id|
-          next if id.blank?
+      @article_form = ArticleForm.new(article: @article, params: params[:article_form])
 
-          @article.article_categories.each(&:destroy)
-          @article.categories << Category.find(id)
-        end
+      if @article_form.save
         redirect_to article_path, notice: '記事を更新しました。'
       else
         render :edit
@@ -68,13 +58,5 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
-  end
-
-  def article_params
-    params.require(:article).permit(:title, :body, images: [])
-  end
-
-  def categories_params
-    params.require(:article).permit(category_ids: [])
   end
 end
