@@ -2,6 +2,8 @@
 
 Rails.application.routes.draw do
 
+  resources :qiita_syncs
+
   resources :articles do
     scope module: :articles do
       resources :images

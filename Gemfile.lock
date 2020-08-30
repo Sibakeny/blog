@@ -155,7 +155,7 @@ GEM
     public_suffix (4.0.4)
     puma (4.3.3)
       nio4r (~> 2.0)
-    qiita-sdk (0.2.0)
+    qiita-sdk (0.3.0)
     rack (2.2.2)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
@@ -200,6 +200,8 @@ GEM
       ffi (~> 1.0)
     redcarpet (3.5.0)
     regexp_parser (1.7.0)
+    reverse_markdown (2.0.0)
+      nokogiri
     rexml (3.2.4)
     rspec-core (3.9.2)
       rspec-support (~> 3.9.3)
@@ -306,11 +308,12 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mysql2
   puma (~> 4.1)
-  qiita-sdk
+  qiita-sdk (~> 0.3.0)
   rack-cors
   rails (~> 6.0.2, >= 6.0.2.2)
   rails-i18n
   redcarpet
+  reverse_markdown
   rspec-rails (~> 4.0.0)
   rubocop
   sass-rails (>= 6)

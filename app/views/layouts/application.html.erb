@@ -58,6 +58,15 @@
         <div class="sidebar-menu">
           <ul>
             <li class="header-menu">
+              <span>Qiita</span>
+            </li>
+            <li class="sidebar <%= sidebar_active('qiita_syncs') %>">
+              <%= link_to qiita_syncs_path do %>
+              <i class="fas fa-sync-alt"></i>
+              <span>記事同期</span>
+              <% end %>
+            </li>
+            <li class="header-menu">
               <span>General</span>
             </li>
             <li class="sidebar <%= sidebar_active('home') %>">

@@ -39,7 +39,8 @@ gem 'breadcrumbs_on_rails'
 
 gem 'enum_help'
 
-gem 'qiita-sdk'
+gem 'qiita-sdk', '~> 0.3.0'
+gem 'reverse_markdown'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

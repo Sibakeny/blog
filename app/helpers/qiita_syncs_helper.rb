@@ -1,0 +1,2 @@
+module QiitaSyncsHelper
+end
