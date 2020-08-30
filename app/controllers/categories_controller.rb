@@ -12,12 +12,12 @@ class CategoriesController < ApplicationController
 
   def new
     add_breadcrumb 'カテゴリ作成'
-    @category_form = CategoryForm.new
+    @category = Category.new
   end
 
   def create
-    @category_form = CategoryForm.new(category_params)
-    if @category_form.save
+    @category = Category.new(category_params)
+    if @category.save
       redirect_to categories_path, notice: 'カテゴリを作成しました'
     else
       render :new
@@ -36,6 +36,6 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category_form).permit(:name, :category_type)
+    params.require(:category).permit(:name, :category_type)
   end
 end

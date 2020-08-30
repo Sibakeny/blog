@@ -1,39 +1,31 @@
-  <h3 class='card p-3 border text-muted mb-4'>記事一覧</h3>
-  <div class="text-right mb-5">
-    <%= link_to '作成', new_article_path, class: 'btn btn-success' %>
+<h3 class='card p-3 border text-muted mb-4'>記事一覧</h3>
+<div class="text-right mb-5">
+  <%= link_to '作成', new_article_path, class: 'btn btn-success' %>
+</div>
+<div>
+  <%= paginate @articles %>
+</div>
+
+
+<% @articles.each do |article| %>
+
+<div class="card mb-4 mt-4">
+  <h5 class="card-header d-flex justify-content-between">
+    <%= article.title %>
+    <div class="dropdown">
+      <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        ...
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%= link_to '表示', article_path(article), class: 'dropdown-item' %>
+        <%= link_to '編集', edit_article_path(article), class: 'dropdown-item' %>
+        <%= link_to '削除', article_path(article), method: :delete, class: 'dropdown-item' %>
+      </div>
+    </div>
+  </h5>
+  <div class="card-body">
+    <p class="card-text article-card-list-body"><%= article.body %></p>
   </div>
-  <div>
-    <%= paginate @articles %>
-  </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">
-          <p>タイトル</p>
-        </th>
-        <th scope="col">
-          <p>本文</p>
-        </th>
-        <th scope="col"></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @articles.each do |article| %>
-      <tr>
-        <th scope="row"><%= article.id %></th>
-        <td>
-          <p><%= article.title %></p>
-        </td>
-        <td style='max-width: 500px'>
-          <p><%= strip_tags(article.body)[0..100] + '.......' %></p>
-        </td>
-        <td class="text-nowrap"><%= link_to '表示', article_path(article), class: 'btn btn-outline-primary' %></td>
-        <td class="text-nowrap"><%= link_to '編集', edit_article_path(article), class: 'btn btn-outline-primary' %></td>
-        <td class="text-nowrap"><%= link_to '削除', article_path(article), method: :delete, class: 'btn btn-outline-primary' %>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+</div>
+
+<% end %>

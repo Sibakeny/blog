@@ -39,6 +39,8 @@ gem 'breadcrumbs_on_rails'
 
 gem 'enum_help'
 
+gem 'qiita-sdk'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara'
