@@ -4,3 +4,8 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.article-body-form, .article-body-markdown {
+  height: 600px !important;
+  overflow: scroll;
+}

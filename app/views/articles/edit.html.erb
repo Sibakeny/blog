@@ -1,16 +1,16 @@
-<div class='container'>
-  <p>画像保存</p>
-  <%= render 'articles/images/form', article: @article  %>
+<div class='container-fluid row'>
+    <p>画像保存</p>
+    <%= render 'articles/images/form', article: @article  %>
 
-  <p>登録画像</p>
-  <%= render 'articles/images/form_image_container', article: @article %>
+    <p>登録画像</p>
+    <%= render 'articles/images/form_image_container', article: @article %>
 
-  <%= form_with model: @article_form, url: article_path(@article), method: :patch, local: true do |f| %>
-  <%= render 'articles/form/article_form', f: f %>
-  <%= render 'articles/form/categories_form', f: f %>
+    <%= form_with model: @article_form, url: article_path(@article), method: :patch, local: true do |f| %>
+    <%= render 'articles/form/article_form', f: f %>
+    <%= render 'articles/form/categories_form', f: f %>
 
-  <div class="form-group">
-    <%= f.submit '更新', class: 'btn btn-primary' %>
-  </div>
-  <% end %>
+    <div class="form-group">
+      <%= f.submit '更新', class: 'btn btn-primary' %>
+    </div>
+    <% end %>
 </div>

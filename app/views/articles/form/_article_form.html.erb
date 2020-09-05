@@ -7,7 +7,18 @@
 
 <div class="form-group">
   <%= ff.label :body %>
-  <%= ff.text_area :body, rows: '30', class: 'form-control' %>
+  <div class='row'>
+    <div class='col-md-6'>
+      <%= ff.text_area :body, class: 'form-control article-body-form' %>
+    </div>
+    <div class='col-md-6'>
+      <div class='article-body-markdown border p-2'>
+      </div>
+    </div>
+  </div>
   <%= form_validation_message(f.object.article, :body) %>
 </div>
 <% end %>
+
+<%= javascript_pack_tag 'articles/sync_scroll.js' %>
+<%= javascript_pack_tag 'articles/article_markdown.js' %>
