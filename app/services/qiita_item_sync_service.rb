@@ -1,5 +1,4 @@
 class QiitaItemSyncService
-
   def self.read_items
     client = Qiita::Sdk::Client.new
     res = client.fetch_user_items(user_id: 'sibakenY')

@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
 
   def new
     add_breadcrumb '記事作成'
-    @article_form= ArticleForm.new
+    @article_form = ArticleForm.new
   end
 
   def create

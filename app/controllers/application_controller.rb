@@ -6,9 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :authorize
 
   def authorize
-    if current_user.blank?
-      redirect_to :login
-    end
+    redirect_to :login if current_user.blank?
   end
 
   def current_user

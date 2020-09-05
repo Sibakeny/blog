@@ -13,6 +13,7 @@ class ArticleForm
 
     new_category_ids.each do |id|
       next if id.blank? || id == 0
+
       @article.article_categories.build(category_id: id)
     end
   end
@@ -27,6 +28,7 @@ class ArticleForm
     destroy_category_ids = @article.categories.pluck(:id) - categories_params[:ids].map(&:to_i)
     destroy_category_ids.each do |id|
       next if id.blank? || id == 0
+
       # ここで失敗すると予期しない動きになる。
       # validationかけるべきかな？
       @article.categories.destroy(id)
