@@ -2,7 +2,11 @@
 
 Rails.application.routes.draw do
 
-  resources :qiita_syncs
+  resources :qiita_syncs, only: [:index] do
+    collection do
+      get :sycn_items
+    end
+  end
 
   resources :articles do
     scope module: :articles do
