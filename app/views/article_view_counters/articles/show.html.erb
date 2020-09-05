@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card p-3">
     <p>記事のPV数</p>
-    <%= line_chart @chart_values.map { |value| [value.time, value.sum] } %>
+    <%= line_chart [{name: 'メイン', data: @article_chart_values}, {name: 'Qiita', data: @qiita_chart_values}] %>
   </div>
   <blockquote></blockquote>
   <div class="mt-5">

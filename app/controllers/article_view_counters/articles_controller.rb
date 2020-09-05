@@ -7,6 +7,7 @@ class ArticleViewCounters::ArticlesController < ApplicationController
   def show
     add_breadcrumb '記事のアクセスログ'
     @article = Article.find(params[:id])
-    @chart_values = @article.article_chart_values_by_date
+    @article_chart_value = @article.article_chart_values_by_date.map { |value| [value.time, value.sum] }
+    @qiita_chart_values = @article.qiita_chart_values_by_date.map { |value| [value.time, value.sum] }
   end
 end

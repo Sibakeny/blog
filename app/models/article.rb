@@ -4,6 +4,7 @@ class Article < ApplicationRecord
   has_many :article_categories, autosave: true
   has_many :categories, through: :article_categories
   has_many :article_view_counters
+  has_many :qiita_stats
   has_many_attached :images
 
   accepts_nested_attributes_for :article_categories
@@ -12,16 +13,33 @@ class Article < ApplicationRecord
   validates :body, presence: true
 
   # チャート用の記事のPV数を返す
+  # TODO: 一ヶ月分のデータのみ持ってくる様にする
   def article_chart_values_by_date
-    Article.select("DATE_FORMAT(article_view_counters.created_at, '%Y-%m-%d') as time, count(*) as sum")
-           .joins(:article_view_counters).group("DATE_FORMAT(article_view_counters.created_at, '%Y-%m-%d')")
-           .where('articles.id = ?', id)
-           .order('time asc').limit(30)
+    article_view_counters.select("DATE_FORMAT(article_view_counters.created_at, '%Y-%m-%d') as time, count(*) as sum")
+                         .group("DATE_FORMAT(article_view_counters.created_at, '%Y-%m-%d')")
+                         .order('time asc').limit(30)
+  end
+
+  # チャート用のQiitaの記事のPV数を返す
+  # TODO: 一ヶ月分のデータのみ持ってくる様にする
+  def qiita_chart_values_by_date
+    qiita_stats.select("DATE_FORMAT(qiita_stats.created_at, '%Y-%m-%d') as time, qiita_stats.page_view_count as sum")
+               .order('time asc').limit(30)
   end
 
   # 記事のpv数を返す
   def pv
     article_view_counters.length
+  end
+
+  # qiitaのいいねの数
+  def like_count
+    qiita_stats.order(created_at: :desc).first.like_count
+  end
+
+  # qiitaのpv数
+  def page_view
+    qiita_stats.order(created_at: :desc).first.page_view_count
   end
 
   # pv数の多い記事を10件取得
@@ -52,5 +70,10 @@ class Article < ApplicationRecord
     Article.select("DATE_FORMAT(article_view_counters.created_at, '%Y-%m-%d') as time, count(*) as sum")
            .joins(:article_view_counters).group("DATE_FORMAT(article_view_counters.created_at, '%Y-%m-%d')")
            .order('time asc').limit(30)
+  end
+
+  # チャート表示用に日付ごとのqiita_article_view_counterの数を返す
+  def self.qiita_chart_values_by_date
+    Article.joins(:qiita_stats).select("DATE_FORMAT(qiita_stats.created_at, '%Y-%m-%d') as time, qiita_stats.page_view_count as sum").order('time asc').limit(30)
   end
 end
