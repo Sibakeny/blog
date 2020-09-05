@@ -4,7 +4,7 @@ class Article < ApplicationRecord
   has_many :article_categories, autosave: true
   has_many :categories, through: :article_categories
   has_many :article_view_counters
-  has_many :qiita_stats
+  has_many :qiita_stats, dependent: :destroy
   has_many_attached :images
 
   accepts_nested_attributes_for :article_categories

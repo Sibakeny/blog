@@ -3,6 +3,6 @@ class QiitaSyncsController < ApplicationController
   end
 
   def sycn_items
-    QiitaItemSyncService.sync!
+    QiitaItemSyncService.new.sync!
   end
 end

@@ -39,7 +39,7 @@ gem 'breadcrumbs_on_rails'
 
 gem 'enum_help'
 
-gem 'qiita-sdk', '~> 0.3.0'
+gem 'qiita-sdk', '~> 0.4.0'
 gem 'reverse_markdown'
 
 group :development, :test do
