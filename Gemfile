@@ -12,34 +12,43 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
-
 gem 'bcrypt', '~> 3.1.7'
+gem 'bootsnap', '>= 1.4.2', require: false
 
+
+# API関連
 gem 'active_model_serializers'
+gem 'rack-cors'
 
 gem 'jquery-ui-rails'
 
+# マークダウン関連
 gem 'coderay'
 gem 'redcarpet'
 
-gem 'rack-cors'
-
+# .env
 gem 'dotenv-rails'
 
+
+# i18n enum
 gem 'rails-i18n'
+gem 'enum_help'
 
-gem 'bootsnap', '>= 1.4.2', require: false
 
+# ページング
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 
+# チャート
 gem 'chartkick'
 
+# パンくず
 gem 'breadcrumbs_on_rails'
 
-gem 'enum_help'
-
+# Qiita API
 gem 'qiita-sdk', '~> 0.4.0'
+
+
 gem 'reverse_markdown'
 
 group :development, :test do
