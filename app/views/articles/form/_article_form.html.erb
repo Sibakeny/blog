@@ -1,4 +1,5 @@
 <%= f.fields_for :article, f.object.article do |ff| %>
+<%= ff.hidden_field :id, value: f.object.article.id %>
 <div class='form-group'>
   <%= ff.label :title %>
   <%= ff.text_field :title, class: 'form-control' %>
@@ -11,7 +12,7 @@
       <%= ff.label :body %>
     </div>
     <div class='col-md-2'>
-        <input type="file" id="upload_chat" name="images" style="display:none", data-id='<%= @article.id %>' form='image-submit-form' />
+        <input type="file" id="upload_chat" name="images" style="display:none", data-id='<%= f.object.article.id %>' form='image-submit-form' />
         <button id="upload_chat_button" class="btn btn-small btn-inverse">upload</button>
     </div>
   </div>

@@ -5,7 +5,7 @@ class ArticleForm
 
   def initialize(article: nil, params: {})
     @params = params
-    @article = article || Article.new
+    @article = article || Article.create(title: '', body: '')
   end
 
   def assign_categories_attributes

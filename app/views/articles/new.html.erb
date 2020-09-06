@@ -1,10 +1,16 @@
-<div class='container'>
+<div class='container-fluid'>
   <%= form_with model: @article_form, url: articles_path, local: true do |f| %>
-  <%= render 'articles/form/article_form', f: f %>
-  <%= render 'articles/form/categories_form', f: f %>
+    <%= render 'articles/form/article_form', f: f %>
+    <%= render 'articles/form/categories_form', f: f %>
 
-  <div class="form-group">
-    <%= f.submit '作成', class: 'btn btn-primary' %>
-  </div>
+    <div class="form-group">
+      <%= f.submit '作成', class: 'btn btn-primary' %>
+    </div>
   <% end %>
+
+  <%= render 'articles/images/form_image_container', article: @article_form.article %>
 </div>
+
+<%= javascript_pack_tag 'articles/sync_scroll.js' %>
+<%= javascript_pack_tag 'articles/article_markdown.js' %>
+<%= javascript_pack_tag 'articles/form.js' %>

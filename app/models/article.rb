@@ -9,8 +9,9 @@ class Article < ApplicationRecord
 
   accepts_nested_attributes_for :article_categories
 
-  validates :title, presence: true
-  validates :body, presence: true
+  # TODO: 実装
+  # validates :title, presence: true
+  # validates :body, presence: true
 
   # チャート用の記事のPV数を返す
   # TODO: 一ヶ月分のデータのみ持ってくる様にする
@@ -34,12 +35,12 @@ class Article < ApplicationRecord
 
   # qiitaのいいねの数
   def like_count
-    qiita_stats.order(created_at: :desc).first.like_count
+    qiita_stats.order(created_at: :desc).first&.like_count
   end
 
   # qiitaのpv数
   def qiita_page_view
-    qiita_stats.order(created_at: :desc).first.page_view_count
+    qiita_stats.order(created_at: :desc).first&.page_view_count
   end
 
   # qiitaと自分のサイトのpv数の合計が多い記事を10件取得

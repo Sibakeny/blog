@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
 
   def create
     Article.transaction do
-      @article_form = ArticleForm.new(params: params[:article_form])
+      @article_form = ArticleForm.new(article: Article.find(params[:article_form][:article][:id]), params: params[:article_form])
 
       if @article_form.save
         redirect_to articles_path, notice: '記事を作成しました。'
