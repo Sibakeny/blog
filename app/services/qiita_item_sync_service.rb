@@ -1,5 +1,4 @@
 class QiitaItemSyncService
-
   def read_items
     @client = Qiita::Sdk::Client.new do |config|
       config.access_token = ENV['QIITA_ACCESS_TOKEN']

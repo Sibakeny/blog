@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+gem 'bcrypt', '~> 3.1.7'
+gem 'bootsnap', '>= 1.4.2', require: false
 gem 'jbuilder', '~> 2.7'
 gem 'mysql2'
 gem 'puma', '~> 4.1'
@@ -12,9 +14,6 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
-gem 'bcrypt', '~> 3.1.7'
-gem 'bootsnap', '>= 1.4.2', require: false
-
 
 # API関連
 gem 'active_model_serializers'
@@ -29,11 +28,9 @@ gem 'redcarpet'
 # .env
 gem 'dotenv-rails'
 
-
 # i18n enum
-gem 'rails-i18n'
 gem 'enum_help'
-
+gem 'rails-i18n'
 
 # ページング
 gem 'kaminari'
@@ -47,7 +44,6 @@ gem 'breadcrumbs_on_rails'
 
 # Qiita API
 gem 'qiita-sdk', '~> 0.7.0'
-
 
 gem 'reverse_markdown'
 

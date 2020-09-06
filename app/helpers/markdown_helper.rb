@@ -24,6 +24,7 @@ module MarkdownHelper
              end
 
       return if lang == 'c#'
+
       CodeRay.scan(code, lang).div
     end
   end
