@@ -1,14 +1,19 @@
 <div id="blog-edit-image-container" class="border-bottom mb-5">
   <div class="d-flex justify-content-around flex-wrap">
     <% article.images.each do |image| %>
-    <div id="image-card-<%= image.id %>" data-id=<%= image.id %> data-article-id=<%= article.id %> class="card p-3 mb-3 mt-3 image-card-wrapper" draggable="true" style="width: 200px;">
+    <div
+      id="image-card-<%= image.id %>"
+      data-id=<%= image.id %>
+      data-article-id=<%= article.id %>
+      data-markdown-url=<%= markdown_image_url(image) %>
+      class="card p-3 mb-3 mt-3 image-card-wrapper"
+      draggable="true"
+      style="width: 200px;"
+    >
       <%= image_tag image, style: "width: 150px" %>
       <input class="image-url d-none" type="text" value="<%= polymorphic_url image %>" readonly>
     </div>
     <% end %>
-    <div class="card p-3 mb-3 mt-3" id="trash" style="width: 200px">
-      ゴミ箱
-    </div>
   </div>
 </div>
 

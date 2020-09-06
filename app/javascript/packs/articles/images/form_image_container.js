@@ -16,44 +16,45 @@ for (let i = 0; i < dragItem.length; i++) {
     "dragstart",
     function (e) {
       console.log("start");
-      e.dataTransfer.setData("text/plain", $(this).attr("id"));
+      e.dataTransfer.setData("text/plain", $(this).data("markdown-url"));
     },
     false
   );
 }
 
-trash.addEventListener("drop", function (e) {
-  var itemId = e.dataTransfer.getData("text/plain");
-  var itemIdTxt = "#" + itemId;
-  var articleId = $(itemIdTxt).data("article-id");
-  var imageId = $(itemIdTxt).data("id");
-  $.ajax({
-    url: `/articles/${articleId}/images/${imageId}`,
-    type: "delete",
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader(
-        "X-CSRF-Token",
-        $('meta[name="csrf-token"]').attr("content")
-      );
-    },
-  }).then(() => {
-    $(itemIdTxt).remove();
-    toastr.error("画像を削除しました。");
-  });
-});
+// trash.addEventListener("drop", function (e) {
+//   var itemId = e.dataTransfer.getData("text/plain");
+//   var itemIdTxt = "#" + itemId;
+//   var articleId = $(itemIdTxt).data("article-id");
+//   var imageId = $(itemIdTxt).data("id");
+//   var markdownUrl = $(itemIdTxt).data('markdown-url')
+//   $.ajax({
+//     url: `/articles/${articleId}/images/${imageId}`,
+//     type: "delete",
+//     beforeSend: function (xhr) {
+//       xhr.setRequestHeader(
+//         "X-CSRF-Token",
+//         $('meta[name="csrf-token"]').attr("content")
+//       );
+//     },
+//   }).then(() => {
+//     $(itemIdTxt).remove();
+//     toastr.error("画像を削除しました。");
+//   });
+// });
 
-trash.addEventListener(
-  "dragover",
-  function (evt) {
-    evt.preventDefault();
-  },
-  false
-);
+// trash.addEventListener(
+//   "dragover",
+//   function (evt) {
+//     evt.preventDefault();
+//   },
+//   false
+// );
 
-trash.addEventListener(
-  "dragenter",
-  function (evt) {
-    evt.preventDefault();
-  },
-  false
-);
+// trash.addEventListener(
+//   "dragenter",
+//   function (evt) {
+//     evt.preventDefault();
+//   },
+//   false
+// );
