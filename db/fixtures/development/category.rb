@@ -1,0 +1,10 @@
+Category.seed(:id,
+  { id: 1, name: 'RubyOnRails', category_type: 'framework' },
+  { id: 2, name: 'React', category_type: 'framework' },
+  { id: 3, name: 'Revel', category_type: 'framework' },
+  { id: 4, name: 'MaterialUI', category_type: 'framework' },
+  { id: 5, name: 'Ruby', category_type: 'language' },
+  { id: 6, name: 'JavaScript', category_type: 'language' },
+  { id: 7, name: 'TypeScript', category_type: 'language' },
+  { id: 8, name: 'Go', category_type: 'language' },
+)

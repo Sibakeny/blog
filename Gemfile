@@ -47,6 +47,9 @@ gem 'qiita-sdk', '~> 0.7.0'
 
 gem 'reverse_markdown'
 
+# 初期データ
+gem 'seed-fu'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara'
