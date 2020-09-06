@@ -6,7 +6,15 @@
 </div>
 
 <div class="form-group">
-  <%= ff.label :body %>
+  <div class='row'>
+    <div class='col-md-4'>
+      <%= ff.label :body %>
+    </div>
+    <div class='col-md-2'>
+        <input type="file" id="upload_chat" name="images" style="display:none", data-id='<%= @article.id %>' form='image-submit-form' />
+        <button id="upload_chat_button" class="btn btn-small btn-inverse">upload</button>
+    </div>
+  </div>
   <div class='row'>
     <div class='col-md-6'>
       <%= ff.text_area :body, class: 'form-control article-body-form' %>
@@ -19,6 +27,3 @@
   <%= form_validation_message(f.object.article, :body) %>
 </div>
 <% end %>
-
-<%= javascript_pack_tag 'articles/sync_scroll.js' %>
-<%= javascript_pack_tag 'articles/article_markdown.js' %>

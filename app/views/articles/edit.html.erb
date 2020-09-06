@@ -1,16 +1,21 @@
-<div class='container-fluid row'>
-    <p>画像保存</p>
-    <%= render 'articles/images/form', article: @article  %>
-
+<div class='container-fluid'>
     <p>登録画像</p>
     <%= render 'articles/images/form_image_container', article: @article %>
 
     <%= form_with model: @article_form, url: article_path(@article), method: :patch, local: true do |f| %>
-    <%= render 'articles/form/article_form', f: f %>
-    <%= render 'articles/form/categories_form', f: f %>
+      <%= render 'articles/form/article_form', f: f %>
+      <%= render 'articles/form/categories_form', f: f %>
 
-    <div class="form-group">
-      <%= f.submit '更新', class: 'btn btn-primary' %>
-    </div>
+      <div class="form-group">
+        <%= f.submit '更新', class: 'btn btn-primary' %>
+      </div>
     <% end %>
 </div>
+
+<%# 画像保存のフォーム %>
+<%= form_with url: article_images_path(@article), method: :post, id: 'image-submit-form' do |f| %>
+<% end %>
+
+<%= javascript_pack_tag 'articles/sync_scroll.js' %>
+<%= javascript_pack_tag 'articles/article_markdown.js' %>
+<%= javascript_pack_tag 'articles/form.js' %>

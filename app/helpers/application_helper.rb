@@ -2,6 +2,7 @@
 
 module ApplicationHelper
   include Shared::ValidationHelper
+  include Shared::MarkdownHelper
 
   def flash_message(message, klass)
     content_tag(:div, class: "alert alert-#{klass}") do
@@ -11,7 +12,6 @@ module ApplicationHelper
   end
 
   def sidebar_active(navbar_menu)
-    p controller.controller_name
     'active' if controller.controller_name == navbar_menu
   end
 end

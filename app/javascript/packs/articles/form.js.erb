@@ -1,0 +1,26 @@
+$('#upload_chat_button').click(function(){
+  $('#upload_chat').click();
+  return false;
+});
+
+
+
+$('#upload_chat').on('change', function(){
+  var file = $(this).prop('files')[0];
+  var formData = new FormData();
+  formData.append('images', file);
+
+  // urlに関してはいい感じに修正したい
+  $.ajax(`/articles/${$(this).data('id')}/images` , {
+    type: 'POST',
+    beforeSend: (xhr) => {
+      xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+    },
+    cache       : false,
+    contentType : false,
+    processData: false,
+    data: formData
+  })
+
+  return false;
+});

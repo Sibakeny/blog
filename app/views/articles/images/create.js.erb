@@ -1,3 +1,9 @@
 $('#blog-edit-image-container').replaceWith("<%= escape_javascript(render('articles/images/form_image_container', article: @article)) %>")
 $('#image-file-field').val("")
+var $form = $('.article-body-form')
+var formValue = $form.val()
+var cursorPosition = $form.get(0).selectionStart
+var newFormValue = formValue.substr(0, cursorPosition) + "<%= markdown_image_url(@article.images.last) %>" + formValue.substr(cursorPosition)
+
+$form.val(newFormValue)
 toastr.success("ファイルをアップロードしました。");
