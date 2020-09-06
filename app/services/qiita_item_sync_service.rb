@@ -11,7 +11,8 @@ class QiitaItemSyncService
   def sync_items
     @item_params.each do |params|
       # qiita apiの使用で記事一覧を取得する際はpv数を取得できないので記事単体の情報を毎回取得している
-      article_detail_params = JSON.parse(@client.fetch_item(item_id: params['id']).body)
+      res = @client.fetch_item(item_id: params['id'])
+      article_detail_params = JSON.parse(res.body)
       article = Article.find_by(qiita_item_id: params['id'])
       if article
         article.update!(title: article_detail_params['title'], body: article_detail_params['body'])

@@ -46,7 +46,7 @@ gem 'chartkick'
 gem 'breadcrumbs_on_rails'
 
 # Qiita API
-gem 'qiita-sdk', '~> 0.6.0'
+gem 'qiita-sdk', '~> 0.7.0'
 
 
 gem 'reverse_markdown'

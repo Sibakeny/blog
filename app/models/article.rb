@@ -38,7 +38,7 @@ class Article < ApplicationRecord
   end
 
   # qiitaのpv数
-  def page_view
+  def qiita_page_view
     qiita_stats.order(created_at: :desc).first.page_view_count
   end
 

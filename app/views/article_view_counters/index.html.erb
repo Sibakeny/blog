@@ -11,7 +11,11 @@
     <div class="card p-3 mb-5 d-flex flex-column justify-content-between" style="width: 300px">
       <div>
         <p><%= article.title %></p>
-        <p class="text-muted text-right"><%= article.pv %>pv</p>
+        <div class='d-flex justify-content-end'>
+          <p class="text-muted text-right mr-4">SITE: <%= article.pv %>pv</p>
+          <p class="text-muted text-right">QIITA: <%= article.qiita_page_view %>pv</p>
+
+        </div>
       </div>
       <%= link_to "チャート詳細", article_view_counters_article_path(article), class: 'btn btn-primary btn-sm' %>
     </div>
