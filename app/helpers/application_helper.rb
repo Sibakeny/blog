@@ -12,6 +12,7 @@ module ApplicationHelper
   end
 
   def sidebar_active(navbar_menu)
-    'active' if controller.controller_name == navbar_menu
+    path = Rails.application.routes.recognize_path(request.url)
+    'active' if path[:controller] =~ /^#{navbar_menu}/
   end
 end

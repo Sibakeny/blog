@@ -35,12 +35,12 @@ class Article < ApplicationRecord
 
   # qiitaのいいねの数
   def like_count
-    qiita_stats.order(created_at: :desc).first&.like_count
+    qiita_stats.sort_by { |s| s.created_at }.last&.like_count
   end
 
   # qiitaのpv数
   def qiita_page_view
-    qiita_stats.order(created_at: :desc).first&.page_view_count
+    qiita_stats.sort_by { |s| s.created_at }.last&.page_view_count
   end
 
   # qiitaと自分のサイトのpv数の合計が多い記事を10件取得
