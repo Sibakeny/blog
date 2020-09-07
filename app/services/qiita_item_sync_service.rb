@@ -1,10 +1,17 @@
 class QiitaItemSyncService
+  attr_accessor :total_sync_count, :new_sync_article_count
+
+  def initialize
+    @new_sync_article_count = 0
+  end
+
   def read_items
     @client = Qiita::Sdk::Client.new do |config|
       config.access_token = ENV['QIITA_ACCESS_TOKEN']
     end
     res = @client.fetch_user_items(user_id: 'sibakenY')
     @item_params = JSON.parse(res.body)
+    @total_sync_count = @item_params.length
   end
 
   def sync_items
@@ -16,7 +23,8 @@ class QiitaItemSyncService
       if article
         article.update!(title: article_detail_params['title'], body: article_detail_params['body'])
       else
-        article = Article.create!(title: article_detail_params['title'], body: article_detail_params['body'])
+        @new_sync_article_count += 1
+        article = Article.create!(title: article_detail_params['title'], body: article_detail_params['body'], qiita_item_id: params['id'])
       end
       # TODO: 一日に一つしか作成されない様にする
       article.qiita_stats.create!(page_view_count: article_detail_params['page_views_count'], like_count: article_detail_params['likes_count'])

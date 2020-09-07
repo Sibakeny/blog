@@ -1,1 +1,2 @@
 toastr.success("記事の同期が完了しました。");
+$('.result-container').html("<%= escape_javascript(render 'sync_detail', total_sync_count: @total_sync_count, new_sync_article_count: @new_sync_article_count) %>")
