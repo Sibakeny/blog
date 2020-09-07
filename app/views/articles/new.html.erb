@@ -1,4 +1,4 @@
-<div class='container-fluid'>
+<div class='container-fluid article-form-container'>
   <%= form_with model: @article_form, url: articles_path, local: true do |f| %>
     <%= render 'articles/form/article_form', f: f %>
     <%= render 'articles/form/categories_form', f: f %>
