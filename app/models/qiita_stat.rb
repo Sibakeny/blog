@@ -1,3 +1,3 @@
 class QiitaStat < ApplicationRecord
-  belongs :articles
+  belongs_to :articles
 end

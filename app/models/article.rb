@@ -89,6 +89,6 @@ class Article < ApplicationRecord
 
   # チャート表示用に日付ごとのqiita_article_view_counterの数を返す
   def self.qiita_chart_values_by_date
-    Article.joins(:qiita_stats).select("DATE_FORMAT(qiita_stats.created_at, '%Y-%m-%d') as time, qiita_stats.page_view_count as sum").order('time asc').limit(30)
+    QiitaStat.all.group(' date_format(created_at, "%Y-%m-%d")').select('sum(page_view_count) sum, date_format(created_at, "%Y-%m-%d") time')
   end
 end
