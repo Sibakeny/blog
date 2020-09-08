@@ -1,19 +1,21 @@
-<h3 class='card p-3 border text-muted mb-4'>カテゴリ一覧</h3>
-<div class="text-right mb-5">
-  <%= link_to '追加', new_category_path, class: 'btn btn-primary'%>
-</div>
-<table class="table">
-  <tr>
-    <th>カテゴリー名</th>
-    <th>カテゴリー分類</th>
-    <th></th>
-  </tr>
+<div class='container'>
+  <h3 class='card p-3 border text-muted mb-4'>カテゴリ一覧</h3>
+  <div class="text-right mb-5">
+    <%= link_to '追加', new_category_path, class: 'btn btn-primary'%>
+  </div>
+  <table class="table">
+    <tr>
+      <th>カテゴリー名</th>
+      <th>カテゴリー分類</th>
+      <th></th>
+    </tr>
 
-  <% @categories.each do |category| %>
-  <tr>
-    <td><%= category.name %></td>
-    <td><%= category.category_type_i18n %></td>
-    <td><%= link_to '削除', category_path(category), method: :delete, class: 'btn btn-sm btn-danger' %></td>
-  </tr>
-  <% end %>
-</table>
+    <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.name %></td>
+      <td><%= category.category_type_i18n %></td>
+      <td><%= link_to '削除', category_path(category), method: :delete, class: 'btn btn-sm btn-danger' %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
