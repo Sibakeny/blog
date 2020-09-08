@@ -2,10 +2,13 @@
 @import "~toastr/toastr";
 @import "./breadcrumb.scss";
 @import "./sidemenu.scss";
-@import "./shared.scss";
 @import "./articles.scss";
 @import './code-block.scss';
 @import './markdown.scss';
+@import './article/table.scss';
+@import './shared/shared.scss';
+@import './shared/button.scss';
+@import './article/stats.scss';
 
 body .page-content {
   font-family: "YuGothic", "Meiryo UI";

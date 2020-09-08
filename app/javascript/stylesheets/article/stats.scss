@@ -1,0 +1,38 @@
+.article-stats-container {
+  display: flex;
+  justify-content: center;
+
+  .article-stats-inner-container {
+    width: 80%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .stats-block {
+    width: 30%;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(black, 0.2);
+    margin: 0 auto;
+    overflow: hidden;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    flex-direction: column;
+  }
+
+  .green-card {
+    background-color: #40f56a94;
+  }
+
+  .pink-card {
+    background-color: #f9597580;
+  }
+
+  .blue-card {
+    background-color: #b3b3ffcc;
+  }
+}
