@@ -1,7 +1,11 @@
 <div class="container">
   <div class='d-flex justify-content-end mb-4'>
-    <%= link_to '編集', edit_article_path(@article), class: 'btn btn-success' %>
-    <%= link_to '削除', article_path(@article), method: :delete, class: 'btn btn-secondary' %>
+    <%= link_to  edit_article_path(@article), class: 'btn text-muted' do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
+    <%= link_to article_path(@article), method: :delete, class: 'btn text-muted' do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
   </div>
 
   <h1 class='mb-5'>
