@@ -6,3 +6,21 @@
 img {
   max-width: 100%;
 }
+
+.page-item {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.page-item-round a {
+  border-radius: 50% !important;
+}
+
+.page-item.active .page-link {
+  background-color: #5ef680;
+  color: white !important;
+}
+
+.page-link {
+  border-color: #5ef680 !important;
+  color: #5ef680 !important;
+}
