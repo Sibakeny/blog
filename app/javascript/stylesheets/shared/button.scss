@@ -33,15 +33,20 @@ html {
   border-radius: 0.5rem;
 }
 
+.custom-btn:hover {
+  text-decoration: none;
+  color: white;
+}
+
 
 a.btn--red.btn--cubic {
-  background-color: #40f56a94;
-  border-bottom: 5px solid #40f56ad8;
+  background-color: #5ef680;
+  border-bottom: 5px solid #2d8e44d8;
 }
 
 a.btn--red.btn--cubic:hover {
   margin-top: 3px;
-  border-bottom: 2px solid #40f56ad8;
+  border-bottom: 2px solid #2d8e44d8;
 }
 
 a.btn--radius {
