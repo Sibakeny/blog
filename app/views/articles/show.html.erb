@@ -3,7 +3,7 @@
     <%= link_to  edit_article_path(@article), class: 'btn text-muted' do %>
       <i class="fas fa-edit"></i>
     <% end %>
-    <%= link_to article_path(@article), method: :delete, class: 'btn text-muted' do %>
+    <%= link_to article_path(@article), method: :delete, class: 'btn text-muted', data: { confirm: 'この記事を削除します。' } do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
   </div>
