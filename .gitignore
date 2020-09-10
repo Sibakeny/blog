@@ -48,3 +48,6 @@ yarn-debug.log*
 /vendor
 
 .env
+
+.localhost.pem
+.localhost-key.pem
