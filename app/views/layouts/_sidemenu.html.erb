@@ -1,0 +1,124 @@
+<nav id="sidebar" class="sidebar-wrapper">
+      <div class="sidebar-content">
+        <div class="sidebar-brand">
+          <div id="close-sidebar">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+        <div class="sidebar-header">
+          <div class="user-pic">
+            <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg" alt="User picture">
+          </div>
+          <div class="user-info">
+            <span class="user-name">Jhon
+              <strong>Smith</strong>
+            </span>
+            <span class="user-role">Administrator</span>
+            <span class="user-status">
+              <i class="fa fa-circle"></i>
+              <span>Online</span>
+            </span>
+          </div>
+        </div>
+        <!-- sidebar-search  -->
+        <div class="sidebar-menu">
+          <ul>
+            <li class="header-menu">
+              <span>Qiita</span>
+            </li>
+            <li class="sidebar <%= sidebar_active('qiita_syncs') %>">
+              <%= link_to qiita_syncs_path do %>
+              <i class="fas fa-sync-alt"></i>
+              <span>記事同期</span>
+              <% end %>
+            </li>
+            <li class="header-menu">
+              <span>General</span>
+            </li>
+            <li class="sidebar <%= sidebar_active('home') %>">
+              <%= link_to root_path do %>
+              <i class="fas fa-home"></i>
+              <span>Home</span>
+              <% end %>
+            </li>
+            <li class="sidebar <%= sidebar_active('articles') %>">
+              <%= link_to articles_path do %>
+              <i class="fas fa-newspaper"></i>
+              <span>Articles</span>
+              <% end %>
+            </li>
+            <li class="sidebar <%= sidebar_active('article_view_counters') %>">
+              <%= link_to article_view_counters_path do %>
+              <i class="fas fa-chart-line"></i>
+              <span>Charts</span>
+              <% end %>
+            </li>
+            <li class="sidebar <%= sidebar_active('categories') %>">
+              <%= link_to categories_path do %>
+              <i class="fas fa-tag"></i>
+              <span>Categories</span>
+              <% end %>
+            </li>
+            <%
+=begin%>
+ <li class="header-menu">
+              <span>Extra</span>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-book"></i>
+                <span>Documentation</span>
+                <span class="badge badge-pill badge-primary">Beta</span>
+              </a>
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="#">
+                <i class="fa fa-shopping-cart"></i>
+                <span>E-commerce</span>
+                <span class="badge badge-pill badge-danger">3</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Products
+
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">Orders</a>
+                  </li>
+                  <li>
+                    <a href="#">Credit cart</a>
+                  </li>
+                </ul>
+              </div>
+            </li> 
+<%
+=end%>
+          </ul>
+        </div>
+        <!-- sidebar-menu  -->
+      </div>
+      <!-- sidebar-content  -->
+      <%
+=begin%>
+ <div class="sidebar-footer">
+        <a href="#">
+          <i class="fa fa-bell"></i>
+          <span class="badge badge-pill badge-warning notification">3</span>
+        </a>
+        <a href="#">
+          <i class="fa fa-envelope"></i>
+          <span class="badge badge-pill badge-success notification">7</span>
+        </a>
+        <a href="#">
+          <i class="fa fa-cog"></i>
+          <span class="badge-sonar"></span>
+        </a>
+        <a href="#">
+          <i class="fa fa-power-off"></i>
+        </a>
+      </div> 
+<%
+=end%>
+    </nav>

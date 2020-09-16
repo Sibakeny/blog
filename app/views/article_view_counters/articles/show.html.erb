@@ -4,7 +4,7 @@
     <%= line_chart [{name: 'メイン', data: @article_chart_values}, {name: 'Qiita', data: @qiita_chart_values}] %>
   </div>
   <blockquote></blockquote>
-  <div class="mt-5">
+  <div class="mt-5 markdown-container ">
     <h2 class="border-bottom mb-3"><%= @article.title %></h2>
     <%= markdown(@article.body).html_safe %>
   </div>

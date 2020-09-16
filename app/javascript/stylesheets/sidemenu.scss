@@ -128,6 +128,7 @@ body {
   height: calc(100% - 30px);
   overflow-y: auto;
   position: relative;
+  background: white;
 }
 
 .sidebar-content.desktop {
@@ -428,6 +429,10 @@ body {
   color: black;
 }
 
+.sidebar.active a {
+  color: white !important;
+}
+
 .chiller-theme .sidebar-wrapper .sidebar-menu ul li:hover > a,
 .chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active > a,
 .chiller-theme .sidebar-wrapper .sidebar-header .user-info,
@@ -456,7 +461,8 @@ body {
 }
 
 .chiller-theme .sidebar-wrapper .sidebar-menu .sidebar.active {
-  background-color: #00ff39;
+  background-color: #0062cc;
+  color: white !important;
 }
 
 .chiller-theme .sidebar-wrapper .sidebar-menu ul li a i,

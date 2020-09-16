@@ -10,6 +10,10 @@
 @import './shared/button.scss';
 @import './article/stats.scss';
 
+body {
+  background: #9e9d9d3b;
+}
+
 body .page-content {
   font-family: "YuGothic", "Meiryo UI";
 }

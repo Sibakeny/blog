@@ -2,9 +2,10 @@ table.article-table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
+  background: white;
 
   .heading {
-    background-color: #e6e6e6;
+    border-bottom: 2px solid gray;
 
     .like  {
       width: 150px;
@@ -31,7 +32,7 @@ table.article-table {
   }
 
   tr.table-hover-action:hover {
-    background-color: #00ff3930;
+    background-color: #0062cc30;
   }
 
   th,table td {
