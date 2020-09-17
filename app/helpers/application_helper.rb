@@ -18,10 +18,10 @@ module ApplicationHelper
 
   def total_pv
     ArticleViewCounter.all.count +
-    QiitaStat.all.group(' date_format(created_at, "%Y-%m-%d")').select('sum(page_view_count) sum, date_format(created_at, "%Y-%m-%d") created_at_date').to_a.last.sum
+    (QiitaStat.all.group(' date_format(created_at, "%Y-%m-%d")').select('sum(page_view_count) sum, date_format(created_at, "%Y-%m-%d") created_at_date').to_a.last&.sum || 0)
   end
 
   def total_like
-    QiitaStat.all.group(' date_format(created_at, "%Y-%m-%d")').select('sum(like_count) sum, date_format(created_at, "%Y-%m-%d") time').to_a.last.sum
+    QiitaStat.all.group(' date_format(created_at, "%Y-%m-%d")').select('sum(like_count) sum, date_format(created_at, "%Y-%m-%d") time').to_a.last&.sum || 0
   end
 end

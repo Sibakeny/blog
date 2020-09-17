@@ -21,7 +21,7 @@ class ArticleForm
   def save
     # return false if valid?
 
-    @article.assign_attributes(article_params)
+    @article.assign_attributes(article_params.merge(is_draft: false))
     assign_categories_attributes
 
     # mark_for_destruction的なことができなかったのでここで一つ一つ削除

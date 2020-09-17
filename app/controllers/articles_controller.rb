@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
   add_breadcrumb '記事一覧', :articles_path
 
   def index
-    @articles = Article.all.includes(:qiita_stats).order(created_at: :desc).page(params[:page]).per(16)
+    @articles = Article.where(is_draft: false).includes(:qiita_stats).order(created_at: :desc).page(params[:page]).per(16)
   end
 
   def show
