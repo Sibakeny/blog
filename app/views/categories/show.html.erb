@@ -1,0 +1,39 @@
+<div class='container'>
+  <div class='card p-4 mb-5'>
+    <h3 class='border-bottom'><%= @category.name %></h3>
+
+    <div class='article-stats-container mb-5 mt-5'>
+      <div class='article-stats-inner-container'>
+        <div class='stats-block green-card'>
+          <p>合計PV数</p>
+          <p class='pv'><%= total_pv %> <i class="fas fa-eye"></i></p>
+        </div>
+        <div class='stats-block pink-card'>
+          <p>合計いいね数</p>
+          <p class='like'><%= total_like %> <i class="fas fa-heart"></i></p>
+        </div>
+        <div class='stats-block blue-card'>
+          <p>合計コメント数</p>
+          <p class='comment'>100 <i class="fas fa-comment"></i></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='card p-4'>
+    <h3 class='border-bottom mb-2'>関連記事一覧</h3>
+
+    <div class='d-flex flex-column'>
+      <% @category.articles.each do |article| %>
+        <div class='d-flex justify-content-between' style="line-height: 30px">
+          <div>
+            <%= link_to article.title, article_path(article) %>
+          </div>
+          <div>
+            <small>サイト: <%= article.pv %>PV QIITA: <%= article.qiita_page_view %>PV <%= article.like_count %>いいね</small>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

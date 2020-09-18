@@ -14,15 +14,17 @@
       </tr>
 
       <% @categories.each do |category| %>
-      <tr class='table-hover-action table-content'>
-        <td><%= category.name %></td>
-        <td><%= category.category_type_i18n %></td>
-        <td class='text-right'>
-          <%= link_to category_path(category), method: :delete, class: 'btn text-muted', data: { confirm: 'この記事を削除します。' }  do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
-        </td>
-      </tr>
+        <tr class='table-hover-action table-content'>
+          <td>
+            <%= link_to category.name, category_path(category), style: 'text-decoration: none; color: black;' %>
+          </td>
+          <td><%= category.category_type_i18n %></td>
+          <td class='text-right'>
+            <%= link_to category_path(category), method: :delete, class: 'btn text-muted', data: { confirm: 'この記事を削除します。' }  do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
     </table>
   </div>

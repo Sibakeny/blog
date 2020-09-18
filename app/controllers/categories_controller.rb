@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:destroy]
+  before_action :set_category, only: [:show, :destroy]
 
   add_breadcrumb 'HOME', :root_path
   add_breadcrumb 'カテゴリ一覧', :categories_path
@@ -22,6 +22,9 @@ class CategoriesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
   end
 
   def destroy
