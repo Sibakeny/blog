@@ -35,6 +35,16 @@ class ArticleForm
     end
 
     @article.save
+
+    update_qiita
+  end
+
+  def update_qiita
+    client = Qiita::Sdk::Client.new do |config|
+      config.access_token = ENV['QIITA_ACCESS_TOKEN']
+    end
+
+    res = client.update_item(item_id: @article.qiita_item_id, title: @article.title, body: @article.body)
   end
 
   private
