@@ -10,6 +10,7 @@ ja:
         category: カテゴリー
         category_language: 言語
         category_framework: フレームワーク
+        qiita_item_id: Qiita記事ID
       category:
         name: カテゴリー名
         category_type: カテゴリー分類

@@ -1,0 +1,7 @@
+<%= f.fields_for :article, f.object.article do |ff| %>
+  <div class='form-group'>
+    <%= ff.label :qiita_item_id %>
+    <%= ff.text_field :qiita_item_id, class: 'form-control' %>
+    <%= form_validation_message(f.object.article, :qiita_itme_id) %>
+  </div>
+<% end %>
