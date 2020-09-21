@@ -1,0 +1,2 @@
+module Articles::ConfirmsHelper
+end

@@ -58,3 +58,20 @@ a.btn--radius {
   top: calc(50% - .5em);
   right: 1rem;
 }
+
+.submit-button {
+  background-color: #0C9;
+  color: white;
+  border: 1px solid rgb(1, 92, 69);
+  border-radius: 0px !important;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 4px 12px;
+}
+
+.cancel-button {
+  border: 1px solid gray;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 4px 12px;
+}

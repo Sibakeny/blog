@@ -1,5 +1,5 @@
 <div class='container-fluid article-form-container'>
-  <%= form_with model: @article_form, url: articles_path, local: true do |f| %>
+  <%= form_with model: @article_form, url: new_modal_confirm_path do |f| %>
     <%= render 'articles/form/article_form', f: f %>
     <div class='card p-3'>
       <%= render 'articles/form/categories_form', f: f %>

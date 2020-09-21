@@ -12,6 +12,15 @@ Rails.application.routes.draw do
     scope module: :articles do
       resources :images
     end
+
+    collection do
+      scope module: :articles do
+        resource :confirm, only: [] do
+          post :new_modal
+          post :update_modal
+        end
+      end
+    end
   end
 
   resources :categories

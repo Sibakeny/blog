@@ -19,8 +19,6 @@ gem 'webpacker', '~> 4.0'
 gem 'active_model_serializers'
 gem 'rack-cors'
 
-gem 'jquery-ui-rails'
-
 # マークダウン関連
 gem 'coderay'
 gem 'redcarpet'

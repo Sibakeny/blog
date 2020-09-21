@@ -1,0 +1,30 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <%= form_with url: articles_path do |f| %>
+      <%= f.hidden_field 'article_form[article][id]', value: article_form[:article][:id] %>
+      <%= f.hidden_field 'article_form[article][title]', value: article_form[:article][:tilte] %>
+      <%= f.hidden_field 'article_form[article][body]', value: article_form[:article][:body] %>
+      <% article_form[:categories][:ids]&.each do |id| %>
+        <%= f.hidden_field 'article_form[categories][ids][]', value: id %>
+      <% end %>
+      <div class="modal-content">
+        <div class="modal-body">
+          <p class='mb-3 border-bottom'>共有するサイトを選択してください</p>
+          <li>
+            <%= f.check_box :post_qiita, { class: 'form-check-input' }, true, false %>
+            <%= f.label :post_qiita, "Qiita", class: "form-check-label" %>
+          </li>
+          <li>
+            <%= f.check_box :post_twitter, { class: 'form-check-input' }, true, false %>
+            <%= f.label :post_twitter, "Twitter", class: "form-check-label" %>
+          </li>
+
+          <div class='d-flex justify-content-end'>
+            <button type="submit" class="submit-button">投稿する</button>
+            <button type="button" class="cancel-button" data-dismiss="modal">キャンセル</button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
