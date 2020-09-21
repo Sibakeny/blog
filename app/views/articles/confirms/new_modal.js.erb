@@ -1,3 +1,3 @@
-$('body').append('<div id="confirm-modal"></div>')
+$('body').append('<div id="confirm-modal" class="modal-container"></div>')
 $("#confirm-modal").html("<%= escape_javascript(render 'new_modal', article_form: @article_form, post_to_qiita: @post_to_qiita) %>")
 $("#confirm-modal .modal").modal("show")
