@@ -1,0 +1,28 @@
+<div class='container'>
+  <div class="text-right mb-5">
+    <%= link_to new_admin_category_path, class: 'custom-btn btn--red btn--radius btn--cubic' do %>
+      カテゴリー作成
+      <i class="fas fa-angle-right fa-position-right"></i>
+    <% end %>
+  </div>
+  <div class='card p-5'>
+    <div class='custom-table'>
+      <div class='custom-table-row custom-table-heading'>
+        <div class='custom-table-column'>
+          カテゴリー名
+        </div>
+        <div class="custom-table-column">カテゴリー分類</div>
+        <div class="custom-table-column"></div>
+      </div>
+      <% @categories.each do |category| %>
+        <%= link_to admin_category_path(category), class: 'custom-table-row table-hover-action table-content' do %>
+          <div class='custom-table-column'>
+            <%= category.name %>
+          </div>
+          <div class="custom-table-column"><%= category.category_type_i18n %></div>
+          <div class="custom-table-column"></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

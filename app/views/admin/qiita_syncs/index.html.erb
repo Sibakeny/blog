@@ -1,0 +1,13 @@
+<div class='container-fluid'>
+  <h3 class='card p-3 border text-muted mb-4'>記事同期</h3>
+
+  <% if qiita_already_synced_today? %>
+    <p>記事の同期は本日すでに行われました。</p>
+    <p>記事の同期は一日に一回のみ行えます。</p>
+  <% else %>
+    <%= link_to  '同期実行', sycn_items_admin_qiita_syncs_path, class: 'btn btn-success', remote: true %>
+  <% end %>
+
+  <div class='result-container'>
+  </div>
+</div>

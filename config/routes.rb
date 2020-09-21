@@ -2,37 +2,39 @@
 
 Rails.application.routes.draw do
 
-  resources :qiita_syncs, only: [:index] do
-    collection do
-      get :sycn_items
-    end
-  end
-
-  resources :articles do
-    scope module: :articles do
-      resources :images
+  namespace :admin do
+    resources :qiita_syncs, only: [:index] do
+      collection do
+        get :sycn_items
+      end
     end
 
-    collection do
+    resources :articles do
       scope module: :articles do
-        resource :confirm, only: [] do
-          post :new_modal
-          post :update_modal
+        resources :images
+      end
+
+      collection do
+        scope module: :articles do
+          resource :confirm, only: [] do
+            post :new_modal
+            post :update_modal
+          end
         end
       end
     end
+
+    resources :categories
+
+    get 'login', to: 'sessions#new'
+
+    resource :session
+
+    namespace :article_view_counters do
+      resources :articles
+    end
+    resources :article_view_counters
   end
-
-  resources :categories
-
-  get 'login', to: 'sessions#new'
-
-  resource :session
-
-  namespace :article_view_counters do
-    resources :articles
-  end
-  resources :article_view_counters
 
   namespace :api do
     resources :charts
@@ -64,6 +66,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'home#index'
+  root to: 'admin/home#index'
 
 end

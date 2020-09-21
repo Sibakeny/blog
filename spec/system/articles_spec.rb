@@ -26,19 +26,19 @@ RSpec.describe 'Articles', type: :system do
       login(@user)
     end
     it '記事一覧が表示されること' do
-      visit articles_path
+      visit admin_articles_path
       expect(page).to have_content 'first_article'
       expect(page).to have_content 'second_article'
     end
 
     it '記事が作成日時の降順で表示されていること' do
-      visit articles_path
+      visit admin_articles_path
       expect(find('.table').all('tr')[1]).to have_content 'second_article'
       expect(find('.table').all('tr')[2]).to have_content 'first_article'
     end
 
     it '記事の削除が行えること' do
-      visit articles_path
+      visit admin_articles_path
       find('.table').all('tr')[1].click_link('削除')
       expect(page).to_not have_content 'second_article'
       expect(page).to have_content 'first_article'
@@ -51,12 +51,12 @@ RSpec.describe 'Articles', type: :system do
     end
 
     it '記事の詳細画面が表示されること' do
-      visit articles_path
+      visit admin_articles_path
       find('.table').all('tr')[1].click_link('表示')
       expect(page).to have_content 'second_article'
       expect(page).to have_content 'body'
 
-      visit articles_path
+      visit admin_articles_path
       find('.table').all('tr')[2].click_link('表示')
       expect(page).to have_content 'first_article'
       expect(page).to have_content 'body'
@@ -70,7 +70,7 @@ RSpec.describe 'Articles', type: :system do
     end
 
     it '記事の編集ができること' do
-      visit articles_path
+      visit admin_articles_path
       find('.table').all('tr')[1].click_link('編集')
       expect(page).to have_content 'second_article'
       expect(page).to have_content 'body'
@@ -86,7 +86,7 @@ RSpec.describe 'Articles', type: :system do
     it '画像のアップロードができること' do
       expect(@article.images.attached?).to be_falsy
 
-      visit edit_article_path(@article)
+      visit edit_admin_article_path(@article)
       attach_file 'image-file-field', "#{Rails.root}/spec/files/test-image.jpg", make_visible: true
       click_button 'アップロード'
 
@@ -100,7 +100,7 @@ RSpec.describe 'Articles', type: :system do
 
     context 'タイトルが空の場合' do
       it '記事の作成が失敗すること' do
-        visit edit_article_path(@article)
+        visit edit_admin_article_path(@article)
 
         expect do
           fill_in 'タイトル', with: ''
@@ -115,7 +115,7 @@ RSpec.describe 'Articles', type: :system do
 
     context '本文がからの場合' do
       it '記事の作成が失敗すること' do
-        visit edit_article_path(@article)
+        visit edit_admin_article_path(@article)
 
         expect do
           fill_in 'タイトル', with: 'new title'
@@ -135,7 +135,7 @@ RSpec.describe 'Articles', type: :system do
     end
 
     it '記事の作成ができること' do
-      visit articles_path
+      visit admin_articles_path
       click_link '作成'
 
       fill_in 'タイトル', with: 'new title'
@@ -150,7 +150,7 @@ RSpec.describe 'Articles', type: :system do
 
     context 'タイトルが空の場合' do
       it '記事の作成が失敗すること' do
-        visit articles_path
+        visit admin_articles_path
         click_link '作成'
 
         expect do
@@ -165,7 +165,7 @@ RSpec.describe 'Articles', type: :system do
 
     context '本文がからの場合' do
       it '記事の作成が失敗すること' do
-        visit articles_path
+        visit admin_articles_path
         click_link '作成'
 
         expect do

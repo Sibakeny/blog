@@ -27,7 +27,7 @@
               <span>Qiita</span>
             </li>
             <li class="sidebar <%= sidebar_active('qiita_syncs') %>">
-              <%= link_to qiita_syncs_path do %>
+              <%= link_to admin_qiita_syncs_path do %>
               <i class="fas fa-sync-alt"></i>
               <span>記事同期</span>
               <% end %>
@@ -42,19 +42,19 @@
               <% end %>
             </li>
             <li class="sidebar <%= sidebar_active('articles') %>">
-              <%= link_to articles_path do %>
+              <%= link_to admin_articles_path do %>
               <i class="fas fa-newspaper"></i>
               <span>Articles</span>
               <% end %>
             </li>
             <li class="sidebar <%= sidebar_active('article_view_counters') %>">
-              <%= link_to article_view_counters_path do %>
+              <%= link_to admin_article_view_counters_path do %>
               <i class="fas fa-chart-line"></i>
               <span>Charts</span>
               <% end %>
             </li>
             <li class="sidebar <%= sidebar_active('categories') %>">
-              <%= link_to categories_path do %>
+              <%= link_to admin_categories_path do %>
               <i class="fas fa-tag"></i>
               <span>Categories</span>
               <% end %>
