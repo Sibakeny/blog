@@ -6,26 +6,23 @@
     <% end %>
   </div>
   <div class='card p-5'>
-    <table class="table article-table">
-      <tr class='heading'>
-        <th>カテゴリー名</th>
-        <th>カテゴリー分類</th>
-        <th></th>
-      </tr>
-
+    <div class='custom-table'>
+      <div class='custom-table-row custom-table-heading'>
+        <div class='custom-table-column'>
+          カテゴリー名
+        </div>
+        <div class="custom-table-column">カテゴリー分類</div>
+        <div class="custom-table-column"></div>
+      </div>
       <% @categories.each do |category| %>
-        <tr class='table-hover-action table-content'>
-          <td>
-            <%= link_to category.name, category_path(category), style: 'text-decoration: none; color: black;' %>
-          </td>
-          <td><%= category.category_type_i18n %></td>
-          <td class='text-right'>
-            <%= link_to category_path(category), method: :delete, class: 'btn text-muted', data: { confirm: 'この記事を削除します。' }  do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end %>
-          </td>
-        </tr>
+        <%= link_to category_path(category), class: 'custom-table-row table-hover-action table-content' do %>
+          <div class='custom-table-column'>
+            <%= category.name %>
+          </div>
+          <div class="custom-table-column"><%= category.category_type_i18n %></div>
+          <div class="custom-table-column"></div>
+        <% end %>
       <% end %>
-    </table>
+    </div>
   </div>
 </div>
