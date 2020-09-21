@@ -3,9 +3,11 @@ class ArticleForm
 
   attr_accessor :article, :categories
 
-  def initialize(article: nil, params: {})
+  def initialize(article: nil, params: {}, post_qiita: false, post_twitter: false)
     @params = params
     @article = article || Article.create(title: '', body: '')
+    @post_qiita = post_qiita
+    @post_twitter = post_twitter
   end
 
   def assign_categories_attributes
@@ -36,7 +38,7 @@ class ArticleForm
 
     @article.save
 
-    update_qiita
+    update_qiita if @post_qiita
   end
 
   def update_qiita
@@ -45,7 +47,12 @@ class ArticleForm
     end
 
     # TODO: エラー処理
-    client.update_item(item_id: @article.qiita_item_id, title: @article.title, body: @article.body)
+    if @article.qiita_item_id.present?
+      client.update_item(item_id: @article.qiita_item_id, title: @article.title, body: @article.body)
+    else
+      res = client.post_item(title: @article.title, body: @article.body)
+      debugger
+    end
   end
 
   private

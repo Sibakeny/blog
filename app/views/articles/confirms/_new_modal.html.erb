@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <%= form_with url: articles_path do |f| %>
       <%= f.hidden_field 'article_form[article][id]', value: article_form[:article][:id] %>
-      <%= f.hidden_field 'article_form[article][title]', value: article_form[:article][:tilte] %>
+      <%= f.hidden_field 'article_form[article][title]', value: article_form[:article][:title] %>
       <%= f.hidden_field 'article_form[article][body]', value: article_form[:article][:body] %>
       <% article_form[:categories][:ids]&.each do |id| %>
         <%= f.hidden_field 'article_form[categories][ids][]', value: id %>
