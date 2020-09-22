@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ブログ管理画面</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%#= stylesheet_link_tag "application" %>
+  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/solarized-dark.min.css">
+
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+  <div class="page-wrapper chiller-theme toggled">
+    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+      <i class="fas fa-bars"></i>
+    </a>
+    <%= render 'layouts/sidemenu' %>
+    <!-- sidebar-wrapper  -->
+    <main class="page-content">
+        <%= render 'layouts/flash' %>
+        <%= yield %>
+    </main>
+    <!-- page-content" -->
+  </div>
+  <%= javascript_pack_tag 'shared/sidebar.js' %>
+  <%= javascript_pack_tag 'shared/modal.js' %>
+</body>
+
+</html>

@@ -6,6 +6,9 @@ class Admin::ArticlesController < Admin::Base
   add_breadcrumb 'HOME', :root_path
   add_breadcrumb '記事一覧', :admin_articles_path
 
+  layout 'layouts/admin'
+
+
   def index
     @articles = Article.where(is_draft: false).includes(:qiita_stats).order(created_at: :desc).page(params[:page]).per(16)
   end
