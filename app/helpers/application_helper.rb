@@ -13,7 +13,7 @@ module ApplicationHelper
 
   def sidebar_active(navbar_menu)
     path = Rails.application.routes.recognize_path(request.url)
-    'active' if path[:controller] =~ /^#{navbar_menu}/
+    'active' if path[:controller] =~ /^admin\/#{navbar_menu}/
   end
 
   def total_pv
