@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::Base < ApplicationController
+class Admin::Base < ActionController::Base
   include Authentication
 
   before_action :authorize
