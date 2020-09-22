@@ -1,0 +1,18 @@
+<div class='container'>
+  <div class='home-articles-container'>
+    <div class='articles-list-container'>
+      <% @articles.each do |article| %>
+        <div class='card article-list-card'>
+          <div class="bd-placeholder-img card-img-top article-card-image">
+            <%= image_tag 'default_article', style: 'height: 150px;' %>
+          </div>
+          <div class='card-body'>
+            <p><%= article.title %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class='article-sidebar'>
+    </div>
+  </div>
+</div>

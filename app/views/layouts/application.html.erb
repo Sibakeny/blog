@@ -18,20 +18,8 @@
 </head>
 
 <body>
-  <div class="page-wrapper chiller-theme toggled">
-    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
-      <i class="fas fa-bars"></i>
-    </a>
-    <%= render 'layouts/sidemenu' %>
-    <!-- sidebar-wrapper  -->
-    <main class="page-content">
-        <%= render 'layouts/flash' %>
-        <%= yield %>
-    </main>
-    <!-- page-content" -->
-  </div>
-  <%= javascript_pack_tag 'shared/sidebar.js' %>
-  <%= javascript_pack_tag 'shared/modal.js' %>
+  <%= render 'layouts/header' %>
+  <%= yield %>
 </body>
 
 </html>
