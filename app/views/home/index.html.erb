@@ -13,6 +13,18 @@
       <% end %>
     </div>
     <div class='article-sidebar'>
+      <div class='card'>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list-group-item-light">言語</li>
+          <% Category.language.each do |category| %>
+            <li class="list-group-item list-group-item-action"><%= category.name %></li>
+          <% end %>
+          <li class="list-group-item list-group-item-light">フレームワーク</li>
+          <% Category.framework.each do |category| %>
+            <li class="list-group-item list-group-item-action"><%= category.name %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
