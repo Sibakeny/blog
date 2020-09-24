@@ -1,0 +1,16 @@
+<div class='card'>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item list-group-item-light">言語</li>
+    <% Category.language.each do |category| %>
+      <%= link_to categorized_articles_path(category_id: category.id) do %>
+        <li class="list-group-item list-group-item-action"><%= category.name %></li>
+      <% end %>
+    <% end %>
+    <li class="list-group-item list-group-item-light">フレームワーク</li>
+    <% Category.framework.each do |category| %>
+      <%= link_to categorized_articles_path(category_id: category.id) do %>
+        <li class="list-group-item list-group-item-action"><%= category.name %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

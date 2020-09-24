@@ -1,5 +1,8 @@
 <div class='container'>
   <div class='home-articles-container'>
+    <div class='mb-5 text-center w-100'>
+      <h1><%= @category.name %> の記事一覧</h1>
+    </div>
     <div class='articles-list-container'>
       <% @articles.each do |article| %>
         <%= link_to article_path(article), class: 'card-link-wrapper' do %>

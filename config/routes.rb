@@ -68,6 +68,12 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :articles
+  resources :articles do
+    collection do
+      scope module: :articles do
+        resources :categorized_articles, only: [:index]
+      end
+    end
+  end
 
 end

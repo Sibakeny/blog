@@ -10,6 +10,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     max-width: 800px;
+    min-width: 800px;
     .article-list-card {
       width: 350px;
       height: 260px;
@@ -32,6 +33,12 @@
 
   .article-sidebar {
     width: 280px;
+    a {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: none;
+    }
   }
 }
 
