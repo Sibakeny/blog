@@ -1,4 +1,4 @@
-class Articles::CategorizedArticlesController < ApplicationController
+class Guest::Articles::CategorizedArticlesController < Guest::Base
 
   def index
     @category = Category.find(params[:category_id])

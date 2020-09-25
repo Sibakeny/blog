@@ -5,7 +5,7 @@
     </div>
     <div class='articles-list-container'>
       <% @articles.each do |article| %>
-        <%= link_to article_path(article), class: 'card-link-wrapper' do %>
+        <%= link_to guest_article_path(article), class: 'card-link-wrapper' do %>
           <div class='card article-list-card'>
             <div class="bd-placeholder-img card-img-top article-card-image">
               <%= image_tag 'default_article', style: 'height: 150px;' %>

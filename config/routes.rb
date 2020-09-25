@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
 
+  # 管理画面
   namespace :admin do
     root to: 'home#index'
 
@@ -68,12 +69,15 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'home#index'
+  # 表画面
+  root to: 'guest/home#index'
 
-  resources :articles do
-    collection do
-      scope module: :articles do
-        resources :categorized_articles, only: [:index]
+  namespace :guest do
+    resources :articles do
+      collection do
+        scope module: :articles do
+          resources :categorized_articles, only: [:index]
+        end
       end
     end
   end
