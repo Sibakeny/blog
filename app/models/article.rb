@@ -60,8 +60,9 @@ class Article < ApplicationRecord
 
   # サイトのpv数の多い記事を10件取得
   def self.site_populate_articles
-    Article.select('articles.*, max(qiita_stats.page_view_count) pv')
-           .left_joins(:qiita_stats).group('articles.id').order('pv desc').limit(10)
+    Article.select('articles.*, count(article_view_counters.id) pv')
+           .left_joins(:article_view_counters)
+           .group('articles.id').order('pv desc').limit(10)
   end
 
   # Qiitaのpv数の多い記事を10件取得
