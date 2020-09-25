@@ -51,7 +51,6 @@ class ArticleForm
       client.update_item(item_id: @article.qiita_item_id, title: @article.title, body: @article.body)
     else
       res = client.post_item(title: @article.title, body: @article.body)
-      debugger
     end
   end
 

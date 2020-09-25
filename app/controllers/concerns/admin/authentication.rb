@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Authentication
+module Admin::Authentication
   extend ActiveSupport::Concern
 
   def login(user)

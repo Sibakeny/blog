@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Admin::Base < ApplicationController
-
   before_action :authorize
 
   private def authorize

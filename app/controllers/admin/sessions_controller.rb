@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Admin::Base
+  include Admin::Authentication
   skip_before_action :authorize, only: %i[show new create destroy]
 
   def show; end
