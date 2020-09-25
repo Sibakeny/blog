@@ -7,4 +7,13 @@ class Category < ApplicationRecord
   validates :category_type, presence: true
 
   enum category_type: { language: 0, framework: 1 }
+
+  def total_pv
+    articles.joins(:article_view_counters).count('article_view_counters.id') +
+    (articles.joins(:qiita_stats).group(' date_format(qiita_stats.created_at, "%Y-%m-%d")').select('sum(page_view_count) sum, date_format(qiita_stats.created_at, "%Y-%m-%d") created_at_date').to_a.last&.sum || 0)
+  end
+
+  def total_like
+    articles.joins(:qiita_stats).group(' date_format(qiita_stats.created_at, "%Y-%m-%d")').select('sum(like_count) sum, date_format(qiita_stats.created_at, "%Y-%m-%d") created_at_date').to_a.last&.sum || 0
+  end
 end
