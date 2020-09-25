@@ -39,6 +39,20 @@ Rails.application.routes.draw do
     resources :article_view_counters
   end
 
+  # 表画面
+  root to: 'guest/home#index'
+
+  namespace :guest do
+    resources :articles do
+      collection do
+        scope module: :articles do
+          resources :categorized_articles, only: [:index]
+        end
+      end
+    end
+  end
+
+  # API 使わなくなったけども消すのもちょっとなので一応残してる、、、
   namespace :api do
     resources :charts
 
@@ -64,19 +78,6 @@ Rails.application.routes.draw do
       collection do
         scope module: :category do
           resources :filters, only: [:index]
-        end
-      end
-    end
-  end
-
-  # 表画面
-  root to: 'guest/home#index'
-
-  namespace :guest do
-    resources :articles do
-      collection do
-        scope module: :articles do
-          resources :categorized_articles, only: [:index]
         end
       end
     end
