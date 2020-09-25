@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 
 class Admin::Base < ApplicationController
-  include Authentication
 
   before_action :authorize
 
-  def authorize
-    redirect_to :login if current_user.blank?
+  private def authorize
+    redirect_to :admin_login if current_user.blank?
   end
 
-  def current_user
+  private def current_user
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.signed[:user_id])

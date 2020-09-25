@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    root to: 'home#index'
+
     resources :qiita_syncs, only: [:index] do
       collection do
         get :sycn_items

@@ -15,7 +15,7 @@ class Admin::SessionsController < Admin::Base
     if @user&.authenticate(@form.password)
       login(@user)
       flash.notice = 'ログインしました。'
-      redirect_to root_path
+      redirect_to admin_root_path
     else
       flash.now.alert = 'メールアドレスまたはパスワードが正しくありません。'
       render :new
