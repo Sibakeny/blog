@@ -8,6 +8,7 @@ class Admin::Base < ApplicationController
     redirect_to :admin_login if current_user.blank?
   end
 
+  helper_method :current_user
   private def current_user
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
