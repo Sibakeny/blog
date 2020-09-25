@@ -1,5 +1,5 @@
 class Guest::HomeController < Guest::Base
   def index
-    @articles = Article.all.limit(8)
+    @articles = Article.published_articles.page(params[:page]).per(8)
   end
 end

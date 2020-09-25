@@ -13,6 +13,13 @@ class Article < ApplicationRecord
   # validates :title, presence: true
   # validates :body, presence: true
 
+  scope :published_articles, -> { where(is_draft: false) }
+
+  # 記事のpvのカウント
+  def count_pv
+    ArticleViewCounter.create(article_id: id)
+  end
+
   # チャート用の記事のPV数を返す
   # TODO: 一ヶ月分のデータのみ持ってくる様にする
   def article_chart_values_by_date
