@@ -1,5 +1,5 @@
 <div class='container-fluid article-form-container'>
-  <%= form_with model: @article_form, url: new_modal_admin_confirm_path do |f| %>
+  <%= form_with model: @article_form, url: new_modal_admin_confirm_path, id: 'new-article-form', data: { article_id: @article_form.article.id } do |f| %>
     <%= render 'admin/articles/form/article_form', f: f %>
     <div class='card p-3'>
       <%= render 'admin/articles/form/categories_form', f: f %>

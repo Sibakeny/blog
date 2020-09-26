@@ -27,6 +27,10 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :articles do
+      resources :leave_forms
+    end
+
     resources :categories
 
     get 'login', to: 'sessions#new'
