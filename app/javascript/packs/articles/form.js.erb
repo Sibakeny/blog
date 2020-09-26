@@ -11,7 +11,7 @@ $('#upload_chat').on('change', function(){
   formData.append('images', file);
 
   // urlに関してはいい感じに修正したい
-  $.ajax(`/articles/${$(this).data('id')}/images` , {
+  $.ajax(`/admin/articles/${$(this).data('id')}/images` , {
     type: 'POST',
     beforeSend: (xhr) => {
       xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
