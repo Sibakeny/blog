@@ -1,6 +1,6 @@
 window.onbeforeunload = function(e) {
   if ($('#new-article-form').length > 0) {
-    return 'ちょっと待ってくださいよ。まだダメですよ。';
+    return 'check';
   }
 };
 $(window).on('unload', function() {
@@ -22,3 +22,4 @@ $(window).on('unload', function() {
     });
   }
 });
+
