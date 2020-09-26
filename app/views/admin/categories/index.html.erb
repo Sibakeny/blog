@@ -12,7 +12,7 @@
           カテゴリー名
         </div>
         <div class="custom-table-column">カテゴリー分類</div>
-        <div class="custom-table-column"></div>
+        <div class="custom-table-column">記事数</div>
       </div>
       <% @categories.each do |category| %>
         <%= link_to admin_category_path(category), class: 'custom-table-row table-hover-action table-content' do %>
@@ -20,7 +20,7 @@
             <%= category.name %>
           </div>
           <div class="custom-table-column"><%= category.category_type_i18n %></div>
-          <div class="custom-table-column"></div>
+          <div class="custom-table-column"><%= category.articles.count %></div>
         <% end %>
       <% end %>
     </div>
