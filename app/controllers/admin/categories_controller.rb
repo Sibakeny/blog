@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 class Admin::CategoriesController < Admin::Base
-  before_action :set_category, only: [:show, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb 'HOME', :root_path
   add_breadcrumb 'カテゴリ一覧', :admin_categories_path
 
   def index
     @categories = Category.all.order(category_type: :asc).order(created_at: :desc)
+  end
+
+  def show
   end
 
   def new
@@ -24,7 +27,16 @@ class Admin::CategoriesController < Admin::Base
     end
   end
 
-  def show
+  def edit
+  end
+
+  def update
+    @category.assign_attributes(category_params)
+    if @category.save
+      redirect_to :admin_categories
+    else
+      render :edit
+    end
   end
 
   def destroy

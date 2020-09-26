@@ -1,6 +1,6 @@
 <div class='container'>
   <div class='card p-4 mb-5'>
-    <%= form_with model: @category, url: admin_categories_path, local: true do |f| %>
+    <%= form_with model: @category, url: admin_category_path(@category), local: true do |f| %>
       <%= render 'form', category: @category, f: f %>
 
       <div class="form-group">

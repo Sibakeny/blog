@@ -2,9 +2,14 @@
   <div class='card p-4 mb-5'>
     <div class='d-flex justify-content-between border-bottom'>
       <h3><%= @category.name %></h3>
-      <%= link_to admin_category_path(@category), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'text-secondary' do %>
-        <i class="fas fa-trash-alt"></i>
-      <% end %>
+      <div>
+        <%= link_to edit_admin_category_path(@category), class: 'text-secondary mr-2' do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+        <%= link_to admin_category_path(@category), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'text-secondary' do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
     </div>
 
     <div class='article-stats-container mb-5 mt-5'>
