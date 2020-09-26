@@ -26,6 +26,14 @@ class QiitaItemSyncService
         @new_sync_article_count += 1
         article = Article.create!(title: article_detail_params['title'], body: article_detail_params['body'], qiita_item_id: params['id'])
       end
+
+      # Qiitaのタグでcategoryと同じものがあればarticleと紐付ける
+      article_detail_params['tags'].each do |tag_params|
+        tag_name = tag_params['name']
+        tag = Category.where('LOWER(name) LIKE ?', '%' + tag_name.downcase + '%')
+        article.categories << tag if tag.present?
+      end
+
       # TODO: 一日に一つしか作成されない様にする
       article.qiita_stats.create!(page_view_count: article_detail_params['page_views_count'], like_count: article_detail_params['likes_count'])
     end
