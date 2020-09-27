@@ -1,7 +1,12 @@
 <div class="container article-container mt-5" style="background-color: white;">
-  <h1 class='mb-5 pt-5 pl-3 pr-3'>
+  <h1 class='mb-4 pt-5 pl-3 pr-3'>
     <%= @article.title %>
   </h1>
+  <div class='mb-4 pl-3'>
+    <% @article.categories.each do |category| %>
+      <span class="badge badge-pill badge-primary pt-2 pb-2 pl-3 pr-3" style="font-size: 17px"><%= category.name %></span>
+    <% end %>
+  </div>
   <div class='markdown-container'>
     <%= markdown(@article.body).html_safe %>
   </div>
