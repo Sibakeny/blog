@@ -24,14 +24,16 @@ class QiitaItemSyncService
         article.update!(title: article_detail_params['title'], body: article_detail_params['body'])
       else
         @new_sync_article_count += 1
-        article = Article.create!(title: article_detail_params['title'], body: article_detail_params['body'], qiita_item_id: params['id'])
+        article = Article.create!(title: article_detail_params['title'], body: article_detail_params['body'], qiita_item_id: params['id'], is_draft: false)
       end
 
       # Qiitaのタグでcategoryと同じものがあればarticleと紐付ける
       article_detail_params['tags'].each do |tag_params|
         tag_name = tag_params['name']
-        tag = Category.where('LOWER(name) LIKE ?', '%' + tag_name.downcase + '%')
-        article.categories << tag if tag.present?
+        categories = Category.where('LOWER(name) LIKE ?', '%' + tag_name.downcase + '%')
+        categories.each do |category|
+          article.categories << category if category.present? && article.categories.find_by(id: category.id).blank?
+        end
       end
 
       # TODO: 一日に一つしか作成されない様にする
