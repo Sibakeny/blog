@@ -50,8 +50,7 @@ class ArticleForm
     if @article.qiita_item_id.present?
       client.update_item(item_id: @article.qiita_item_id, title: @article.title, body: @article.body)
     else
-      res = client.post_item(title: @article.title, body: @article.body, tags: @article.categories.map(&:name))
-      debugger
+      res = client.post_item(title: @article.title, body: @article.body, tags: @article.categories.map(&:name), twitter: @post_twitter)
     end
   end
 
