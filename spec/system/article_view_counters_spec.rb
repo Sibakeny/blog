@@ -33,7 +33,6 @@ RSpec.describe 'Articles', type: :system do
     end
     it '記事一覧が表示されること' do
       visit admin_article_view_counters_path
-      expect(page).to have_content '全体のPV数'
       expect(page.all('.popular-articles-container .card')[0]).to have_content @article_1.title
       expect(page.all('.popular-articles-container .card')[1]).to have_content @article_2.title
     end
