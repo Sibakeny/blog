@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>SbknBlog</title>
+  <title><%= content_for?(:html_title) ? yield(:html_title) : "Sbkn Blog" %></title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
