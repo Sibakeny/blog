@@ -4,11 +4,10 @@ class ApplicationController < ActionController::Base
   layout :set_layout
 
   private def set_layout
-    if params[:controller].match(%r{\A(admin)})
+    if params[:controller].match(/\A(admin)/)
       'admin'
     else
-      "application"
+      'application'
     end
   end
-
 end

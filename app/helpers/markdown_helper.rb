@@ -8,16 +8,16 @@ module MarkdownHelper
     def block_code(code, language)
       language = language.present? ? language.split(':')[0] : ''
 
-      allow_langs = [
-        'ruby',
-        'yaml',
-        'html',
-        'css',
-        'md',
-        'javascript',
-        'typescript',
-        'go',
-        'python'
+      allow_langs = %w[
+        ruby
+        yaml
+        html
+        css
+        md
+        javascript
+        typescript
+        go
+        python
       ]
 
       lang = case language.to_s

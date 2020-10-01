@@ -13,12 +13,12 @@ module ApplicationHelper
 
   def sidebar_active(navbar_menu)
     path = Rails.application.routes.recognize_path(request.url)
-    'active' if path[:controller] =~ /^admin\/#{navbar_menu}/
+    'active' if path[:controller] =~ %r{^admin/#{navbar_menu}}
   end
 
   def total_pv
     ArticleViewCounter.all.count +
-    (QiitaStat.all.group(' date_format(created_at, "%Y-%m-%d")').select('sum(page_view_count) sum, date_format(created_at, "%Y-%m-%d") created_at_date').to_a.last&.sum || 0)
+      (QiitaStat.all.group(' date_format(created_at, "%Y-%m-%d")').select('sum(page_view_count) sum, date_format(created_at, "%Y-%m-%d") created_at_date').to_a.last&.sum || 0)
   end
 
   def total_like
