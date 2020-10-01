@@ -14,7 +14,7 @@ class ArticleForm
     new_category_ids = categories_params[:ids].map(&:to_i) - @article.categories.pluck(:id)
 
     new_category_ids.each do |id|
-      next if id.blank? || id == 0
+      next if id.blank? || id.zero?
 
       @article.article_categories.build(category_id: id)
     end
@@ -29,7 +29,7 @@ class ArticleForm
     # mark_for_destruction的なことができなかったのでここで一つ一つ削除
     destroy_category_ids = @article.categories.pluck(:id) - categories_params[:ids].map(&:to_i)
     destroy_category_ids.each do |id|
-      next if id.blank? || id == 0
+      next if id.blank? || id.zero?
 
       # ここで失敗すると予期しない動きになる。
       # validationかけるべきかな？
@@ -50,7 +50,7 @@ class ArticleForm
     if @article.qiita_item_id.present?
       client.update_item(item_id: @article.qiita_item_id, title: @article.title, body: @article.body)
     else
-      res = client.post_item(title: @article.title, body: @article.body, tags: @article.categories.map(&:name))
+      client.post_item(title: @article.title, body: @article.body, tags: @article.categories.map(&:name))
     end
   end
 

@@ -9,7 +9,10 @@ class Admin::ArticlesController < Admin::Base
   layout 'layouts/admin'
 
   def index
-    @articles = Article.where(is_draft: false).includes(:qiita_stats).order(created_at: :desc).page(params[:page]).per(16)
+    @articles = Article.where(is_draft: false)
+                       .includes(:qiita_stats)
+                       .order(created_at: :desc)
+                       .page(params[:page]).per(16)
   end
 
   def show

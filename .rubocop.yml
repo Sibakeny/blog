@@ -23,7 +23,7 @@ AndOr:
   Enabled: false
 
 LineLength:
-  Max: 120
+  Max: 250
 
 MethodLength:
   Max: 30
@@ -32,6 +32,12 @@ CyclomaticComplexity:
   Max: 10
 
 Metrics/AbcSize:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/AccessModifierDeclarations:
   Enabled: false
 
 AllCops:
