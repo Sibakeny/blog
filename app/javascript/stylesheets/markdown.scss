@@ -86,3 +86,65 @@
   padding: 20px;
   background: white;
 }
+
+.article-body-markdown h1 {
+  border-bottom: 1px solid #dee2e6;
+  font-size: 32px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.article-body-markdown h2 {
+  border-bottom: 1px solid #dee2e6;
+  font-size: 28px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.article-body-markdown h3 {
+  border-bottom: 1px solid #dee2e6;
+  font-size: 24px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.article-body-markdown h4 {
+  border-bottom: 1px solid #dee2e6;
+  font-size: 22px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.article-body-markdown h5 {
+  font-size: 20px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.article-body-markdown p {
+  line-height: 40px;
+  letter-spacing: 1.2px;
+}
+
+.article-body-markdown img {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.article-body-markdown .CodeRay {
+  margin-top: 40px;
+  margin-bottom: 40px
+}
+
+.form-markdown-container pre {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #e6edfd;;
+}
+
+.article-body-markdown {
+  margin-bottom: 40px;
+  padding: 20px;
+  background: white;
+}
