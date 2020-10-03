@@ -22,4 +22,4 @@ production:
   host: <%= ENV['MYSQL_HOST'] %>
   username: <%= ENV['MYSQL_USER'] %>
   password: <%= ENV['MYSQL_PASSWORD'] %>
-  database: sbkn_blog_development
+  database: sbkn_blog_production
