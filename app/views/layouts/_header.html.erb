@@ -4,26 +4,10 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <%
-=begin%>
- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Ruby on Rails</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">React</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Go</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">その他</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav">
-    </ul>
-  </div> 
-<%
-=end%>
+  <div style='width: 300px' class='ml-auto'>
+    <%= form_with url: guest_filtered_articles_path, method: :get, local: true do |f| %>
+      <%= f.text_field :query, class: 'form-control', placeholder: '検索' %>
+      <% f.submit %>
+    <% end %>
+  </div>
 </nav>
