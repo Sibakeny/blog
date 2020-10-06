@@ -1,6 +1,6 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <%= form_with url: admin_articles_path do |f| %>
+    <%= form_with url: admin_articles_path, local: true do |f| %>
       <%= f.hidden_field 'article_form[article][id]', value: article_form[:article][:id] %>
       <%= f.hidden_field 'article_form[article][title]', value: article_form[:article][:title] %>
       <%= f.hidden_field 'article_form[article][body]', value: article_form[:article][:body] %>
@@ -28,3 +28,5 @@
     <% end %>
   </div>
 </div>
+
+<%= javascript_pack_tag 'articles/modal_confirm.js' %>

@@ -13,10 +13,15 @@ class Article < ApplicationRecord
   accepts_nested_attributes_for :article_categories
 
   # TODO: 実装
-  # validates :title, presence: true
-  # validates :body, presence: true
+  validates :title, presence: true, if: :published?
+  validates :body, presence: true, if: :published?
 
   scope :published_articles, -> { where(is_draft: false) }
+
+  # 下書きではないこと
+  def published?
+    !is_draft
+  end
 
   # 記事のpvのカウント
   def count_pv

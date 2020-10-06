@@ -1,5 +1,8 @@
 window.onbeforeunload = function(e) {
-  if ($('#new-article-form').length > 0) {
+  console.log(e.target)
+  console.log($('body').hasClass('button-submitted'))
+  if ($('#new-article-form').length > 0 && !$('body').hasClass('button-submitted')) {
+    console.log("return")
     return 'check';
   }
 };

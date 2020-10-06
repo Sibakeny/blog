@@ -36,9 +36,13 @@ class ArticleForm
       @article.categories.destroy(id)
     end
 
-    @article.save
+    return false unless @article.save
 
-    update_qiita if @post_qiita
+    if @post_qiita
+      return update_qiita
+    end
+
+    true
   end
 
   def update_qiita
@@ -47,11 +51,13 @@ class ArticleForm
     end
 
     # TODO: エラー処理
-    if @article.qiita_item_id.present?
+    res = if @article.qiita_item_id.present?
       client.update_item(item_id: @article.qiita_item_id, title: @article.title, body: @article.body)
     else
       client.post_item(title: @article.title, body: @article.body, tags: @article.categories.map(&:name))
     end
+
+    return res.code.to_i == 200
   end
 
   private
