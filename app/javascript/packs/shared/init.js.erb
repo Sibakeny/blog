@@ -1,28 +1,28 @@
 window.onbeforeunload = function(e) {
-  console.log(e.target)
-  console.log($('body').hasClass('button-submitted'))
   if ($('#new-article-form').length > 0 && !$('body').hasClass('button-submitted')) {
     console.log("return")
     return 'check';
   }
 };
 $(window).on('unload', function() {
-  var data;
-  if ($('#new-article-form').length > 0) {
-    data = {
-      article_id: $('#new-article-form').data('article-id')
-    };
-    return fetch("/admin/articles/leave_forms", {
-      method: 'POST',
-      keepalive: true,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),
-        'X-Requested-With': 'XMLHttpRequest'
-      },
-      body: JSON.stringify(data)
-    });
-  }
+
+  // 作成に失敗した場合は削除しないでほしいけどうまく対策わからないのでとりあえず放置
+  // var data;
+  // if ($('#new-article-form').length > 0) {
+  //   data = {
+  //     article_id: $('#new-article-form').data('article-id')
+  //   };
+  //   return fetch("/admin/articles/leave_forms", {
+  //     method: 'POST',
+  //     keepalive: true,
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json',
+  //       'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),
+  //       'X-Requested-With': 'XMLHttpRequest'
+  //     },
+  //     body: JSON.stringify(data)
+  //   });
+  // }
 });
 
