@@ -12,7 +12,7 @@ class Admin::ArticlesController < Admin::Base
     @articles = Article.where(is_draft: false)
                        .includes(:qiita_stats)
                        .order(created_at: :desc)
-                       .page(params[:page]).per(16)
+                       .page(params[:page]).per(Article::LIST_PAGE_SIZE)
   end
 
   def show

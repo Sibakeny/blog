@@ -11,7 +11,7 @@ class Api::ArticlesController < Api::ApplicationController
     else
       articles = Article.includes(:categories, :article_view_counters).where(id: article_ids).order('created_at desc')
     end
-    articles = articles.page(params[:page]).per(8)
+    articles = articles.page(params[:page]).per(Article::TILE_PAGE_SIZE)
 
     count = articles.total_pages
     render status: 200, json: {

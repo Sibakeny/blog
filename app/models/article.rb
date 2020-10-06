@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Article < ApplicationRecord
+  TILE_PAGE_SIZE = 8
+  LIST_PAGE_SIZE = 20
+
   has_many :article_categories, autosave: true
   has_many :categories, through: :article_categories
   has_many :article_view_counters
