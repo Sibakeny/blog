@@ -7,8 +7,12 @@
             <div class="bd-placeholder-img card-img-top article-card-image">
               <%= image_tag 'default_article', style: 'height: 150px;' %>
             </div>
-            <div class='card-body'>
+            <div class='card-body d-flex align-items-between flex-column'>
               <p><%= article.title %></p>
+              <div class='d-flex justify-content-end align-items-end mt-auto'>
+                <small class='text-muted mr-4'><%= article.pv %> PV</small>
+                <small class='text-muted'><%= article.created_at.to_s %></small>
+              </div>
             </div>
           </div>
         <% end %>
