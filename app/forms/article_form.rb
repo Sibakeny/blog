@@ -54,10 +54,14 @@ class ArticleForm
     res = if @article.qiita_item_id.present?
       client.update_item(item_id: @article.qiita_item_id, title: @article.title, body: @article.body)
     else
-      client.post_item(title: @article.title, body: @article.body, tags: @article.categories.map(&:name))
+      categories_space_removed_ary = []
+      @article.categories.each do |category|
+        categories_space_removed_ary.push(category.name.gsub(' ', ''))
+      end
+      client.post_item(title: @article.title, body: @article.body, tags: categories_space_removed_ary)
     end
 
-    return res.code.to_i == 200
+    return res.code.to_i == 201
   end
 
   private
