@@ -5,16 +5,7 @@
     </div>
     <div class='articles-list-container'>
       <% @articles.each do |article| %>
-        <%= link_to guest_article_path(article), class: 'card-link-wrapper' do %>
-          <div class='card article-list-card'>
-            <div class="bd-placeholder-img card-img-top article-card-image">
-              <%= image_tag 'default_article', style: 'height: 150px;' %>
-            </div>
-            <div class='card-body'>
-              <p><%= article.title %></p>
-            </div>
-          </div>
-        <% end %>
+        <%= render 'guest/shared/article_tile', article: article %>
       <% end %>
       <div class='d-flex justify-content-center mt-4 w-100'>
         <div>
@@ -23,7 +14,7 @@
       </div>
     </div>
     <div class='article-sidebar'>
-      <%= render 'shared/category_sidebar' %>
+      <%= render 'guest/shared/category_sidebar' %>
     </div>
   </div>
 </div>
