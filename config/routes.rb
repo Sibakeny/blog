@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :articles do
+      resources :leave_forms
+      resources :filtered_articles
+    end
     resources :articles do
       scope module: :articles do
         resources :images
@@ -25,10 +29,6 @@ Rails.application.routes.draw do
           end
         end
       end
-    end
-
-    namespace :articles do
-      resources :leave_forms
     end
 
     resources :categories
