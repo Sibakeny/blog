@@ -4,8 +4,7 @@
   <h1 class='pt-5 pl-3 pr-3 mb-2'>
     <%= @article.title %>
   </h1>
-  <div class='d-flex justify-content-between pl-3 mb-4'>
-    <p class='text-muted'><%= @article.pv %> pv</p>
+  <div class='d-flex justify-content-end pl-3 mb-4'>
     <p>投稿日 <%= @article.created_at.to_s %></p>
   </div>
   <div class='mb-4 pl-3'>
