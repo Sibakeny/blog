@@ -1,7 +1,11 @@
 <div class='container'>
   <div class='home-articles-container'>
     <div class='mb-5 text-center w-100'>
-      <h1><%= @query %> の記事一覧</h1>
+      <% if @articles.exists? %>
+        <h1><%= @query %> の記事一覧</h1>
+      <% else %>
+        <h1>記事が見つかりませんでした。</h1>
+      <% end %>
     </div>
     <div class='articles-list-container'>
       <% @articles.each do |article| %>
