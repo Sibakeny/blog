@@ -6,7 +6,7 @@
       <small class='mr-2 text-muted'>SITE: <%= @article.pv %> pv</small>
     </div>
     <div class='d-flex justify-content-end mb-4'>
-      <%= link_to  edit_admin_article_path(@article), class: 'btn text-muted' do %>
+      <%= link_to  edit_admin_article_path(@article), class: 'btn text-muted edit-btn' do %>
         <i class="fas fa-edit"></i>
       <% end %>
       <%= link_to admin_article_path(@article), method: :delete, class: 'btn text-muted', data: { confirm: 'この記事を削除します。' } do %>

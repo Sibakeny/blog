@@ -10,7 +10,7 @@ RSpec.describe 'Sessions', type: :system do
   describe 'ログイン画面' do
     context 'パスワードが異なる場合' do
       it 'ログインできないこと' do
-        visit login_path
+        visit admin_login_path
         fill_in 'Email', with: @user.email
         fill_in 'Password', with: 'dummy'
         click_button 'commit'
@@ -22,7 +22,7 @@ RSpec.describe 'Sessions', type: :system do
 
     context 'メールアドレスが異なる場合' do
       it 'ログインできないこと' do
-        visit login_path
+        visit admin_login_path
         fill_in 'Email', with: 'dummy'
         fill_in 'Password', with: 'password'
         click_button 'commit'
@@ -35,7 +35,7 @@ RSpec.describe 'Sessions', type: :system do
 
     context 'パスワードが正しい場合' do
       it 'ログインできること' do
-        visit login_path
+        visit admin_login_path
         expect(page).to have_content 'Email'
         fill_in 'Email', with: @user.email
         fill_in 'Password', with: 'password'

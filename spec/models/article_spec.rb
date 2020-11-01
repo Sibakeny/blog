@@ -12,14 +12,14 @@ RSpec.describe Article, type: :model do
     end
 
     context 'titleがない場合' do
-      it '記事が作成できないこと' do
+      xit '記事が作成できないこと' do
         article = Article.new(body: 'body')
         expect(article).to_not be_valid
       end
     end
 
     context 'bodyがない場合' do
-      it '記事が作成できないこと' do
+      xit '記事が作成できないこと' do
         article = Article.new(title: 'title')
         expect(article).to_not be_valid
       end
