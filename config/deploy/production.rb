@@ -8,6 +8,8 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 server '52.195.6.18', user: 'ec2-user', roles: %w{app db web}
 
+set :linked_files, fetch(:linked_files, []).push('.env')
+
 
 
 # role-based syntax
