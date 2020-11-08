@@ -1,8 +1,8 @@
 files:
   "/opt/elasticbeanstalk/hooks/appdeploy/pre/09_yarn.sh" :
     mode: "000755"
-    owner: root
-    group: root
+    owner: webapp
+    group: webapp
     content: |
       #!/usr/bin/env bash
       set -xe
