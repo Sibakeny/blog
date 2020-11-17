@@ -3,7 +3,7 @@
 
 # Capistranoのログの表示に利用する
 set :application, 'sbknblog'
-set :deploy_to, '/home/ec2-user/sbknblog'
+set :deploy_to, '/var/www/sbknblog'
 
 # どのリポジトリからアプリをpullするかを指定する
 set :repo_url,  'git@github.com:Sibakeny/blog.git'

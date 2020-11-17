@@ -1,7 +1,7 @@
   # set lets
   $worker  = 2
   $timeout = 30
-  $app_dir = "/home/ec2-user/sbknblog" #自分のアプリケーション名
+  $app_dir = "/var/www/sbknblog" #自分のアプリケーション名
   $listen  = "#{$app_dir}/shared/tmp/sockets/unicorn.sock"
   $pid     = "#{$app_dir}/shared/tmp/pids/unicorn.pid"
   $std_log = "#{$app_dir}/shared/log/unicorn.stdout.log"
