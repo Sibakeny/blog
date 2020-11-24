@@ -58,6 +58,12 @@ class Article < ApplicationRecord
     qiita_stats.max_by(&:created_at)&.page_view_count
   end
 
+  # 関連する記事(5件)
+  def related_articles
+    category_ids = categories.pluck(:id)
+    Article.populate_articles.joins(:categories).where('categories.id IN (?)', category_ids).limit(5)
+  end
+
   # qiitaと自分のサイトのpv数の合計が多い記事を10件取得
   def self.populate_articles
     Article.select('articles.*, count(article_view_counters.id) + max(qiita_stats.page_view_count) pv')

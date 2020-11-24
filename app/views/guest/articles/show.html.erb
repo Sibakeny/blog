@@ -18,3 +18,15 @@
     <%= markdown(@article.body).html_safe %>
   </div>
 </div>
+
+<div class="container mb-5 pl-0 pr-0">
+  <p class='mb-3'>関連記事一覧</p>
+  <div>
+    <% @article.related_articles.each do |article| %>
+      <div class='related-article-container d-flex align-items-center justify-content-start'>
+        <%= image_tag 'default_article', style: 'height: 60px;' %>
+        <h5><%= article.title %></h5>
+      </div>
+    <% end %>
+  </div>
+</div>
