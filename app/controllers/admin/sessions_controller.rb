@@ -29,9 +29,7 @@ class Admin::SessionsController < Admin::Base
     redirect_to admin_login_path
   end
 
-  private
-
-  def login_params
+  private def login_params
     params.require(:login_form).permit(:email, :password)
   end
 end

@@ -64,9 +64,7 @@ class Admin::ArticlesController < Admin::Base
     redirect_to admin_articles_path
   end
 
-  private
-
-  def set_article
+  private def set_article
     @article = Article.find(params[:id])
   end
 end

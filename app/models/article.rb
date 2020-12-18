@@ -17,6 +17,7 @@ class Article < ApplicationRecord
   validates :body, presence: true, if: :published?
 
   scope :published_articles, -> { where(is_draft: false) }
+  scope :by_query, ->(query) { where('title LIKE ?', "%#{query}%") }
 
   # 下書きではないこと
   def published?
@@ -83,23 +84,6 @@ class Article < ApplicationRecord
   def self.qiita_populate_articles
     Article.select('articles.*, max(qiita_stats.page_view_count) pv')
            .left_joins(:qiita_stats).group('articles.id').order('pv desc').limit(10)
-  end
-
-  def self.filter(filter_params)
-    all.left_joins(:categories).where(keyword_filter(filter_params)).where(category_filter(filter_params))
-  end
-
-  def self.keyword_filter(filter_params)
-    return nil if filter_params[:keyword].blank?
-
-    keyword = '%' + filter_params[:keyword] + '%'
-    ['body LIKE ? OR title LIKE ?', keyword, keyword]
-  end
-
-  def self.category_filter(filter_params)
-    return nil if filter_params[:category].blank?
-
-    ['categories.name LIKE ?', filter_params[:category]]
   end
 
   # チャート表示用に日付ごとのarticle_view_counterの数を返す

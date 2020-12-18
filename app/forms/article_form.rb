@@ -38,9 +38,7 @@ class ArticleForm
 
     return false unless @article.save
 
-    if @post_qiita
-      return update_qiita
-    end
+    return update_qiita if @post_qiita
 
     true
   end
@@ -52,25 +50,23 @@ class ArticleForm
 
     # TODO: エラー処理
     res = if @article.qiita_item_id.present?
-      client.update_item(item_id: @article.qiita_item_id, title: @article.title, body: @article.body)
-    else
-      categories_space_removed_ary = []
-      @article.categories.each do |category|
-        categories_space_removed_ary.push(category.name.gsub(' ', ''))
-      end
-      client.post_item(title: @article.title, body: @article.body, tags: categories_space_removed_ary)
-    end
+            client.update_item(item_id: @article.qiita_item_id, title: @article.title, body: @article.body)
+          else
+            categories_space_removed_ary = []
+            @article.categories.each do |category|
+              categories_space_removed_ary.push(category.name.gsub(' ', ''))
+            end
+            client.post_item(title: @article.title, body: @article.body, tags: categories_space_removed_ary)
+          end
 
-    return res.code.to_i == 201
+    res.code.to_i == 201
   end
 
-  private
-
-  def article_params
+  private def article_params
     @params.require(:article).permit(:title, :body)
   end
 
-  def categories_params
+  private def categories_params
     @params.require(:categories).permit(ids: [])
   end
 end

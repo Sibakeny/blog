@@ -42,13 +42,11 @@ class Admin::CategoriesController < Admin::Base
     redirect_to admin_categories_path, notice: 'カテゴリを削除しました'
   end
 
-  private
-
-  def set_category
+  private def set_category
     @category = Category.find(params[:id])
   end
 
-  def category_params
+  private def category_params
     params.require(:category).permit(:name, :category_type)
   end
 end

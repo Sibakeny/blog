@@ -57,10 +57,10 @@ group :development, :test do
   gem 'selenium-webdriver'
 
   gem 'capistrano'
-  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
-  gem 'capistrano3-unicorn'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
