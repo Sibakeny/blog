@@ -1,11 +1,16 @@
 class QiitaItemSyncService
-  attr_accessor :total_sync_count, :new_sync_article_count
-
   def initialize
     @new_sync_article_count = 0
   end
 
-  def read_items
+  def call
+    read_items
+    sync_items
+
+    ServiceResponse.success(payload: { total_sync_count: @total_sync_count, new_sync_article_count: @new_sync_article_count })
+  end
+
+  private def read_items
     @client = Qiita::Sdk::Client.new do |config|
       config.access_token = ENV['QIITA_ACCESS_TOKEN']
     end
@@ -14,7 +19,7 @@ class QiitaItemSyncService
     @total_sync_count = @item_params.length
   end
 
-  def sync_items
+  private def sync_items
     @item_params.each do |params|
       # qiita apiの使用で記事一覧を取得する際はpv数を取得できないので記事単体の情報を毎回取得している
       res = @client.fetch_item(item_id: params['id'])
@@ -39,10 +44,5 @@ class QiitaItemSyncService
       # TODO: 一日に一つしか作成されない様にする
       article.qiita_stats.create!(page_view_count: article_detail_params['page_views_count'], like_count: article_detail_params['likes_count'])
     end
-  end
-
-  def sync!
-    read_items
-    sync_items
   end
 end
