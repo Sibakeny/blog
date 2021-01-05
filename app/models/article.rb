@@ -55,7 +55,7 @@ class Article < ApplicationRecord
   end
 
   # qiitaのpv数
-  def qiita_page_view
+  def qiita_pv
     qiita_stats.max_by(&:created_at)&.page_view_count
   end
 
