@@ -102,42 +102,37 @@ class Article < ApplicationRecord
     QiitaStat.all.group(' date_format(created_at, "%Y-%m-%d")').select('sum(page_view_count) sum, date_format(created_at, "%Y-%m-%d") time')
   end
 
+  # FriendlyIdの日本語化対応のために追加
   def normalize_friendly_id(value)
-
     slugstr =  value
-    slugstr =  slugstr.gsub(/\s+/,"-").downcase
-    slugstr =  slugstr.gsub(/[:\/?#\[\]@!$&'()\*\+,;=<>\%{}|^\\~\.\"`_]/, "-")
+    slugstr =  slugstr.gsub(/\s+/, '-').downcase
+    slugstr =  slugstr.gsub(%r{[:/?#\[\]@!$&'()\*\+,;=<>\%{}|^\\~\.\"`_]}, '-')
     slugstr = slugstr[0..70]
     slugstr
-
   end
 
-  private def should_generate_new_friendly_id?  #will change the slug if the name changed
-    self.id.present? && (slug.blank? || title_changed?)
+  # FriendlyIdの日本語化対応のために追加
+  private def should_generate_new_friendly_id? # will change the slug if the name changed
+    id.present? && (slug.blank? || title_changed?)
   end
 
+  # FriendlyIdの日本語化対応のために追加
   private def create_slug
-
     return unless friendly_id
     return if slugs.first.try(:slug) == friendly_id
 
     # Allow reversion back to a previously used slug
-   relation = slugs.where(:slug => friendly_id)
+    relation = slugs.where(slug: friendly_id)
+    relation = relation.where(scope: serialized_scope) if friendly_id_config.uses?(:scoped)
+    relation.delete_all if relation.present?
 
-   if friendly_id_config.uses?(:scoped)
-     relation = relation.where(:scope => serialized_scope)
-   end
-
-   relation.delete_all if relation.present?
-
-   new_slug = FriendlyId::Slug.new(
-      sluggable_id: self.id,
+    new_slug = FriendlyId::Slug.new(
+      sluggable_id: id,
       sluggable_type: self.class.name.to_s,
       slug: friendly_id
     )
 
     new_slug.scope = serialized_scope if friendly_id_config.uses?(:scoped)
     new_slug.save
-
   end
 end
