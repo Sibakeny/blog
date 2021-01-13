@@ -6,7 +6,7 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server '52.195.6.18', user: 'ec2-user', roles: %w{app db web}
+server '52.194.193.120', user: 'ec2-user', roles: %w{app db web}
 
 set :linked_files, fetch(:linked_files, []).push('.env')
 
