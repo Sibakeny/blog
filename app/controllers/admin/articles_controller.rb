@@ -25,7 +25,7 @@ class Admin::ArticlesController < Admin::Base
   def create
     Article.transaction do
       @article_form = ArticleForm.new(
-        article: Article.find(params[:article_form][:article][:id]),
+        article: Article.friendly.find(params[:article_form][:article][:id]),
         params: params[:article_form],
         post_qiita: params[:post_qiita].to_b,
         post_twitter: params[:post_twitter].to_b
@@ -63,6 +63,6 @@ class Admin::ArticlesController < Admin::Base
   end
 
   private def set_article
-    @article = Article.find(params[:id])
+    @article = Article.friendly.find(params[:id])
   end
 end

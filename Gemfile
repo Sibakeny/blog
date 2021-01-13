@@ -48,6 +48,9 @@ gem 'reverse_markdown'
 # 初期データ
 gem 'seed-fu'
 
+# URL
+gem 'friendly_id', '~> 5.4.0'
+
 gem 'listen', '>= 3.0.5', '< 3.2'
 
 group :development, :test do

@@ -13,7 +13,7 @@ class Admin::Articles::ImagesController < Admin::Base
   end
 
   private def set_article
-    @article = Article.find(params[:article_id])
+    @article = Article.friendly.find(params[:article_id])
   end
 
   private def article_image_params
