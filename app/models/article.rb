@@ -9,6 +9,7 @@ class Article < ApplicationRecord
   has_many :article_view_counters
   has_many :qiita_stats, dependent: :destroy
   has_many_attached :images
+  has_one_attached :thumbnail
 
   accepts_nested_attributes_for :article_categories
 

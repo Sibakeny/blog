@@ -1,30 +1,35 @@
 <%= f.fields_for :article, f.object.article do |ff| %>
-<%= ff.hidden_field :id, value: f.object.article.id %>
-<div class='form-group'>
-  <%= ff.label :title %>
-  <%= ff.text_field :title, class: 'form-control' %>
-  <%= form_validation_message(f.object.article, :title) %>
-</div>
-
-<div class="form-group">
-  <div class='row'>
-    <div class='col-md-4'>
-      <%= ff.label :body %>
-    </div>
-    <div class='col-md-2 text-right'>
-        <input type="file" id="upload_chat" name="images" style="display:none", data-id='<%= f.object.article.id %>' form='image-submit-form' />
-        <button id="upload_chat_button" class="btn btn-small btn-inverse"><i class="fas fa-images"></i></button>
-    </div>
+  <%= ff.hidden_field :id, value: f.object.article.id %>
+  <div class='form-group'>
+    <%= ff.label :title %>
+    <%= ff.text_field :title, class: 'form-control' %>
+    <%= form_validation_message(f.object.article, :title) %>
   </div>
-  <div class='row'>
-    <div class='col-md-6 pr-0'>
-      <%= ff.text_area :body, class: 'form-control article-body-form' %>
-    </div>
-    <div class='col-md-6 pl-0'>
-      <div class='article-body-markdown border p-2 form-markdown-container'>
+
+  <div class="form-group">
+    <div class='row'>
+      <div class='col-md-4'>
+        <%= ff.label :body %>
+      </div>
+      <div class='col-md-2 text-right'>
+          <input type="file" id="upload_chat" name="images" style="display:none", data-id='<%= f.object.article.id %>' form='image-submit-form' />
+          <button id="upload_chat_button" class="btn btn-small btn-inverse"><i class="fas fa-images"></i></button>
       </div>
     </div>
+    <div class='row'>
+      <div class='col-md-6 pr-0'>
+        <%= ff.text_area :body, class: 'form-control article-body-form' %>
+      </div>
+      <div class='col-md-6 pl-0'>
+        <div class='article-body-markdown border p-2 form-markdown-container'>
+        </div>
+      </div>
+    </div>
+    <%= form_validation_message(f.object.article, :body) %>
   </div>
-  <%= form_validation_message(f.object.article, :body) %>
-</div>
+
+  <div class='form-group'>
+    <%= ff.label :thumbnail %>
+    <%= ff.file_field :thumbnail, class: 'form-control' %>
+  </div>
 <% end %>

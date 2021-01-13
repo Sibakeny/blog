@@ -63,7 +63,7 @@ class ArticleForm
   end
 
   private def article_params
-    @params.require(:article).permit(:title, :body)
+    @params.require(:article).permit(:title, :body, :thumbnail)
   end
 
   private def categories_params
