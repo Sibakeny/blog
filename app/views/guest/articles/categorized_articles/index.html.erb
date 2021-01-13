@@ -4,9 +4,7 @@
       <h1><%= @category.name %> の記事一覧</h1>
     </div>
     <div class='articles-list-container'>
-      <% @articles.each do |article| %>
-        <%= render 'guest/shared/article_tile', article: article %>
-      <% end %>
+      <%= render 'guest/articles/articles_list', articles: @articles %>
       <div class='d-flex justify-content-center mt-4 w-100'>
         <div>
           <%= paginate @articles %>

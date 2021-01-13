@@ -42,3 +42,13 @@ h6 img {
     @extend .is-invalid;
   }
 }
+
+.no-a-tag-effect {
+  color: black;
+  text-decoration: none;
+}
+
+.no-a-tag-effect:hover {
+  color: black;
+  text-decoration: none;
+}

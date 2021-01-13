@@ -29,6 +29,13 @@
       transition: all 0.4s;
       cursor: pointer;
     }
+
+    .hover-card:hover {
+      box-shadow: 5px 5px 5px 5px #80808042;
+      transform: translateY(-10px);
+      transition: all 0.4s;
+      cursor: pointer;
+    }
   }
 
   .article-sidebar {
