@@ -54,6 +54,9 @@ gem 'friendly_id', '~> 5.4.0'
 # サイトマップ
 gem 'sitemap_generator'
 
+# 画像リサイズ
+gem 'image_processing', '~> 1.2'
+
 gem 'listen', '>= 3.0.5', '< 3.2'
 
 group :development, :test do

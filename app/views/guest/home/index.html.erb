@@ -1,4 +1,22 @@
 <div class='container'>
+  <div class='top-articles-container row mt-4'>
+    <div class='top-article-wrapper col-md-6 col-sm-12'>
+      <div class='filter'>
+        <%= image_tag Article.first.thumbnail.attached? ? Article.first.optimized_thumbnail(555, 333) : 'default_article', style: 'width: 100%', class: 'filter-img' %>
+      </div>
+      <div class='title'>
+        <div>
+          <span class='badge badge-danger'>Ruby on Rails</span>
+          <small class='font-weight-bold card-date'><%= Article.first.created_at.to_s %></small>
+        </div>
+        <p><%= Article.first.title %></p>
+      </div>
+    </div>
+    <div class='top-article-wrapper col-md-6 col-sm-12'>
+      <%= image_tag Article.first.thumbnail.attached? ? Article.first.optimized_thumbnail(555, 333) : 'default_article', style: 'width: 100%' %>
+    </div>
+  </div>
+
   <div class='home-articles-container mb-5'>
     <div class='articles-list-container'>
       <% @articles.each do |article| %>

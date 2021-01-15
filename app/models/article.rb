@@ -23,6 +23,11 @@ class Article < ApplicationRecord
   scope :published_articles, -> { where(is_draft: false) }
   scope :by_query, ->(query) { where('title LIKE ?', "%#{query}%") }
 
+  # リサイズしたサムネイル画像
+  def optimized_thumbnail(x, y)
+    thumbnail.variant(resize_to_fill: [x, y]).processed
+  end
+
   # 下書きではないこと
   def published?
     !is_draft
