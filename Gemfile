@@ -51,6 +51,9 @@ gem 'seed-fu'
 # URL
 gem 'friendly_id', '~> 5.4.0'
 
+# サイトマップ
+gem 'sitemap_generator'
+
 gem 'listen', '>= 3.0.5', '< 3.2'
 
 group :development, :test do
