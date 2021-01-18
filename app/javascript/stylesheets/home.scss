@@ -1,52 +1,52 @@
-.home-articles-container {
-  margin-top: 60px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+// .home-articles-container {
+//   margin-top: 60px;
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   justify-content: space-between;
 
-  .articles-list-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 800px;
-    min-width: 800px;
-    .article-list-card {
-      width: 350px;
-      height: 260px;
-      margin-bottom: 46px;
-      transition: all 0.4s;
+//   .articles-list-container {
+//     display: flex;
+//     justify-content: space-around;
+//     flex-wrap: wrap;
+//     max-width: 800px;
+//     min-width: 800px;
+//     .article-list-card {
+//       width: 350px;
+//       height: 260px;
+//       margin-bottom: 46px;
+//       transition: all 0.4s;
 
-      .article-card-image {
-        display: flex;
-        justify-content: center;
-      }
-    }
+//       .article-card-image {
+//         display: flex;
+//         justify-content: center;
+//       }
+//     }
 
-    .article-list-card:hover {
-      box-shadow: 5px 5px 5px 5px #80808042;
-      transform: translateY(-10px);
-      transition: all 0.4s;
-      cursor: pointer;
-    }
+//     .article-list-card:hover {
+//       box-shadow: 5px 5px 5px 5px #80808042;
+//       transform: translateY(-10px);
+//       transition: all 0.4s;
+//       cursor: pointer;
+//     }
 
-    .hover-card:hover {
-      box-shadow: 5px 5px 5px 5px #80808042;
-      transform: translateY(-10px);
-      transition: all 0.4s;
-      cursor: pointer;
-    }
-  }
+//     .hover-card:hover {
+//       box-shadow: 5px 5px 5px 5px #80808042;
+//       transform: translateY(-10px);
+//       transition: all 0.4s;
+//       cursor: pointer;
+//     }
+//   }
 
-  .article-sidebar {
-    width: 280px;
-    a {
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: none;
-    }
-  }
-}
+//   .article-sidebar {
+//     width: 280px;
+//     a {
+//       text-decoration: none;
+//     }
+//     a:hover {
+//       text-decoration: none;
+//     }
+//   }
+// }
 
 

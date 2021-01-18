@@ -1,35 +1,33 @@
-<div class='container'>
-  <div class='top-articles-container row mt-4'>
-    <div class='top-article-wrapper col-md-6 col-sm-12'>
-      <div class='filter'>
-        <%= image_tag Article.first.thumbnail.attached? ? Article.first.optimized_thumbnail(555, 333) : 'default_article', style: 'width: 100%', class: 'filter-img' %>
-      </div>
-      <div class='title'>
-        <div>
-          <span class='badge badge-danger'>Ruby on Rails</span>
-          <small class='font-weight-bold card-date'><%= Article.first.created_at.to_s %></small>
+<header class="masthead" style="background-image: url('/assets/home-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h2>Tech Blog</h2>
+          <span class="subheading">created by sibakenY</span>
         </div>
-        <p><%= Article.first.title %></p>
       </div>
     </div>
-    <div class='top-article-wrapper col-md-6 col-sm-12'>
-      <%= image_tag Article.first.thumbnail.attached? ? Article.first.optimized_thumbnail(555, 333) : 'default_article', style: 'width: 100%' %>
+  </div>
+</header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <% @articles.each do |article| %>
+        <%= render 'guest/shared/article_preview', article: article %>
+        <hr>
+      <% end %>
     </div>
   </div>
 
-  <div class='home-articles-container mb-5'>
-    <div class='articles-list-container'>
-      <% @articles.each do |article| %>
-        <%= render 'guest/shared/article_tile', article: article %>
-      <% end %>
-      <div class='d-flex justify-content-center mt-4'>
-        <div>
-          <%= paginate @articles %>
-        </div>
-      </div>
-    </div>
-    <div class='article-sidebar'>
-      <%= render 'guest/shared/category_sidebar' %>
+  <div class='d-flex justify-content-center mt-4 w-100'>
+    <div>
+      <%= paginate @articles %>
     </div>
   </div>
 </div>
+
+<hr>

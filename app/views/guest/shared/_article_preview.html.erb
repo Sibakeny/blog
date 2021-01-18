@@ -1,0 +1,13 @@
+<div class="post-preview">
+  <%= link_to guest_article_path(article) do %>
+    <h2 class="post-title">
+      <%= article.title %>
+    </h2>
+    <h4 class="post-subtitle">
+      <%= article.body.truncate(80) %>
+    </h4>
+  <% end %>
+  <p class="post-meta">Posted by
+    <a href="#">sibakenY</a>
+    <%= article.created_at.to_s %></p>
+</div>
