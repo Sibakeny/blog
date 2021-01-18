@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   namespace :guest do
     draw :article
+
+    get 'about', to: 'about#index'
+    get 'contact', to: 'contact#index'
   end
 
 end

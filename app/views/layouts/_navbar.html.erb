@@ -11,13 +11,10 @@
           <a class="nav-link" href="index.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about.html">About</a>
+          <%= link_to 'About', guest_about_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="post.html">Sample Post</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
+          <%= link_to 'Contact', guest_contact_path, class: 'nav-link' %>
         </li>
       </ul>
     </div>
