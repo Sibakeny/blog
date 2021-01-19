@@ -15,17 +15,16 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="col-lg-8 col-md-10 mx-auto mb-3">
       <% @articles.each do |article| %>
         <%= render 'guest/shared/article_preview', article: article %>
         <hr>
       <% end %>
     </div>
-  </div>
-
-  <div class='d-flex justify-content-center mt-4 w-100'>
-    <div>
-      <%= paginate @articles %>
+    <div class='col-lg-8 col-md-8 mx-auto'>
+      <div class='d-flex justify-content-center align-items-center mt-4 w-100'>
+        <%= paginate @articles, :window => 1 %>
+      </div>
     </div>
   </div>
 </div>
