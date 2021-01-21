@@ -26,3 +26,13 @@ $(window).on('unload', function() {
   // }
 });
 
+window.addEventListener('scroll', function(e) {
+  var header = document.getElementsByClassName('scroll-dark-navbar')[0]
+  if (header != null) {
+    console.log("scroll")
+    var colorCode = 255 - window.scrollY
+    var opacity = window.scrollY / 255
+    header.style.background = `rgba(${colorCode}, ${colorCode}, ${colorCode}, ${opacity})`
+  }
+});
+
